@@ -18,30 +18,32 @@ const Hero = () => {
     dispatch(getBanners());
   }, []);
   return (
-    <Swiper
-      effect={"cards"}
-      grabCursor={true}
-      autoplay={{
-        delay: 2000,
-        disableOnInteraction: false,
-      }}
-      modules={[EffectCards, Autoplay]}
-      className="mySwiper ">
-      {loading && (
-        <SwiperSlide className="w-full h-[400px] sm:h-[calc(100vh-200px)] rounded-[20px] bg-gray-300 dark:bg-accent animate-pulse"></SwiperSlide>
-      )}
-      {banners.map((banner, index) => (
-        <SwiperSlide key={index}>
-          <Image
-            src={banner.image}
-            width={1200}
-            height={1200}
-            alt="slider-img"
-            className="w-full h-full object-fill"
-          />
-        </SwiperSlide>
-      ))}
-    </Swiper>
+    <div className="container">
+      <Swiper
+        effect={"cards"}
+        grabCursor={true}
+        autoplay={{
+          delay: 2000,
+          disableOnInteraction: false,
+        }}
+        modules={[EffectCards, Autoplay]}
+        className="mySwiper ">
+        {loading && (
+          <SwiperSlide className="w-full h-[400px] sm:h-[calc(100vh-200px)] rounded-[20px] bg-gray-300 dark:bg-accent animate-pulse"></SwiperSlide>
+        )}
+        {banners.map((banner, index) => (
+          <SwiperSlide key={index}>
+            <Image
+              src={banner.image}
+              width={1200}
+              height={1200}
+              alt="slider-img"
+              className="w-full h-full object-fill"
+            />
+          </SwiperSlide>
+        ))}
+      </Swiper>
+    </div>
   );
 };
 

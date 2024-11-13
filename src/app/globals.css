@@ -14,8 +14,9 @@ body {
 @media (max-width: 640px) {
   .swiper {
     width: 100%;
-    object-fit: fill;
+    object-fit: cover !important;
     height: 300px;
+    margin: 0 auto !important;
   }
 }
 .swiper-slide {
