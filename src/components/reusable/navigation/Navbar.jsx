@@ -13,7 +13,6 @@ const Navbar = () => {
     <header className="fixed inset-0 w-full h-fit border-b-2 border-border z-50  backdrop-blur-md bg-background/60">
       <div className="container flex items-center justify-between">
         <div className="md:flex md:items-center md:gap-12">
-          {/* logo */}
           <Link href={"/"}>
             <Image
               src={"/logo white.png"}
@@ -101,6 +100,7 @@ const Navbar = () => {
             <AlignJustify size={35} />
           </div>
         </div>
+        {/* open sidebar and close */}
         <AnimatePresence>
           {openNav && <SideBar setOpenNav={setOpenNav} />}
         </AnimatePresence>

@@ -1,5 +1,5 @@
 import { dropdownLinks } from "@/components/constants/dropDownLinks";
-import { CircleX } from "lucide-react";
+import { CircleUserRound, CircleX } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
@@ -13,7 +13,7 @@ const SideBar = ({ setOpenNav }) => {
         transition={{
           duration: 0.3,
         }}
-        className="fixed top-0 left-0 w-full  bg-background/80 h-screen md:hidden"></motion.div>
+        className="fixed top-0 left-0 w-full z-[70]  bg-background/80 h-screen md:hidden"></motion.div>
       <motion.div
         initial={{ x: "100%" }}
         animate={{ x: 0 }}
@@ -23,7 +23,7 @@ const SideBar = ({ setOpenNav }) => {
           type: "spring",
           stiffness: 120,
         }}
-        className="flex fixed  top-0 right-0 w-[70%] sm:w-1/2 h-screen md:hidden flex-col justify-between border-e bg-background">
+        className="flex fixed overflow-y-auto z-[70]  top-0 right-0 w-[70%] sm:w-1/2 h-screen md:hidden flex-col justify-between border-e bg-background">
         {/* close button */}
         <CircleX
           onClick={() => setOpenNav(false)}
@@ -112,6 +112,18 @@ const SideBar = ({ setOpenNav }) => {
               </a>
             </li>
           </ul>
+          <motion.button
+            whileHover={{ scale: 1.05 }}
+            transition={{
+              duration: 0.2,
+              type: "spring",
+              damping: 5,
+              stiffness: 320,
+            }}
+            className="flex items-center mt-6 justify-center  gap-2 py-2  w-full bg-primary text-white rounded-lg ">
+            <CircleUserRound size={20} />
+            سجل الان
+          </motion.button>
         </div>
 
         <div className="sticky inset-x-0 bottom-0 border-t border-border">

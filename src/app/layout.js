@@ -2,6 +2,7 @@ import Navbar from "@/components/reusable/navigation/Navbar";
 import "./globals.css";
 import { Almarai } from "next/font/google";
 import { ThemeProvider } from "@/components/reusable/navigation/theme-provider";
+import ReduxProvider from "@/components/reusable/ReduxProvider";
 const CairoPlay = Almarai({ subsets: ["latin"], weight: ["400", "700"] });
 export const metadata = {
   title: "",
@@ -16,14 +17,16 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html className=" scroll-smooth" lang="ar">
-      <body className={`${CairoPlay.className}`}>
+      <body className={`${CairoPlay.className} overflow-x-hidden`}>
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
           enableSystem
           disableTransitionOnChange>
-          <Navbar />
-          {children}
+          <ReduxProvider>
+            <Navbar />
+            {children}
+          </ReduxProvider>
         </ThemeProvider>
       </body>
     </html>
