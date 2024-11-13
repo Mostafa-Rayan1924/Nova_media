@@ -1,12 +1,12 @@
+"use client";
 import { ArrowRight } from "lucide-react";
 import React from "react";
 import { buttonVariants } from "../ui/button";
 import { cn } from "@/lib/utils";
 import SquareIcon from "../reusable/SquareIcon";
 import CircleIcon from "../reusable/CircleIcon";
-
+import { motion } from "framer-motion";
 const About = () => {
-  let date = new Date();
   return (
     <section className="relative my-[50px] ">
       <div className="absolute left-0 lg:-left-40 w-[150px] h-[150px] sm:w-[320px] sm:h-[320px]    opacity-40 blur-3xl  rounded-full bg-gradient-to-r from-primary to-transparent -z-20 top-0 " />
@@ -19,9 +19,25 @@ const About = () => {
         />
 
         <div className="flex flex-col gap-y-4">
-          <h2 className="font-semibold text-xl text-primary">من نحن</h2>
-          <h3 className="text-2xl font-bold text-foreground">تعرف اكثر عنا</h3>
-          <p className=" text-muted-foreground text-sm leading-relaxed">
+          <motion.h2
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.4 }}
+            className="font-semibold text-xl text-primary">
+            من نحن
+          </motion.h2>
+          <motion.h3
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.4 }}
+            className="text-2xl font-bold text-foreground">
+            تعرف اكثر عنا
+          </motion.h3>
+          <motion.p
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.4 }}
+            className=" text-muted-foreground text-sm leading-relaxed">
             Nova Media هي شركة متخصصة في خدمات الدعاية والإعلان والطباعة الرقمية
             وتنظيم الفعاليات. تقدم الشركة مجموعة شاملة من حلول الطباعة تشمل
             طباعة الكتب والملازم التعليمية وكافة أنواع المطبوعات الورقية
@@ -29,7 +45,7 @@ const About = () => {
             التقطيع والتغليف. كما تقدم تصميم الأختام، والدروع، والمواد
             الإعلانية، وتوفر حلولًا مبتكرة تشمل التصوير وإنتاج الاختبارات
             الإلكترونية وعروض تقديمية وفيديوهات.
-          </p>
+          </motion.p>
           <div className="grid grid-cols-2  lg:grid-cols-3 gap-x-4  ">
             <div className="flex flex-col gap-y-1">
               <h4 className="text-4xl font-bold">2+</h4>
@@ -43,14 +59,16 @@ const About = () => {
                 عملاء وثقوا بنا
               </p>
             </div>
-            <button
+            <motion.button
+              whileHover={{ scale: 1.1 }}
+              transition={{ duration: 0.3, type: "spring", stiffness: 300 }}
               className={cn(
                 buttonVariants({ size: "lg" }),
                 "mt-4 col-span-3 lg:col-span-1"
               )}>
               <ArrowRight className="size-4" />
               <span>نظره علي بعض اعمالنا</span>
-            </button>
+            </motion.button>
           </div>
         </div>
       </div>

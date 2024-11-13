@@ -16,7 +16,7 @@ const Services = () => {
     <section>
       <MainTitle title="خدماتنا" btnTitle="عرض جميع الخدمات" href="services" />
 
-      <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mt-10 ">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-10 ">
         {loading && (
           <>
             <CategorySkeleton />

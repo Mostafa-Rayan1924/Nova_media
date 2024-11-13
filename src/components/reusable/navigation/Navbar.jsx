@@ -96,7 +96,9 @@ const Navbar = () => {
             </motion.button>
             <ModeToggle />
           </div>
-          <div onClick={() => setOpenNav(!openNav)} className="flex  md:hidden">
+          <div
+            onClick={() => setOpenNav(!openNav)}
+            className="flex cursor-pointer  md:hidden">
             <AlignJustify size={35} />
           </div>
         </div>

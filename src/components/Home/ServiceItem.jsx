@@ -18,10 +18,12 @@ const ServiceItem = ({ item, index }) => {
         className="size-[80px] sm:size-[100px] absolute top-[-25%]"
         alt="service"
       />
-      <h2 className="font-semibold mt-14 text-[13px] md:text-[15px] text-center">
+      <h2 className="font-semibold mt-8 md:mt-14 text-lg md:text-[15px] text-center">
         {item?.name}
       </h2>
-      {item.soon && <div className="ribbon-2 text-white">قريباً</div>}
+      {item.status == "قريبا" && (
+        <div className="ribbon-2 text-white">قريباً</div>
+      )}
     </motion.div>
   );
 };
