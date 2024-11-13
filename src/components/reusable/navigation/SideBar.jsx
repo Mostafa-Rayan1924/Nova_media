@@ -23,7 +23,7 @@ const SideBar = ({ setOpenNav }) => {
           type: "spring",
           stiffness: 120,
         }}
-        className="flex fixed overflow-y-auto z-[70]  top-0 right-0 w-[70%] sm:w-1/2 h-screen md:hidden flex-col justify-between border-e bg-background">
+        className="flex fixed  z-[70]  top-0 right-0 w-[70%] sm:w-1/2 h-screen md:hidden flex-col justify-between border-e bg-background">
         {/* close button */}
         <CircleX
           onClick={() => setOpenNav(false)}
