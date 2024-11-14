@@ -6,8 +6,6 @@ import { socialLinks } from "../constants/SocialLinks";
 import { bussinessInfo } from "../constants/BussinesInfoFooter";
 import Image from "next/image";
 const Footer = () => {
-  let color = ["#e11d48", "#1877f2", "#000", "#ff0033", "#58f574"];
-
   return (
     <footer className="mt-[50px] bg-background border-t border-border  py-[50px]">
       <div className="container grid grid-cols-1 place-items-center text-center md:text-start  md:grid-cols-2 lg:grid-cols-4 gap-10 md:gap-8">
@@ -22,14 +20,13 @@ const Footer = () => {
                   initial={{
                     opacity: 0,
                   }}
-                  whileHover={{ background: color[index] }}
                   whileInView={{
                     opacity: 1,
                     transition: {
                       delay: index * 0.2,
                     },
                   }}
-                  className={`size-10 group   rounded-lg bg-accent dark:bg-accent     text-muted-foreground hover:text-white   grid place-items-center  cursor-pointer  `}>
+                  className={`size-10 group icon transition-all duration-300   rounded-lg bg-accent dark:bg-accent     text-muted-foreground hover:text-white   grid place-items-center  cursor-pointer  `}>
                   {item.icon}
                 </motion.a>
               );
