@@ -116,6 +116,12 @@ body {
 .icon:nth-child(5):hover {
   background: #58f574;
 }
+/* swiper insta */
+.swiper2 {
+  width: 100%;
+  height: 100%;
+}
+
 @layer base {
   * {
     @apply border-border;
