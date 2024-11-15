@@ -13,6 +13,8 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { GetProjects } from "@/store/HomeSlices/LatestProjectsSlice";
 import ProjectSkeleton from "./ProjectSkeleton";
+import SquareIcon from "../reusable/SquareIcon";
+import CircleIcon from "../reusable/CircleIcon";
 
 const LatestProjects = () => {
   let { projects, loading, error } = useSelector((state) => state.homeProjects);
@@ -22,7 +24,12 @@ const LatestProjects = () => {
     dispatch(GetProjects());
   }, []);
   return (
-    <section>
+    <section className="relative">
+      <div className="hidden md:block">
+        <SquareIcon y={"top-10"} x={"left-0"} color={"primary"} />
+        <CircleIcon y={"bottom-0"} x={"right-0"} color={"muted-foreground"} />
+      </div>
+
       <div className="flex flex-col gap-4 justify-center text-center items-center mb-10">
         <h2 className="text-2xl md:text-3xl lg:text-5xl font-semibold">
           قم بزيارة
@@ -83,10 +90,12 @@ const LatestProjects = () => {
         ))}
       </Swiper>
       <div className="flex items-center justify-center mt-10 gap-2">
-        <Button className={buttonVariants({ size: "lg" })}>
-          عرض المزيد على إنستجرام
-          <Instagram className="size-8" />
-        </Button>
+        <Link href={"https://www.instagram.com/Nova.media.eg"} target="_blank">
+          <Button className={buttonVariants({ size: "lg" })}>
+            عرض المزيد على إنستجرام
+            <Instagram className="size-8" />
+          </Button>
+        </Link>
       </div>
     </section>
   );

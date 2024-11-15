@@ -6,7 +6,6 @@ import "swiper/css/effect-cards";
 // import required modules
 import { EffectCards, Autoplay } from "swiper/modules";
 import Image from "next/image";
-import { motion } from "framer-motion";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { getBanners } from "@/store/HomeSlices/bannerSlice";
@@ -18,7 +17,7 @@ const Hero = () => {
     dispatch(getBanners());
   }, []);
   return (
-    <div className="container overflow-hidden">
+    <div className="container  overflow-hidden">
       <Swiper
         effect={"cards"}
         grabCursor={true}
