@@ -3,7 +3,7 @@ import Link from "next/link";
 import LatestProBox from "./LatestProBox";
 import { Button, buttonVariants } from "../ui/button";
 import { Instagram } from "lucide-react";
-
+import { motion } from "framer-motion";
 import { Swiper, SwiperSlide } from "swiper/react";
 
 // Import Swiper styles
@@ -24,7 +24,7 @@ const LatestProjects = () => {
     dispatch(GetProjects());
   }, []);
   return (
-    <section className="relative">
+    <section id="latestPro" className="relative">
       <div className="hidden md:block">
         <SquareIcon y={"top-10"} x={"left-0"} color={"primary"} />
         <CircleIcon y={"bottom-0"} x={"right-0"} color={"muted-foreground"} />

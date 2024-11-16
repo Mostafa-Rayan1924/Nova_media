@@ -7,7 +7,7 @@ import { bussinessInfo } from "../constants/BussinesInfoFooter";
 import Image from "next/image";
 const Footer = () => {
   return (
-    <footer className="mt-[50px] bg-background border-t border-border  py-[50px]">
+    <footer className=" bg-background border-t border-border  py-[50px]">
       <div className="container grid grid-cols-1 place-items-center text-center md:text-start  md:grid-cols-2 lg:grid-cols-4 gap-10 md:gap-8">
         <div className="flex flex-col gap-4 md:gap-2">
           <h2 className="text-[50px] font-bold">نوفا ميديا</h2>

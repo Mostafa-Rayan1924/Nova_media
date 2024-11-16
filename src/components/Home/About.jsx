@@ -6,6 +6,7 @@ import { cn } from "@/lib/utils";
 import SquareIcon from "../reusable/SquareIcon";
 import CircleIcon from "../reusable/CircleIcon";
 import { motion } from "framer-motion";
+import Link from "next/link";
 const About = () => {
   return (
     <section className="relative my-[50px] ">
@@ -67,7 +68,7 @@ const About = () => {
                 "mt-4 col-span-3 lg:col-span-1"
               )}>
               <ArrowRight className="size-4" />
-              <span>نظره علي بعض اعمالنا</span>
+              <a href="#latestPro">نظره علي بعض اعمالنا</a>
             </motion.button>
           </div>
         </div>

@@ -4,10 +4,12 @@ import { Almarai } from "next/font/google";
 import { ThemeProvider } from "@/components/reusable/navigation/theme-provider";
 import ReduxProvider from "@/components/reusable/ReduxProvider";
 import Footer from "@/components/reusable/Footer";
+import ScrollToTop from "@/components/ScrollToTop";
 const CairoPlay = Almarai({ subsets: ["latin"], weight: ["400", "700"] });
 export const metadata = {
-  title: "",
-  description: "",
+  title: "نوفا ميديا",
+  description:
+    "شركه نوفا ميديا للخدمات الدعايه والاعلان والطباعه الرقمية وتنظيم الفعاليات والمؤتمرات والمعارض ",
   icons: [
     {
       url: "/logo.png",
@@ -26,6 +28,7 @@ export default function RootLayout({ children }) {
           disableTransitionOnChange>
           <ReduxProvider>
             <Navbar />
+            <ScrollToTop />
             {children}
             <Footer />
           </ReduxProvider>
