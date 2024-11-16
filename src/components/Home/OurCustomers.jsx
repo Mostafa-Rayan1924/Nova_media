@@ -66,7 +66,7 @@ const OurCustomers = () => {
               className="w-full h-full flex items-center justify-center">
               <img
                 alt={item?.name}
-                className="size-[150px] object-cover "
+                className="size-[150px] object-fill "
                 decoding="async"
                 src={item?.image}
               />

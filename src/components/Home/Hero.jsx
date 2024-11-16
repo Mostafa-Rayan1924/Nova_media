@@ -21,6 +21,7 @@ const Hero = () => {
       <Swiper
         effect={"cards"}
         grabCursor={true}
+        speed={800}
         autoplay={{
           delay: 2000,
           disableOnInteraction: false,
@@ -32,11 +33,12 @@ const Hero = () => {
         )}
         {banners.map((banner, index) => (
           <SwiperSlide key={index}>
-            <img
+            <Image
               alt={banner?.name}
-              className="object-fill h-full w-full"
-              decoding="async"
               src={banner?.image}
+              layout="fill"
+              objectFit="cover"
+              priority={index === 0}
             />
           </SwiperSlide>
         ))}
