@@ -59,16 +59,18 @@ const OurCustomers = () => {
             })}
           </div>
         )}
-        {customers.map((item) => {
+        {customers.map((item, index) => {
           return (
             <SwiperSlide
               key={item.id}
               className="w-full h-full flex items-center justify-center">
-              <img
+              <Image
                 alt={item?.name}
-                className="size-[150px] object-fill "
-                decoding="async"
                 src={item?.image}
+                className="size-[150px] object-fill"
+                width={150}
+                height={150}
+                priority={index === 0}
               />
             </SwiperSlide>
           );

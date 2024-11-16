@@ -21,7 +21,6 @@ const Hero = () => {
       <Swiper
         effect={"cards"}
         grabCursor={true}
-        speed={800}
         autoplay={{
           delay: 2000,
           disableOnInteraction: false,
@@ -37,7 +36,7 @@ const Hero = () => {
               alt={banner?.name}
               src={banner?.image}
               layout="fill"
-              objectFit="cover"
+              objectFit="fill"
               priority={index === 0}
             />
           </SwiperSlide>

@@ -2,7 +2,7 @@ import { Bookmark, Ellipsis, Heart, MessageCircle, Send } from "lucide-react";
 import Image from "next/image";
 import { object } from "yup";
 
-const LatestProBox = ({ project }) => {
+const LatestProBox = ({ project, index }) => {
   return (
     <div className="border-border border">
       <div className="flex items-center justify-between p-3">
@@ -30,14 +30,16 @@ const LatestProBox = ({ project }) => {
         </div>
       </div>
       <div className="h-[350px] relative ">
-        <div className="absolute top-4 right-4 text-white bg-black/60 backdrop-blur-md text-sm  rounded-3xl py-1 px-2  grid place-items-center ">
+        <div className="absolute top-4 z-10 right-4 text-white bg-black/60 backdrop-blur-md text-sm  rounded-3xl py-1 px-2  grid place-items-center ">
           1/3
         </div>
-        <img
+        <Image
           alt={project?.name}
-          className="object-fill w-[350px] h-[350px] "
-          decoding="async"
           src={project?.image}
+          className="size-[350px]"
+          layout="fill"
+          objectFit="fill"
+          priority={index === 0}
         />
       </div>
       <div className="flex flex-col p-3 gap-2">

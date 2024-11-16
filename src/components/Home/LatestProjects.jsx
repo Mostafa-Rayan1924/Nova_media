@@ -85,7 +85,7 @@ const LatestProjects = () => {
         className="swiper2">
         {projects.map((project, index) => (
           <SwiperSlide key={index} className="swiper-slide2">
-            <LatestProBox project={project} />
+            <LatestProBox project={project} index={index} />
           </SwiperSlide>
         ))}
       </Swiper>
