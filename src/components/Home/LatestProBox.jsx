@@ -36,7 +36,7 @@ const LatestProBox = ({ project }) => {
           src={project.image}
           width={350}
           height={300}
-          alt="latest project"
+          alt={project?.name}
           className="h-full w-full object-fill"
         />
       </div>
@@ -55,6 +55,7 @@ const LatestProBox = ({ project }) => {
             src={project.userImage}
             className="rounded-full object-cover"
             width={20}
+            alt="user-image"
             height={20}
           />
           <h2 className="capitalize text-muted-foreground text-sm">

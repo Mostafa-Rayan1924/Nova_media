@@ -33,10 +33,10 @@ const Hero = () => {
         {banners.map((banner, index) => (
           <SwiperSlide key={index}>
             <Image
-              src={banner.image}
+              src={banner?.image}
               width={1200}
               height={1200}
-              alt="slider-img"
+              alt={banner?.name}
               className="w-full h-full object-fill"
             />
           </SwiperSlide>

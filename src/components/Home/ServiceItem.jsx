@@ -16,7 +16,7 @@ const ServiceItem = ({ item, index }) => {
         width={100}
         height={100}
         className="size-[80px] sm:size-[100px] absolute top-[-25%]"
-        alt="service"
+        alt={item?.name}
       />
       <h2 className="font-semibold mt-8 md:mt-14 text-lg md:text-[15px] text-center">
         {item?.name}

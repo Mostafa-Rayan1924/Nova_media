@@ -26,7 +26,7 @@ const OurCustomers = () => {
         slidesPerView={6}
         spaceBetween={20}
         autoplay={{
-          delay: 2500,
+          delay: 2000,
           disableOnInteraction: false,
         }}
         navigation={{ nextEl: ".left", prevEl: ".right" }}
@@ -69,7 +69,7 @@ const OurCustomers = () => {
                 width={200}
                 height={200}
                 alt={item?.name}
-                className="w-full h-full"
+                className="size-[150px] object-fill"
               />
             </SwiperSlide>
           );

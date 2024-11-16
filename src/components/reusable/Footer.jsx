@@ -16,6 +16,7 @@ const Footer = () => {
               return (
                 <motion.a
                   href={item.path}
+                  key={item.id}
                   target="_blank"
                   initial={{
                     opacity: 0,
