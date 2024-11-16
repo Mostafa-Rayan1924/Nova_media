@@ -1,5 +1,6 @@
 import { Bookmark, Ellipsis, Heart, MessageCircle, Send } from "lucide-react";
 import Image from "next/image";
+import { object } from "yup";
 
 const LatestProBox = ({ project }) => {
   return (
@@ -32,12 +33,11 @@ const LatestProBox = ({ project }) => {
         <div className="absolute top-4 right-4 text-white bg-black/60 backdrop-blur-md text-sm  rounded-3xl py-1 px-2  grid place-items-center ">
           1/3
         </div>
-        <Image
-          src={project.image}
-          width={350}
-          height={300}
+        <img
           alt={project?.name}
-          className="h-full w-full object-fill"
+          className="object-fill w-[350px] h-[350px] "
+          decoding="async"
+          src={project?.image}
         />
       </div>
       <div className="flex flex-col p-3 gap-2">
@@ -52,7 +52,7 @@ const LatestProBox = ({ project }) => {
         </div>
         <div className="flex items-center gap-2 flex-row-reverse">
           <Image
-            src={project.userImage}
+            src={project?.userImage ? project?.userImage : "/logo.png"}
             className="rounded-full object-cover"
             width={20}
             alt="user-image"
@@ -64,7 +64,7 @@ const LatestProBox = ({ project }) => {
             <span className="text-foreground"> {project.number} </span>
           </h2>
         </div>
-        <div className="text-sm flex-row-reverse  flex items-center gap-1 ">
+        <div className="text-sm flex-row-reverse line-clamp-1  flex items-center gap-1 ">
           <span className="font-semibold">.Novamedia</span>
           <p>{"..." + project.description.split("").slice(0, 20).join("")}</p>
         </div>

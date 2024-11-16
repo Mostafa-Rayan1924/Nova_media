@@ -64,12 +64,11 @@ const OurCustomers = () => {
             <SwiperSlide
               key={item.id}
               className="w-full h-full flex items-center justify-center">
-              <Image
-                src={item?.image}
-                width={200}
-                height={200}
+              <img
                 alt={item?.name}
-                className="size-[150px] object-fill"
+                className="size-[150px] object-fill "
+                decoding="async"
+                src={item?.image}
               />
             </SwiperSlide>
           );

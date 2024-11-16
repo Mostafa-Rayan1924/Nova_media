@@ -17,7 +17,7 @@ const Hero = () => {
     dispatch(getBanners());
   }, []);
   return (
-    <div className="container  overflow-hidden">
+    <div className="container w-full h-full  overflow-hidden">
       <Swiper
         effect={"cards"}
         grabCursor={true}
@@ -32,12 +32,11 @@ const Hero = () => {
         )}
         {banners.map((banner, index) => (
           <SwiperSlide key={index}>
-            <Image
-              src={banner?.image}
-              width={1200}
-              height={1200}
+            <img
               alt={banner?.name}
-              className="w-full h-full object-fill"
+              className="object-fill h-full w-full"
+              decoding="async"
+              src={banner?.image}
             />
           </SwiperSlide>
         ))}
