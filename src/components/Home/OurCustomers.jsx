@@ -73,18 +73,18 @@ const OurCustomers = () => {
             </SwiperSlide>
           );
         })}
-      </Swiper>
-      <div className="swiperOptions w-full  mt-4  flex items-center justify-between">
-        <div className="progress w-[70%] h-1 rounded-lg bg-gray-300"></div>
-        <div className="arrows flex items-center gap-2 ">
-          <div className="right cursor-pointer hover:text-primary transition-all">
-            <CircleArrowRight className="size-8" />
-          </div>
-          <div className="left cursor-pointer  hover:text-primary transition-all">
-            <CircleArrowLeft className="size-8" />
+        <div className="swiperOptions w-full  mt-4  flex items-center justify-between">
+          <div className="progress w-[70%] h-1 rounded-lg bg-gray-300"></div>
+          <div className="arrows flex items-center gap-2 ">
+            <div className="right cursor-pointer hover:text-primary transition-all">
+              <CircleArrowRight className="size-8" />
+            </div>
+            <div className="left cursor-pointer  hover:text-primary transition-all">
+              <CircleArrowLeft className="size-8" />
+            </div>
           </div>
         </div>
-      </div>
+      </Swiper>
     </section>
   );
 };

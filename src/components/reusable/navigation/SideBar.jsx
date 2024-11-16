@@ -31,7 +31,7 @@ const SideBar = ({ setOpenNav }) => {
         />
         <div className="px-4 py-6">
           {/* logo */}
-          <div className="mr-10">
+          <div onClick={() => setOpenNav(false)} className="mr-10">
             <Image
               src={"/logo white.png"}
               width={75}
@@ -49,12 +49,12 @@ const SideBar = ({ setOpenNav }) => {
           </div>
           {/* links */}
           <ul className="mt-6 space-y-1">
-            <li>
-              <a
+            <li onClick={() => setOpenNav(false)}>
+              <Link
                 href="/"
                 className="block rounded-lg bg-accent hover:text-primary px-4 py-2 text-sm font-medium text-muted-foreground">
                 الرئيسية
-              </a>
+              </Link>
             </li>
 
             <li>
@@ -80,7 +80,7 @@ const SideBar = ({ setOpenNav }) => {
                 <ul className="mt-2 space-y-1 px-4">
                   {dropdownLinks.map((item) => {
                     return (
-                      <li key={item.id}>
+                      <li onClick={() => setOpenNav(false)} key={item.id}>
                         <Link
                           href={item.path}
                           className="block relative hover:text-primary rounded-lg px-4 py-2 text-sm font-medium text-muted-foreground hover:bg-accent ">
@@ -97,22 +97,23 @@ const SideBar = ({ setOpenNav }) => {
                 </ul>
               </details>
             </li>
-            <li>
-              <a
+            <li onClick={() => setOpenNav(false)}>
+              <Link
                 href="/market"
                 className="block rounded-lg hover:bg-accent hover:text-primary px-4 py-2 text-sm font-medium text-muted-foreground">
                 المتجر
-              </a>
+              </Link>
             </li>
-            <li>
-              <a
+            <li onClick={() => setOpenNav(false)}>
+              <Link
                 href="/contactus"
                 className="block rounded-lg hover:bg-accent hover:text-primary px-4 py-2 text-sm font-medium text-muted-foreground">
                 اتصل بنا
-              </a>
+              </Link>
             </li>
           </ul>
           <motion.button
+            onClick={() => setOpenNav(false)}
             whileHover={{ scale: 1.05 }}
             transition={{
               duration: 0.2,
@@ -127,12 +128,12 @@ const SideBar = ({ setOpenNav }) => {
         </div>
 
         <div className="sticky inset-x-0 bottom-0 border-t border-border">
-          <a href="#" className="flex items-center gap-2 bg-background p-4">
+          <Link href="#" className="flex items-center gap-2 bg-background p-4">
             <Image
               width={40}
               height={40}
               alt="avatar"
-              src="https://images.unsplash.com/photo-1600486913747-55e5470d6f40?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80"
+              src=""
               className="size-10 rounded-full object-cover"
             />
 
@@ -142,7 +143,7 @@ const SideBar = ({ setOpenNav }) => {
                 <span> eric@frusciante.com </span>
               </p>
             </div>
-          </a>
+          </Link>
         </div>
       </motion.div>
     </>

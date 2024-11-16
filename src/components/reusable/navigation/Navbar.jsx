@@ -10,7 +10,7 @@ import { useState } from "react";
 const Navbar = () => {
   let [openNav, setOpenNav] = useState(false);
   return (
-    <header className="fixed inset-0 w-full h-fit border-b-2 border-border z-50  backdrop-blur-md bg-background/60">
+    <header className="fixed inset-0 w-full h-[97px] border-b-2 border-border z-50  backdrop-blur-md bg-background/60">
       <div className="container flex items-center justify-between">
         <div className="md:flex md:items-center md:gap-12">
           <Link href={"/"}>
