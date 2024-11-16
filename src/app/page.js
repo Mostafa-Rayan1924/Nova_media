@@ -13,7 +13,7 @@ export const metadata = {
 export default function Home() {
   return (
     <main className="my-[140px] container space-y-28 md:space-y-36">
-      <Hero />
+      {/* <Hero /> */}
       <About />
       <Services />
       <LatestProjects />
