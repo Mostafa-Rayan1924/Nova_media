@@ -2,22 +2,22 @@ export let dropdownLinks = [
   {
     id: 1,
     title: "مطبوعات الورق والاقشمة",
-    path: "#",
+    path: "/services",
   },
   {
     id: 2,
     title: "طباعه الليزر والفايبر",
-    path: "#",
+    path: "/services",
   },
   {
     id: 3,
     title: "طباعه indoor و outdoor",
-    path: "#",
+    path: "/services",
   },
   {
     id: 4,
     title: "التسويق الالكتروني",
-    path: "#",
+    path: "/services",
     soon: true,
   },
 ];
