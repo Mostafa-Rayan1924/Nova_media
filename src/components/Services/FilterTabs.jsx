@@ -6,7 +6,7 @@ import { GetCats } from "@/store/HomeSlices/CategoriesSlice";
 import CategorySkeleton from "../Home/CategorySkeleton";
 import FilterBox from "./FilterBox";
 
-const FilterTabs = () => {
+const FilterTabs = ({ active, setActive }) => {
   let { categories, loading, error } = useSelector((state) => state.categories);
   let dispatch = useDispatch();
   useEffect(() => {
@@ -14,7 +14,7 @@ const FilterTabs = () => {
   }, []);
   return (
     <section>
-      <div className="grid grid-cols-2  lg:grid-cols-4 gap-4  mt-10 ">
+      <div className="grid grid-cols-2  lg:grid-cols-4 gap-2 md:gap-4  mt-10 ">
         {loading && (
           <>
             <CategorySkeleton />
@@ -24,7 +24,15 @@ const FilterTabs = () => {
           </>
         )}
         {categories.map((item, index) => {
-          return <FilterBox key={item.id} item={item} index={index} />;
+          return (
+            <FilterBox
+              key={item._id}
+              item={item}
+              index={index}
+              active={active}
+              setActive={setActive}
+            />
+          );
         })}
       </div>
     </section>

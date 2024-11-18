@@ -131,7 +131,6 @@ body {
 }
 /* hero slider */
 .swiper4 {
-  margin-top: 35px !important;
   width: 100% !important;
   height: 100% !important;
 }
@@ -141,7 +140,6 @@ body {
   width: 100% !important;
   object-fit: fill !important;
 }
-
 @layer base {
   * {
     @apply border-border;

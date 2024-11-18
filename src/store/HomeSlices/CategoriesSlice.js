@@ -9,7 +9,6 @@ let initialState = {
 export let GetCats = createAsyncThunk("category/getCats", async () => {
   try {
     let { data } = await axios.get(`${baseUrl}nova/api/category/getall`);
-    console.log(data);
     return data.data;
   } catch (error) {
     throw new Error(error.message);
