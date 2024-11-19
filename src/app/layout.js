@@ -5,6 +5,7 @@ import { ThemeProvider } from "@/components/reusable/navigation/theme-provider";
 import ReduxProvider from "@/components/reusable/ReduxProvider";
 import Footer from "@/components/reusable/Footer";
 import ScrollToTop from "@/components/ScrollToTop";
+import { Toaster } from "react-hot-toast";
 const CairoPlay = Almarai({ subsets: ["latin"], weight: ["400", "700"] });
 export const metadata = {
   title: "نوفا ميديا",
@@ -31,6 +32,7 @@ export default function RootLayout({ children }) {
             <ScrollToTop />
             {children}
             <Footer />
+            <Toaster position="top-center" reverseOrder={false} />
           </ReduxProvider>
         </ThemeProvider>
       </body>
