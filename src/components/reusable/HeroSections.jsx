@@ -2,7 +2,16 @@
 import { CircleArrowDown, Headset } from "lucide-react";
 import Link from "next/link";
 import { motion } from "framer-motion";
-const HeroSections = ({ title, spanTitle, desc, BtnOfSection, secLink }) => {
+const HeroSections = ({
+  title,
+  spanTitle,
+  desc,
+  BtnOfSection,
+  secLink,
+  BtnOfSection2,
+  secLink2,
+  IconComponent,
+}) => {
   return (
     <section className="relative bg-[url(https://images.unsplash.com/photo-1604014237800-1c9102c219da?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80)] servHero bg-cover bg-center bg-no-repeat">
       <div className="absolute inset-0 bg-background/60 dark:bg-background/75  sm:from-background/95 sm:to-background/25 ltr:sm:bg-gradient-to-r rtl:sm:bg-gradient-to-l"></div>
@@ -43,10 +52,10 @@ const HeroSections = ({ title, spanTitle, desc, BtnOfSection, secLink }) => {
             </Link>
 
             <Link
-              href="/contactus"
+              href={secLink2}
               className=" w-full flex items-center justify-center  gap-2 rounded bg-background px-4  md:px-12 py-3 text-sm font-medium text-rose-600 shadow hover:text-rose-700 dark:text-white focus:outline-none focus:ring active:text-rose-500 sm:w-auto">
-              تواصل معنا
-              <Headset className="text-primary dark:text-white" size={20} />
+              {BtnOfSection2}
+              {IconComponent}
             </Link>
           </motion.div>
         </div>

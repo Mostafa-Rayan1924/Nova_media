@@ -1,5 +1,6 @@
 import HeroSections from "@/components/reusable/HeroSections";
 import ServicesItems from "@/components/Services/ServicesItems";
+import { Headset } from "lucide-react";
 
 const Services = () => {
   return (
@@ -12,6 +13,11 @@ const Services = () => {
         }
         BtnOfSection={"تصفح الخدمات"}
         secLink={"#servFilter"}
+        BtnOfSection2={"تواصل معنا"}
+        secLink2={"/contactus"}
+        IconComponent={
+          <Headset className="text-primary dark:text-white" size={20} />
+        }
       />
       <ServicesItems />
     </main>

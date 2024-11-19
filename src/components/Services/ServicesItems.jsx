@@ -33,7 +33,7 @@ const ServicesItems = () => {
           })
         ) : (
           <h2 className="text-center  col-span-4  text-3xl lg:text-5xl font-semibold">
-            لا يوجد خدمات
+            لا يوجد خدمات حتي الان
           </h2>
         )}
       </div>

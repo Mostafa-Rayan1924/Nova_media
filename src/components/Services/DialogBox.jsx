@@ -19,10 +19,12 @@ const DialogBox = ({ item }) => {
       <Dialog>
         <DialogTrigger asChild>
           <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
+            initial={{ opacity: 0, scale: 0.8 }}
             whileInView={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.4 }}
-            className="h-[250px]  border-2 hover:border-primary  transition-all duration-300    p-2 rounded-lg bg-accent relative overflow-hidden  ">
+            transition={{
+              duration: 0.4,
+            }}
+            className="h-[250px] cursor-pointer   border-2 hover:border-primary  transition-all duration-300    p-2 rounded-lg bg-accent relative overflow-hidden  ">
             <Image
               src={item?.image[0]?.url}
               width={400}

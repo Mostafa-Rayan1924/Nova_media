@@ -17,7 +17,7 @@ const ScrollToTop = () => {
     <Button
       size="icon"
       className={cn(
-        "fixed bottom-[80px] md:bottom-8  right-8 transition-all duration-300 z-[99]",
+        "fixed bottom-[40px]   right-8 transition-all duration-300 z-[99]",
         !isOverScreen && "opacity-0 translate-y-6 pointer-events-none"
       )}
       onClick={() => window.scrollTo(0, 0)}>

@@ -27,8 +27,8 @@ const Footer = () => {
                       delay: index * 0.2,
                     },
                   }}
-                  className={`size-10 group icon transition-all duration-300   rounded-lg bg-accent dark:bg-accent     text-muted-foreground hover:text-white   grid place-items-center  cursor-pointer  `}>
-                  {item.icon}
+                  className={`size-10 group icon transition-all duration-300    rounded-lg bg-accent dark:bg-accent      hover:text-white   grid place-items-center  cursor-pointer  `}>
+                  <span>{item.icon}</span>
                 </motion.a>
               );
             })}
