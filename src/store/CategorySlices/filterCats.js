@@ -12,7 +12,6 @@ export let getCategoryById = createAsyncThunk(
     let { data } = await axios.get(
       `${baseUrl}nova/api/category/${id}/subcategory/getall`
     );
-    console.log(data);
     return data.data;
   }
 );

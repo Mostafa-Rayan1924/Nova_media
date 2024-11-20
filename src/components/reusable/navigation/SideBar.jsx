@@ -1,9 +1,27 @@
+"use client";
 import { dropdownLinks } from "@/components/constants/dropDownLinks";
 import { CircleUserRound, CircleX } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
+import { useDispatch, useSelector } from "react-redux";
+import toast from "react-hot-toast";
+import { logout } from "@/store/AuthSlices/loginSlice";
+import { usePathname } from "next/navigation";
 const SideBar = ({ setOpenNav }) => {
+  let { user } = useSelector((state) => state.login);
+  let pathname = usePathname();
+  let dispatch = useDispatch();
+  let logOutFunc = (e) => {
+    e.preventDefault();
+    const confirmLogout = window.confirm("هل انت متاكد من تسجيل الخروج؟");
+    if (confirmLogout) {
+      dispatch(logout());
+      toast.success("تم تسجيل الخروج بنجاح");
+      setOpenNav(false);
+    }
+  };
+
   return (
     <>
       <motion.div
@@ -52,14 +70,19 @@ const SideBar = ({ setOpenNav }) => {
             <li onClick={() => setOpenNav(false)}>
               <Link
                 href="/"
-                className="block rounded-lg bg-accent hover:text-primary px-4 py-2 text-sm font-medium text-muted-foreground">
+                className={`block rounded-lg ${
+                  pathname === "/" && "bg-accent"
+                } hover:text-primary px-4 py-2 text-sm font-medium text-muted-foreground`}>
                 الرئيسية
               </Link>
             </li>
 
             <li>
               <details className="group [&_summary::-webkit-details-marker]:hidden ">
-                <summary className="flex cursor-pointer  items-center justify-between rounded-lg px-4 py-2 text-muted-foreground hover:bg-accent hover:text-primary">
+                <summary
+                  className={`flex cursor-pointer  items-center justify-between rounded-lg px-4 py-2 text-muted-foreground hover:bg-accent hover:text-primary ${
+                    pathname == "/services" && "bg-accent"
+                  }`}>
                   <span className="text-sm font-medium "> خدماتنا </span>
 
                   <span className="shrink-0 transition duration-300 group-open:-rotate-180">
@@ -100,50 +123,84 @@ const SideBar = ({ setOpenNav }) => {
             <li onClick={() => setOpenNav(false)}>
               <Link
                 href="/market"
-                className="block rounded-lg hover:bg-accent hover:text-primary px-4 py-2 text-sm font-medium text-muted-foreground">
+                className={`block rounded-lg ${
+                  pathname === "/market" && "bg-accent"
+                } hover:text-primary px-4 py-2 text-sm font-medium text-muted-foreground`}>
                 المتجر
               </Link>
             </li>
             <li onClick={() => setOpenNav(false)}>
               <Link
                 href="/contactus"
-                className="block rounded-lg hover:bg-accent hover:text-primary px-4 py-2 text-sm font-medium text-muted-foreground">
+                className={`block rounded-lg ${
+                  pathname === "/contactus" && "bg-accent"
+                } hover:text-primary px-4 py-2 text-sm font-medium text-muted-foreground`}>
                 اتصل بنا
               </Link>
             </li>
           </ul>
-          <motion.button
-            onClick={() => setOpenNav(false)}
-            whileHover={{ scale: 1.05 }}
-            transition={{
-              duration: 0.2,
-              type: "spring",
-              damping: 5,
-              stiffness: 320,
-            }}
-            className="flex items-center mt-6 justify-center  gap-2 py-2  w-full bg-primary text-white rounded-lg ">
-            <CircleUserRound size={20} />
-            سجل الان
-          </motion.button>
+          {!user.token ? (
+            <Link href={"/login"}>
+              <motion.button
+                onClick={() => setOpenNav(false)}
+                whileHover={{ scale: 1.05 }}
+                transition={{
+                  duration: 0.2,
+                  type: "spring",
+                  damping: 5,
+                  stiffness: 320,
+                }}
+                className="flex items-center mt-6 justify-center  gap-2 py-2  w-full bg-primary text-white rounded-lg ">
+                <CircleUserRound size={20} />
+                سجل الان
+              </motion.button>
+            </Link>
+          ) : (
+            <motion.button
+              onClick={logOutFunc}
+              whileHover={{ scale: 1.05 }}
+              transition={{
+                duration: 0.2,
+                type: "spring",
+                damping: 5,
+                stiffness: 320,
+              }}
+              className="flex items-center mt-6 justify-center  gap-2 py-2  w-full bg-primary text-white rounded-lg ">
+              تسجيل الخروج
+            </motion.button>
+          )}
         </div>
 
         <div className="sticky inset-x-0 bottom-0 border-t border-border">
-          <Link href="#" className="flex items-center gap-2 bg-background p-4">
-            <Image
-              width={40}
-              height={40}
-              alt="avatar"
-              src=""
-              className="size-10 rounded-full object-cover"
-            />
+          {user.token ? (
+            <Link
+              href="#"
+              className="flex items-center gap-2 bg-background p-4">
+              <Image
+                width={40}
+                height={40}
+                alt="avatar"
+                src={"/person.png"}
+                className="size-10 rounded-full object-cover"
+              />
 
-            <div>
-              <p className="text-xs">
-                <strong className="block font-medium">Eric Frusciante</strong>
-                <span> eric@frusciante.com </span>
-              </p>
-            </div>
-          </Link>
+              <div>
+                <p className="text-xs">
+                  <strong className="block font-medium">
+                    {user?.userData?.username}
+                  </strong>
+                  <span className="text-muted-foreground">
+                    {" "}
+                    {user?.userData?.email}
+                  </span>
+                </p>
+              </div>
+            </Link>
+          ) : (
+            <h2 className="text-center text-2xl font-semibold py-4">
+              مرحبا بك في نوفا ميديا
+            </h2>
+          )}
         </div>
       </motion.div>
     </>

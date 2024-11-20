@@ -1,7 +1,13 @@
 import HeroSections from "@/components/reusable/HeroSections";
 import ServicesItems from "@/components/Services/ServicesItems";
 import { Headset } from "lucide-react";
-
+export const metadata = {
+  title: "نوفا ميديا - خدماتنا",
+  description:
+    "اكتشف مجموعة خدمات نوفا ميديا الشاملة: الطباعة الورقية عالية الجودة، وتقنيات السبلميشن للطباعة على الأقمشة، والحفر باستخدام الليزر والفايبر، بالإضافة إلى الطباعة الداخلية (Indoor) والخارجية (Outdoor). نوفر أيضًا حلول التسويق الإلكتروني لرفع مستوى علامتك التجارية.",
+  keywords:
+    "نوفا ميديا, خدمات الطباعة, طباعة ورقية, سبلميشن, طباعة الأقمشة, ليزر, فايبر, الطباعة الداخلية, الطباعة الخارجية, التسويق الإلكتروني, خدمات الحفر بالليزر, تصميم شعارات, طباعة كروت شخصية, طباعة لوحات إعلانية, طباعة ستickers, خدمات الدعاية والإعلان",
+};
 const Services = () => {
   return (
     <main className="my-[100px]  space-y-28 ">

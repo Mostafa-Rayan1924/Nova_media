@@ -48,12 +48,12 @@ const ContactSec = () => {
 
       <SquareIcon
         y={"-top-14 md:-top-5"}
-        x={"left-4 sm:left-0"}
+        x={"left-6 sm:left-0"}
         color={"primary"}
       />
       <CircleIcon
         y={"-bottom-20"}
-        x={"right-4 md:right-0"}
+        x={"right-6 md:right-0"}
         color={"blue-500"}
       />
       {/* map */}

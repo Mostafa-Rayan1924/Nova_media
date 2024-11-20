@@ -4,30 +4,26 @@ import Error from "@/components/validations/Error";
 import { loginSchema } from "@/components/validations/ValidationSchema";
 import { useFormik } from "formik";
 import { useRouter } from "next/navigation";
-const page = () => {
-  let router = useRouter();
+import { useDispatch, useSelector } from "react-redux";
+import { loginFunc } from "@/store/AuthSlices/loginSlice";
+const Login = () => {
+  let dispatch = useDispatch();
+  let { user, loading } = useSelector((state) => state.login);
+
   const formik = useFormik({
     initialValues: {
-      username: "",
       email: "",
-      location: "",
-      phone: "",
-      role: "",
       password: "",
     },
     validateOnBlur: true,
     validationSchema: loginSchema,
     onSubmit: async (values) => {
       let params = {
-        name: values.username,
         email: values.email,
-        location: values.location,
-        phone: values.phone,
-        role: values.role,
         password: values.password,
       };
-      alert(JSON.stringify(params, null, 2));
-      // formik.resetForm();
+      dispatch(loginFunc(params));
+      formik.resetForm();
     },
   });
   return (
@@ -103,8 +99,11 @@ const page = () => {
 
             <button
               type="submit"
-              className="inline-block rounded-lg bg-primary hover:px-6 transition-all duration-300 hover:bg-primary/90 px-5 py-3 text-sm font-medium text-white">
-              تسجيل
+              disabled={loading}
+              className={`inline-block rounded-lg bg-primary hover:px-6 transition-all duration-300 hover:bg-primary/90 px-5 ${
+                loading ? "cursor-not-allowed opacity-50" : "bg-primary"
+              } py-3 text-sm font-medium text-white`}>
+              {loading ? "جاري الارسال" : "انشاء حساب"}
             </button>
           </div>
         </form>
@@ -121,4 +120,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Login;

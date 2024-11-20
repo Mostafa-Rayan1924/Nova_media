@@ -5,6 +5,7 @@ import latestprojectsSlice from "./HomeSlices/LatestProjectsSlice";
 import latestCustomerslice from "./HomeSlices/HomeCustomersSlice";
 import filterCategoriesSlice from "./CategorySlices/filterCats";
 import signUpSlice from "./AuthSlices/signupSlice";
+import LoginSlice from "./AuthSlices/loginSlice";
 
 export let store = configureStore({
   reducer: {
@@ -14,5 +15,6 @@ export let store = configureStore({
     homeCustomers: latestCustomerslice,
     filterCatsById: filterCategoriesSlice,
     signUp: signUpSlice,
+    login: LoginSlice,
   },
 });

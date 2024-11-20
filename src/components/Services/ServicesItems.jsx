@@ -4,6 +4,8 @@ import DialogBox from "./DialogBox";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { getCategoryById } from "@/store/CategorySlices/filterCats";
+import SquareIcon from "../reusable/SquareIcon";
+import CircleIcon from "../reusable/CircleIcon";
 const ServicesItems = () => {
   let [active, setActive] = useState("6734eb12cf3720014ac84e62");
 
@@ -13,7 +15,12 @@ const ServicesItems = () => {
     dispatch(getCategoryById(active));
   }, [active]);
   return (
-    <section id="servFilter" className="container ">
+    <section id="servFilter" className="container relative ">
+      <SquareIcon y="top-10 md:top-0" x="left-4 md:left-0" color="primary" />
+      <div className="hidden md:block">
+        <CircleIcon y="top-[250px]" x="-right-10" />
+      </div>
+
       <h2 className="text-2xl md:text-3xl lg:text-5xl text-center font-semibold">
         هنا يمكنك العثور <span className="text-primary">على</span> الخدمات
         المناسبة

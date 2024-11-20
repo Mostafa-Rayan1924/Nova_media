@@ -4,13 +4,11 @@ import { signUpSchema } from "@/components/validations/ValidationSchema";
 import { signupFunc } from "@/store/AuthSlices/signupSlice";
 import { useFormik } from "formik";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
 import { useDispatch, useSelector } from "react-redux";
 
-const page = () => {
-  let { user, loading, error } = useSelector((state) => state.signUp);
+const SignUp = () => {
+  let { user, loading } = useSelector((state) => state.signUp);
   let dispatch = useDispatch();
-  let router = useRouter();
   const formik = useFormik({
     initialValues: {
       username: "",
@@ -31,9 +29,8 @@ const page = () => {
         role: values.role,
         password: values.password,
       };
-
       dispatch(signupFunc(params));
-      // formik.resetForm();
+      formik.resetForm();
     },
   });
   return (
@@ -173,8 +170,11 @@ const page = () => {
 
             <button
               type="submit"
-              className="inline-block rounded-lg bg-primary hover:px-6 transition-all duration-300 hover:bg-primary/90 px-5 py-3 text-sm font-medium text-white">
-              {loading ? "جاري التحميل" : "انشاء حساب"}
+              disabled={loading}
+              className={`inline-block rounded-lg bg-primary hover:px-6 transition-all duration-300 hover:bg-primary/90 px-5 ${
+                loading ? "cursor-not-allowed opacity-50" : "bg-primary"
+              } py-3 text-sm font-medium text-white`}>
+              {loading ? "جاري الارسال" : "انشاء حساب"}
             </button>
           </div>
         </form>
@@ -191,4 +191,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default SignUp;

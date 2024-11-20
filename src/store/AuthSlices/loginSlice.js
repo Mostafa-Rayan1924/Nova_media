@@ -10,41 +10,45 @@ let initialState = {
   loading: false,
   error: null,
 };
-export let signupFunc = createAsyncThunk(
-  "signup/signupFunc",
-  async (params) => {
-    try {
-      let { data } = await axios.post(`${baseUrl}nova/api/auth/signup`, params);
-      return data;
-    } catch (error) {
-      throw new Error(error.message);
-    }
+export let loginFunc = createAsyncThunk("login/loginFunc", async (params) => {
+  try {
+    let { data } = await axios.post(`${baseUrl}nova/api/auth/login`, params);
+    return data;
+  } catch (error) {
+    throw new Error(error.response.data.message);
   }
-);
-export let signUpSlice = createSlice({
-  name: "signup",
+});
+export let LoginSlice = createSlice({
+  name: "login",
   initialState,
+  reducers: {
+    logout: (state) => {
+      state.user = { token: null, userData: null };
+      localStorage.removeItem("user");
+    },
+  },
   extraReducers: (builder) => {
-    builder.addCase(signupFunc.fulfilled, (state, action) => {
+    builder.addCase(loginFunc.fulfilled, (state, action) => {
       state.user = {
         token: action.payload.token,
         userData: action.payload.data.result,
       };
       state.loading = false;
-      toast.success("تم التسجيل بنجاح");
+      toast.success("مرحبا بك مره اخري");
       localStorage.setItem("user", JSON.stringify(action.payload));
       setTimeout(() => {
         window.location.href = "/";
       }, 1000);
     });
-    builder.addCase(signupFunc.pending, (state) => {
+    builder.addCase(loginFunc.pending, (state) => {
       state.loading = true;
     });
-    builder.addCase(signupFunc.rejected, (state, action) => {
+    builder.addCase(loginFunc.rejected, (state, action) => {
       state.error = action.error.message;
       state.loading = false;
       toast.error(action.error.message);
     });
   },
 });
-export default signUpSlice.reducer;
+export let { logout } = LoginSlice.actions;
+export default LoginSlice.reducer;
