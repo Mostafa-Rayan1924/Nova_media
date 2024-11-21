@@ -28,9 +28,11 @@ const ServicesItems = () => {
       <FilterTabs active={active} setActive={setActive} />
       {loading && (
         <div className="grid grid-cols-1 mt-10  md:grid-cols-2 lg:grid-cols-3 gap-4">
-          <div className="bg-accent h-[250px] w-full   rounded-lg animate-pulse"></div>
-          <div className="bg-accent h-[250px] w-full   rounded-lg animate-pulse"></div>
-          <div className="bg-accent h-[250px] w-full   rounded-lg animate-pulse"></div>
+          {Array.from({ length: 9 }).map((item, index) => {
+            return (
+              <div className="bg-accent h-[250px] w-full   rounded-lg animate-pulse"></div>
+            );
+          })}
         </div>
       )}
       <div className="grid grid-cols-1 mt-10  md:grid-cols-2 lg:grid-cols-3 gap-4">
