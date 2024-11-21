@@ -60,7 +60,7 @@ const Navbar = () => {
                 transition={{ duration: 0.2 }}>
                 <Link
                   className={`text-muted-foreground transition hover:text-foreground ${
-                    pathname === "/" && "text-white"
+                    pathname === "/" && "text-black dark:text-white "
                   } `}
                   href="/">
                   الرئيسية
@@ -72,7 +72,7 @@ const Navbar = () => {
                 transition={{ duration: 0.2, delay: 0.2 }}>
                 <Link
                   className={`text-muted-foreground group ${
-                    pathname === "/services" && "text-white"
+                    pathname === "/services" && "text-black dark:text-white"
                   } relative flex items-center gap-1 transition hover:text-foreground `}
                   href="/services">
                   خدماتنا
@@ -86,8 +86,8 @@ const Navbar = () => {
                 transition={{ duration: 0.2, delay: 0.4 }}>
                 <Link
                   className={`text-muted-foreground  ${
-                    pathname === "/market" && "text-white"
-                  }  transition hover:text-foreground `}
+                    pathname === "/market" && "text-black dark:text-white"
+                  }  transition hover:text-back `}
                   href="/market">
                   المتجر
                 </Link>
@@ -98,7 +98,7 @@ const Navbar = () => {
                 transition={{ duration: 0.2, delay: 0.6 }}>
                 <Link
                   className={`text-muted-foreground  ${
-                    pathname === "/contactus" && "text-white"
+                    pathname === "/contactus" && "text-black dark:text-white"
                   }  transition hover:text-foreground `}
                   href="/contactus">
                   اتصل بنا

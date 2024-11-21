@@ -35,7 +35,9 @@ export let LoginSlice = createSlice({
       };
       state.loading = false;
       toast.success("مرحبا بك مره اخري");
-      localStorage.setItem("user", JSON.stringify(action.payload));
+      if (typeof localStorage !== "undefined") {
+        localStorage.setItem("user", JSON.stringify(action.payload));
+      }
       setTimeout(() => {
         window.location.href = "/";
       }, 1000);

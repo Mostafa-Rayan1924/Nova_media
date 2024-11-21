@@ -17,7 +17,7 @@ export let signupFunc = createAsyncThunk(
       let { data } = await axios.post(`${baseUrl}nova/api/auth/signup`, params);
       return data;
     } catch (error) {
-      throw new Error(error.message);
+      throw new Error(error.response.data.message);
     }
   }
 );
@@ -32,7 +32,9 @@ export let signUpSlice = createSlice({
       };
       state.loading = false;
       toast.success("تم التسجيل بنجاح");
-      localStorage.setItem("user", JSON.stringify(action.payload));
+      if (typeof localStorage !== "undefined") {
+        localStorage.setItem("user", JSON.stringify(action.payload));
+      }
       setTimeout(() => {
         window.location.href = "/";
       }, 1000);
