@@ -4,8 +4,14 @@ import axios from "axios";
 import toast from "react-hot-toast";
 let initialState = {
   user: {
-    token: JSON.parse(localStorage.getItem("user"))?.token || null,
-    userData: JSON.parse(localStorage.getItem("user"))?.data.result || null,
+    token:
+      (typeof localStorage !== "undefined" &&
+        JSON.parse(localStorage.getItem("user"))?.token) ||
+      null,
+    userData:
+      (typeof localStorage !== "undefined" &&
+        JSON.parse(localStorage.getItem("user"))?.data.result) ||
+      null,
   },
   loading: false,
   error: null,
@@ -24,7 +30,9 @@ export let LoginSlice = createSlice({
   reducers: {
     logout: (state) => {
       state.user = { token: null, userData: null };
-      localStorage.removeItem("user");
+      if (typeof localStorage !== "undefined") {
+        localStorage.removeItem("user");
+      }
     },
   },
   extraReducers: (builder) => {
