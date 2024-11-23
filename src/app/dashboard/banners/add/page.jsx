@@ -2,7 +2,6 @@
 import MainTitle from "@/components/reusable/MainTitle";
 import { useState } from "react";
 import toast from "react-hot-toast";
-import { object } from "yup";
 
 const AddBanner = () => {
   let [img, setImg] = useState(null);
@@ -10,10 +9,10 @@ const AddBanner = () => {
   let [imgFile, setImgFile] = useState(null);
   let handleSubmit = async (e) => {
     e.preventDefault();
-    if (!imgFile && name == "") {
+    if (!imgFile || name == "") {
       toast.error("ادخل الداتا  بشكل كامل");
     } else {
-      console.log(imgFile, name);
+      toast.success("تم الحفظ بنجاح");
     }
   };
   return (
@@ -31,7 +30,6 @@ const AddBanner = () => {
           <input
             value={name}
             onChange={(e) => setName(e.target.value)}
-            required
             className="border border-border outline-none focus:border-green-500 w-full  rounded-md p-2"
             type="text"
           />
