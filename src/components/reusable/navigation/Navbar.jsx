@@ -16,8 +16,10 @@ import { useDispatch, useSelector } from "react-redux";
 import toast from "react-hot-toast";
 import { logout } from "@/store/AuthSlices/loginSlice";
 import { usePathname } from "next/navigation";
+import Dashboard from "@/components/Dashboard/Dashboard";
 const Navbar = () => {
   let pathname = usePathname();
+
   let { user } = useSelector((state) => state.login);
   let dispatch = useDispatch();
   let [openNav, setOpenNav] = useState(false);
@@ -87,7 +89,7 @@ const Navbar = () => {
                 <Link
                   className={`text-muted-foreground  ${
                     pathname === "/market" && "text-black dark:text-white"
-                  }  transition hover:text-back `}
+                  }  transition hover:text-foreground `}
                   href="/market">
                   المتجر
                 </Link>
@@ -108,49 +110,55 @@ const Navbar = () => {
           </nav>
         </div>
         {/* login */}
-        <div className="flex items-center gap-4">
+        {user?.token &&
+        user?.userData?.role === "ادارة" &&
+        pathname?.includes("/dashboard") ? (
+          <Dashboard />
+        ) : (
           <div className="flex items-center gap-4">
-            {user.token ? (
-              <div className="flex items-center gap-4">
-                <ShoppingCart className="cursor-pointer flex " size={25} />
-                <motion.button
-                  onClick={logOutFunc}
-                  whileHover={{ scale: 1.1 }}
-                  transition={{
-                    duration: 0.2,
-                    type: "spring",
-                    damping: 5,
-                    stiffness: 320,
-                  }}
-                  className="md:flex  hidden  py-2 px-6 bg-primary text-white rounded-lg ">
-                  تسجيل الخروج
-                </motion.button>{" "}
-              </div>
-            ) : (
-              <Link href={"/signup"}>
-                <motion.button
-                  whileHover={{ scale: 1.1 }}
-                  transition={{
-                    duration: 0.2,
-                    type: "spring",
-                    damping: 5,
-                    stiffness: 320,
-                  }}
-                  className="md:flex items-center hidden gap-2 py-2 px-6 bg-primary text-white rounded-lg ">
-                  <CircleUserRound size={20} />
-                  سجل الان
-                </motion.button>{" "}
-              </Link>
-            )}
+            <div className="flex items-center gap-4">
+              {user?.token ? (
+                <div className="flex items-center gap-4">
+                  <ShoppingCart className="cursor-pointer flex " size={25} />
+                  <motion.button
+                    onClick={logOutFunc}
+                    whileHover={{ scale: 1.1 }}
+                    transition={{
+                      duration: 0.2,
+                      type: "spring",
+                      damping: 5,
+                      stiffness: 320,
+                    }}
+                    className="md:flex  hidden  py-2 px-6 bg-primary text-white rounded-lg ">
+                    تسجيل الخروج
+                  </motion.button>{" "}
+                </div>
+              ) : (
+                <Link href={"/signup"}>
+                  <motion.button
+                    whileHover={{ scale: 1.1 }}
+                    transition={{
+                      duration: 0.2,
+                      type: "spring",
+                      damping: 5,
+                      stiffness: 320,
+                    }}
+                    className="md:flex items-center hidden gap-2 py-2 px-6 bg-primary text-white rounded-lg ">
+                    <CircleUserRound size={20} />
+                    سجل الان
+                  </motion.button>{" "}
+                </Link>
+              )}
+              <ModeToggle />
+            </div>
+            <div
+              onClick={() => setOpenNav(!openNav)}
+              className="flex cursor-pointer  md:hidden">
+              <AlignJustify size={35} />
+            </div>
+          </div>
+        )}
 
-            <ModeToggle />
-          </div>
-          <div
-            onClick={() => setOpenNav(!openNav)}
-            className="flex cursor-pointer  md:hidden">
-            <AlignJustify size={35} />
-          </div>
-        </div>
         {/* open sidebar and close */}
         <AnimatePresence>
           {openNav && <SideBar setOpenNav={setOpenNav} />}

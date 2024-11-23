@@ -73,14 +73,16 @@ const Footer = () => {
             );
           })}
         </div>
-        <div className="w-full">
-          <Image
-            className="size-[300px] mx-auto md:w-full md:h-full object-cover"
-            src="/footerImg.svg"
-            width={300}
-            height={300}
-            alt="footerImg"
-          />
+        <div className="w-full h-full">
+          <motion.iframe
+            initial={{ opacity: 0, y: -100 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.4 }}
+            className="w-full h-[350px] sm:size-full rounded-lg object-cover"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3434.3729691913036!2d32.27196800000001!3d30.595241599999998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14f859007470d085%3A0xc7f3dbf8249e5bca!2z2LTYsdmD2Kkg2YbZiNmB2Kcg2YXZitiv2YrYpyDZhNmE2K7Yr9mF2KfYqiDYp9mE2KfYudmE2KfZhtmK2Kkg2YjYp9mE2LfYqNin2LnYqSDYp9mE2LHZgtmF2YrYqQ!5e0!3m2!1sar!2seg!4v1731935039981!5m2!1sar!2seg"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"></motion.iframe>
         </div>
       </div>
     </footer>

@@ -1,6 +1,6 @@
 "use client";
 import { dropdownLinks } from "@/components/constants/dropDownLinks";
-import { CircleUserRound, CircleX } from "lucide-react";
+import { CircleUserRound, CircleX, LayoutDashboard } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
@@ -31,7 +31,7 @@ const SideBar = ({ setOpenNav }) => {
         transition={{
           duration: 0.3,
         }}
-        className="fixed top-0 left-0 w-full z-[70]  bg-background/80 h-screen md:hidden"></motion.div>
+        className="fixed top-0 left-0 w-full z-[120]  bg-background/80 h-screen md:hidden"></motion.div>
       <motion.div
         initial={{ x: "100%" }}
         animate={{ x: 0 }}
@@ -41,7 +41,7 @@ const SideBar = ({ setOpenNav }) => {
           type: "spring",
           stiffness: 120,
         }}
-        className="flex fixed  z-[70]  top-0 right-0 w-[80%] sm:w-1/2 h-screen md:hidden flex-col justify-between border-e bg-background">
+        className="flex fixed  z-[120]  top-0 right-0 w-[80%] sm:w-1/2 h-screen md:hidden flex-col justify-between border-e bg-background">
         {/* close button */}
         <CircleX
           onClick={() => setOpenNav(false)}
@@ -76,7 +76,6 @@ const SideBar = ({ setOpenNav }) => {
                 الرئيسية
               </Link>
             </li>
-
             <li>
               <details className="group [&_summary::-webkit-details-marker]:hidden ">
                 <summary
@@ -156,18 +155,28 @@ const SideBar = ({ setOpenNav }) => {
               </motion.button>
             </Link>
           ) : (
-            <motion.button
-              onClick={logOutFunc}
-              whileHover={{ scale: 1.05 }}
-              transition={{
-                duration: 0.2,
-                type: "spring",
-                damping: 5,
-                stiffness: 320,
-              }}
-              className="flex items-center mt-6 justify-center  gap-2 py-2  w-full bg-primary text-white rounded-lg ">
-              تسجيل الخروج
-            </motion.button>
+            <div className="flex items-center gap-2 mt-6">
+              <motion.button
+                onClick={logOutFunc}
+                whileHover={{ scale: 1.05 }}
+                transition={{
+                  duration: 0.2,
+                  type: "spring",
+                  damping: 5,
+                  stiffness: 320,
+                }}
+                className="flex items-center  justify-center  gap-2 py-2  w-full bg-primary text-white rounded-lg ">
+                تسجيل الخروج
+              </motion.button>
+              {user?.userData?.role == "ادارة" && (
+                <Link
+                  onClick={() => setOpenNav(false)}
+                  href={"/dashboard/banners"}
+                  className="py-2 text-center  w-full bg-accent  text-foreground rounded-lg">
+                  الداشبورد
+                </Link>
+              )}
+            </div>
           )}
         </div>
 

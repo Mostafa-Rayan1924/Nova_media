@@ -6,6 +6,7 @@ import ReduxProvider from "@/components/reusable/ReduxProvider";
 import Footer from "@/components/reusable/Footer";
 import ScrollToTop from "@/components/ScrollToTop";
 import { Toaster } from "react-hot-toast";
+import DashboardLink from "@/components/DashboardLink";
 const CairoPlay = Almarai({ subsets: ["latin"], weight: ["400", "700"] });
 export const metadata = {
   title: "نوفا ميديا",
@@ -30,6 +31,7 @@ export default function RootLayout({ children }) {
           <ReduxProvider>
             <Navbar />
             <ScrollToTop />
+            <DashboardLink />
             {children}
             <Footer />
             <Toaster position="top-center" reverseOrder={false} />

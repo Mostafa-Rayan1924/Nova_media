@@ -10,11 +10,8 @@ import { CircleArrowLeft, CircleArrowRight } from "lucide-react";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { GetCustomers } from "@/store/HomeSlices/HomeCustomersSlice";
-import Image from "next/image";
 const OurCustomers = () => {
-  let { customers, loading, error } = useSelector(
-    (state) => state.homeCustomers
-  );
+  let { customers, loading } = useSelector((state) => state.homeCustomers);
   let dispatch = useDispatch();
   useEffect(() => {
     dispatch(GetCustomers());
@@ -29,14 +26,18 @@ const OurCustomers = () => {
           delay: 2000,
           disableOnInteraction: false,
         }}
-        navigation={{ nextEl: ".left", prevEl: ".right" }}
-        scrollbar={{ el: ".progress" }}
-        modules={[Autoplay, Scrollbar, Navigation]}
         loop={true}
+        navigation={{ nextEl: ".left-arrow", prevEl: ".right-arrow" }}
+        scrollbar={{ el: ".progress" }}
+        modules={[Navigation, Autoplay, Scrollbar]}
         breakpoints={{
           0: {
             slidesPerView: 2,
             spaceBetween: 10,
+          },
+          430: {
+            slidesPerView: 2.3,
+            spaceBetween: 5,
           },
           768: {
             slidesPerView: 3,
@@ -73,13 +74,13 @@ const OurCustomers = () => {
             </SwiperSlide>
           );
         })}
-        <div className="swiperOptions w-full  mt-4  flex items-center justify-between">
+        <div className="swiperOptions w-full mt-4 flex items-center justify-between">
           <div className="progress w-[70%] h-1 rounded-lg bg-gray-300"></div>
-          <div className=" arrows flex items-center gap-2 ">
-            <div className="right cursor-pointer hover:text-primary transition-all">
+          <div className="arrows flex items-center gap-2">
+            <div className="right-arrow cursor-pointer hover:text-primary transition-all">
               <CircleArrowRight className="size-8" />
             </div>
-            <div className="left cursor-pointer  hover:text-primary transition-all">
+            <div className="left-arrow cursor-pointer hover:text-primary transition-all">
               <CircleArrowLeft className="size-8" />
             </div>
           </div>
