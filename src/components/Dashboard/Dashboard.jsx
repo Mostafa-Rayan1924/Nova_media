@@ -28,7 +28,7 @@ const Dashboard = () => {
               </p>
             </SheetDescription>
           </SheetHeader>
-          <ul className="flex flex-col gap-6 my-10">
+          <ul className="flex flex-col gap-4 my-10">
             {dashboardLinks.map((item) => {
               return (
                 <li key={item.id}>

@@ -1,18 +1,32 @@
 "use client";
 import MainTitle from "@/components/reusable/MainTitle";
+import { addBannerFunc } from "@/store/DashboardSlices/addBanner";
 import { useState } from "react";
 import toast from "react-hot-toast";
+import { useDispatch, useSelector } from "react-redux";
 
 const AddBanner = () => {
   let [img, setImg] = useState(null);
   let [name, setName] = useState("");
   let [imgFile, setImgFile] = useState(null);
+  let { loading } = useSelector((state) => state.addBanner);
+  let { user } = useSelector((state) => state.login);
+  let dispatch = useDispatch();
   let handleSubmit = async (e) => {
     e.preventDefault();
+    let formData = new FormData();
+    formData.append("name", name);
+    formData.append("image", imgFile);
+    let headers = {
+      authorization: `Bearer ${user?.token}`,
+    };
     if (!imgFile || name == "") {
       toast.error("ادخل الداتا  بشكل كامل");
     } else {
-      toast.success("تم الحفظ بنجاح");
+      await dispatch(addBannerFunc({ formData, headers }));
+      setName("");
+      setImg(null);
+      setImgFile(null);
     }
   };
   return (
@@ -64,8 +78,11 @@ const AddBanner = () => {
             type="file"
           />
         </div>
-        <button className="btn-primary mx-auto block bg-green-500 text-white rounded-lg w-[120px] duration-200 hover:w-[140px] hover:bg-green-600  py-2">
-          حفظ
+        <button
+          className={`${
+            loading ? "opacity-50 pointer-events-none" : "opacity-100"
+          } mx-auto block bg-green-500 text-white rounded-lg w-[120px] duration-200 hover:w-[140px] hover:bg-green-600  py-2`}>
+          {loading ? "جاري الاضافه" : "اضافه"}
         </button>
       </form>
     </section>
