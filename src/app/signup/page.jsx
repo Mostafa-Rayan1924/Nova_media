@@ -3,11 +3,14 @@ import Error from "@/components/validations/Error";
 import { signUpSchema } from "@/components/validations/ValidationSchema";
 import { signupFunc } from "@/store/AuthSlices/signupSlice";
 import { useFormik } from "formik";
+import { Eye, EyeOff } from "lucide-react";
 import Link from "next/link";
+import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 const SignUp = () => {
   let { user, loading } = useSelector((state) => state.signUp);
+  const [showPassword, setShowPassword] = useState(false);
   let dispatch = useDispatch();
   const formik = useFormik({
     initialValues: {
@@ -86,12 +89,12 @@ const SignUp = () => {
           {/* كلمة السر */}
           <div>
             <label htmlFor="password" className="sr-only">
-              Password
+              كلمة السر
             </label>
 
-            <div className="relative">
+            <div className="relative ">
               <input
-                type="password"
+                type={showPassword ? "text" : "password"} // التبديل بين النص وكلمة المرور
                 onChange={formik.handleChange}
                 value={formik.values.password}
                 name="password"
@@ -99,6 +102,13 @@ const SignUp = () => {
                 className="w-full rounded-lg border-border border focus:border-green-500 transition-all duration-200 outline-none p-3 pe-12 text-sm shadow-sm"
                 placeholder="ادخل كلمة السر"
               />
+              {/* أيقونة العين */}
+              <button
+                type="button"
+                onClick={() => setShowPassword(!showPassword)} // التبديل عند النقر
+                className="absolute top-1/2 -translate-y-1/2  left-3 flex items-center text-muted-foreground ">
+                {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
+              </button>
               <Error formik={formik} nameOfField={"password"} />
             </div>
           </div>

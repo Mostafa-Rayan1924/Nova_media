@@ -3,12 +3,14 @@ import Link from "next/link";
 import Error from "@/components/validations/Error";
 import { loginSchema } from "@/components/validations/ValidationSchema";
 import { useFormik } from "formik";
-import { useRouter } from "next/navigation";
 import { useDispatch, useSelector } from "react-redux";
 import { loginFunc } from "@/store/AuthSlices/loginSlice";
+import { useState } from "react";
+import { Eye, EyeOff } from "lucide-react";
 const Login = () => {
   let dispatch = useDispatch();
   let { user, loading } = useSelector((state) => state.login);
+  const [showPassword, setShowPassword] = useState(false);
 
   const formik = useFormik({
     initialValues: {
@@ -71,21 +73,34 @@ const Login = () => {
               Password
             </label>
 
-            <div className="relative">
-              <input
-                type="password"
-                name="password"
-                onChange={formik.handleChange}
-                value={formik.values.password}
-                onBlur={formik.handleBlur}
-                className={`w-full rounded-lg  border focus:border-green-500 transition-all duration-200 ${
-                  formik.errors.password && formik.touched.password
-                    ? "border-red-500"
-                    : "border-border"
-                } outline-none p-4 pe-12 text-sm shadow-sm`}
-                placeholder="ادخل كلمة السر"
-              />
-              <Error formik={formik} nameOfField={"password"} />
+            <div>
+              <label htmlFor="password" className="sr-only">
+                كلمة السر
+              </label>
+
+              <div className="relative ">
+                <input
+                  type={showPassword ? "text" : "password"} // التبديل بين النص وكلمة المرور
+                  onChange={formik.handleChange}
+                  value={formik.values.password}
+                  name="password"
+                  onBlur={formik.handleBlur}
+                  className={`w-full rounded-lg  border focus:border-green-500 transition-all duration-200 ${
+                    formik.errors.password && formik.touched.password
+                      ? "border-red-500"
+                      : "border-border"
+                  } outline-none p-4 pe-12 text-sm shadow-sm`}
+                  placeholder="ادخل كلمة السر"
+                />
+                {/* أيقونة العين */}
+                <button
+                  type="button"
+                  onClick={() => setShowPassword(!showPassword)} // التبديل عند النقر
+                  className="absolute top-1/2 -translate-y-1/2  left-3 flex items-center text-muted-foreground ">
+                  {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
+                </button>
+                <Error formik={formik} nameOfField={"password"} />
+              </div>
             </div>
           </div>
 
@@ -103,7 +118,7 @@ const Login = () => {
               className={`inline-block rounded-lg bg-primary hover:px-6 transition-all duration-300 hover:bg-primary/90 px-5 ${
                 loading ? "cursor-not-allowed opacity-50" : "bg-primary"
               } py-3 text-sm font-medium text-white`}>
-              {loading ? "جاري الارسال" : "انشاء حساب"}
+              {loading ? "جاري الارسال" : "تسجيل الدخول"}
             </button>
           </div>
         </form>

@@ -47,7 +47,7 @@ const SideBar = ({ setOpenNav }) => {
           onClick={() => setOpenNav(false)}
           className="absolute top-6 hover:text-primary cursor-pointer transition-all duration-200 left-6"
         />
-        <div className="px-4 py-6">
+        <div className="px-4 py-2">
           {/* logo */}
           <div onClick={() => setOpenNav(false)} className="mr-10">
             <Image
@@ -66,7 +66,7 @@ const SideBar = ({ setOpenNav }) => {
             />
           </div>
           {/* links */}
-          <ul className="mt-6 space-y-1">
+          <ul className="mt-3 space-y-1">
             <li onClick={() => setOpenNav(false)}>
               <Link
                 href="/"
@@ -137,6 +137,25 @@ const SideBar = ({ setOpenNav }) => {
                 اتصل بنا
               </Link>
             </li>
+
+            <li onClick={() => setOpenNav(false)}>
+              <Link
+                href="/team"
+                className={`block rounded-lg ${
+                  pathname === "/team" && "bg-accent"
+                } hover:text-primary px-4 py-2 text-sm font-medium text-muted-foreground`}>
+                فريق العمل
+              </Link>
+            </li>
+            <li onClick={() => setOpenNav(false)}>
+              <Link
+                href="/exhibitions"
+                className={`block rounded-lg ${
+                  pathname === "/exhibitions" && "bg-accent"
+                } hover:text-primary px-4 py-2 text-sm font-medium text-muted-foreground`}>
+                المعارض
+              </Link>
+            </li>
           </ul>
           {!user.token ? (
             <Link href={"/login"}>
@@ -149,13 +168,13 @@ const SideBar = ({ setOpenNav }) => {
                   damping: 5,
                   stiffness: 320,
                 }}
-                className="flex items-center mt-6 justify-center  gap-2 py-2  w-full bg-primary text-white rounded-lg ">
+                className="flex items-center mt-4 justify-center  gap-2 py-2  w-full bg-primary text-white rounded-lg ">
                 <CircleUserRound size={20} />
                 سجل الان
               </motion.button>
             </Link>
           ) : (
-            <div className="flex items-center gap-2 mt-6">
+            <div className="flex items-center gap-2 mt-4">
               <motion.button
                 onClick={logOutFunc}
                 whileHover={{ scale: 1.05 }}

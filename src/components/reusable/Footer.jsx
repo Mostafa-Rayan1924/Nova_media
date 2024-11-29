@@ -10,7 +10,7 @@ const Footer = () => {
     <footer className=" bg-background border-t border-border  py-[50px]">
       <div className="container grid grid-cols-1 place-items-center text-center md:text-start  md:grid-cols-2 lg:grid-cols-4 gap-10 md:gap-8">
         <div className="flex flex-col gap-4 md:gap-2">
-          <h2 className="text-[50px] font-bold">نوفا ميديا</h2>
+          <h2 className="text-[35px] font-bold">شركة نوفا ميديا</h2>
           <div className="flex items-center justify-center md:justify-start gap-2">
             {socialLinks.map((item, index) => {
               return (
@@ -34,7 +34,7 @@ const Footer = () => {
             })}
           </div>
           <p className="text-muted-foreground max-w-full">
-            شركه نوفا ميديا للخدمات الدعايه والاعلان والطباعه الرقمية وتنظيم
+            شركه نوفا ميديا للخدمات الدعاية والاعلان والطباعة الرقمية وتنظيم
             الفعاليات والمؤتمرات والمعارض
           </p>
         </div>
@@ -68,7 +68,10 @@ const Footer = () => {
             return (
               <div className="flex items-center  md:flex-row flex-col gap-2 md:gap-4">
                 {item.icon}
-                <p className="text-muted-foreground  ">{item.title}</p>
+                <div>
+                  <p className="text-muted-foreground  ">{item.title}</p>
+                  <p className="text-muted-foreground  ">{item.title2}</p>
+                </div>
               </div>
             );
           })}

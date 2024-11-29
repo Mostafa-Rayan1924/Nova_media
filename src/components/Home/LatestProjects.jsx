@@ -43,7 +43,7 @@ const LatestProjects = () => {
             className="text-clip mx-1 bg-clip-text text-transparent capitalize">
             @novamedia
           </Link>
-          علي الإنستجرام
+          علي Instagram
         </h2>
         <p className="text-muted-foreground text-sm sm:text-base max-w-[600px] leading-relaxed ">
           زوروا حسابنا على إنستاجرام Nova Media لتشاهدوا أحدث مشاريعنا في
@@ -92,7 +92,7 @@ const LatestProjects = () => {
       <div className="flex items-center justify-center mt-10 gap-2">
         <Link href={"https://www.instagram.com/Nova.media.eg"} target="_blank">
           <Button className={buttonVariants({ size: "lg" })}>
-            عرض المزيد على إنستجرام
+            عرض المزيد على instagram
             <Instagram className="size-8" />
           </Button>
         </Link>

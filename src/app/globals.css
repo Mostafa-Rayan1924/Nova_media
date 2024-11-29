@@ -3,6 +3,23 @@
 @tailwind utilities;
 body {
   direction: rtl;
+  background-image: url("../../public/white.jpg");
+  background-size: cover; /* تغطية الشاشة */
+  background-position: center; /* وضعها في المنتصف */
+  background-repeat: no-repeat; /* عدم التكرار */
+  background-attachment: fixed; /* تثبيت الخلفية */
+  background-color: rgba(255, 255, 255, 0.85); /* لون أبيض شفاف */
+  background-blend-mode: overlay; /* مزج الخلفية مع اللون */
+}
+
+html.dark body {
+  background-image: url("../../public/dark.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-color: rgba(0, 0, 0, 0.8); /* لون أسود شفاف */
+  background-blend-mode: overlay; /* مزج الخلفية مع اللون */
 }
 /* swiper banner */
 .swiper {

@@ -32,15 +32,15 @@ const Navbar = () => {
     }
   };
   return (
-    <header className="fixed inset-0 w-full h-[98px] border-b-2 border-border z-50  backdrop-blur-md bg-background/60">
+    <header className="fixed inset-0 w-full h-[98px] border-b-2 border-border z-50 bg-white   dark:backdrop-blur-md dark:bg-background/60">
       <div className="container flex items-center justify-between">
         <div className="md:flex md:items-center md:gap-12">
           <Link href={"/"}>
             <Image
-              src={"/logo white.png"}
+              src={"/whitelogo.png"}
               width={75}
               height={50}
-              className="dark:hidden"
+              className="dark:hidden "
               alt="nova-media  logo"
             />
             <Image
@@ -55,13 +55,13 @@ const Navbar = () => {
         {/* links */}
         <div className="hidden md:block">
           <nav aria-label="Global">
-            <ul className="flex items-center  gap-6 ">
+            <ul className="flex items-center md:gap-4  lg:gap-6 ">
               <motion.li
                 initial={{ opacity: 0, y: -10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.2 }}>
                 <Link
-                  className={`text-muted-foreground transition hover:text-foreground ${
+                  className={`text-muted-foreground md:text-sm lg:text-[17px] transition hover:text-foreground ${
                     pathname === "/" && "text-black dark:text-white "
                   } `}
                   href="/">
@@ -73,7 +73,7 @@ const Navbar = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.2, delay: 0.2 }}>
                 <Link
-                  className={`text-muted-foreground group ${
+                  className={`text-muted-foreground group md:text-sm lg:text-[17px] ${
                     pathname === "/services" && "text-black dark:text-white"
                   } relative flex items-center gap-1 transition hover:text-foreground `}
                   href="/services">
@@ -87,7 +87,7 @@ const Navbar = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.2, delay: 0.4 }}>
                 <Link
-                  className={`text-muted-foreground  ${
+                  className={`text-muted-foreground md:text-sm lg:text-[17px]  ${
                     pathname === "/market" && "text-black dark:text-white"
                   }  transition hover:text-foreground `}
                   href="/market">
@@ -99,11 +99,35 @@ const Navbar = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.2, delay: 0.6 }}>
                 <Link
-                  className={`text-muted-foreground  ${
+                  className={`text-muted-foreground md:text-sm lg:text-[17px]  ${
                     pathname === "/contactus" && "text-black dark:text-white"
                   }  transition hover:text-foreground `}
                   href="/contactus">
                   اتصل بنا
+                </Link>
+              </motion.li>
+              <motion.li
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.2, delay: 0.8 }}>
+                <Link
+                  className={`text-muted-foreground md:text-sm lg:text-[17px]  ${
+                    pathname === "/team" && "text-black dark:text-white"
+                  }  transition hover:text-foreground `}
+                  href="/team">
+                  فريق العمل
+                </Link>
+              </motion.li>
+              <motion.li
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.2, delay: 1 }}>
+                <Link
+                  className={`text-muted-foreground md:text-sm lg:text-[17px]  ${
+                    pathname === "/exhibitions" && "text-black dark:text-white"
+                  }  transition hover:text-foreground `}
+                  href="/exhibitions">
+                  المعارض
                 </Link>
               </motion.li>
             </ul>
