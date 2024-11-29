@@ -51,7 +51,7 @@ const SideBar = ({ setOpenNav }) => {
           {/* logo */}
           <div onClick={() => setOpenNav(false)} className="mr-10">
             <Image
-              src={"/logo white.png"}
+              src={"/whitelogo.png"}
               width={75}
               height={50}
               className="dark:hidden"
