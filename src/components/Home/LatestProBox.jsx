@@ -68,7 +68,7 @@ const LatestProBox = ({ project, index }) => {
         </div>
         <div className="text-sm flex-row-reverse line-clamp-1  flex items-center gap-1 ">
           <span className="font-semibold">.Novamedia</span>
-          <p>{"..." + project.description.split("").slice(0, 20).join("")}</p>
+          <p>{"..." + project?.description?.split("").slice(0, 20).join("")}</p>
         </div>
       </div>
     </div>
