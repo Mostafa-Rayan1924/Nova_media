@@ -4,9 +4,7 @@ import React from "react";
 import { buttonVariants } from "../ui/button";
 import { cn } from "@/lib/utils";
 import SquareIcon from "../reusable/SquareIcon";
-import CircleIcon from "../reusable/CircleIcon";
 import { motion } from "framer-motion";
-import Link from "next/link";
 const About = () => {
   return (
     <section className="relative my-[50px] ">

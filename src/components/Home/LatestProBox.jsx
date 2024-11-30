@@ -21,7 +21,7 @@ const LatestProBox = ({ project, index }) => {
             <h3 className="text-sm text-muted-foreground">Egypt, ismailia</h3>
           </div>
           <Image
-            src={"/logo white.png"}
+            src={"/whitelogo.png"}
             width={50}
             height={50}
             className="rounded-full aspect-square object-fill"
