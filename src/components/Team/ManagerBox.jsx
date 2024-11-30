@@ -2,12 +2,12 @@
 import { MailCheck, Phone, Signature } from "lucide-react";
 import Link from "next/link";
 import { motion } from "framer-motion";
-const ManagerBox = () => {
+const ManagerBox = ({ data }) => {
   return (
     <div className="relative">
       <div className="absolute left-0 lg:-left-40 w-[150px] h-[150px] sm:w-[320px] sm:h-[320px]    opacity-20 blur-3xl  rounded-full bg-gradient-to-r from-primary to-transparent -z-20 top-0 " />
       <div className="max-w-[700px] relative p-4 overflow-hidden  mx-auto bg-background/90 border border-border rounded-lg">
-        <span className="absolute inset-x-0 bottom-0 h-2 bg-gradient-to-r   from-green-300 via-blue-500 to-purple-600"></span>
+        <span className="absolute inset-x-0 bottom-0 h-1 bg-gradient-to-r    from-green-300 via-blue-500 to-purple-600"></span>
         {/* box */}
         <div className="flex  flex-col-reverse md:flex-row gap-4 justify-between flex-wrap">
           <motion.div
@@ -15,13 +15,13 @@ const ManagerBox = () => {
             whileInView={{ opacity: 1, y: 0, transition: { duration: 0.5 } }}
             className="w-full h-full md:flex-1 space-y-3 sm:space-y-5">
             <h2 className="font-semibold text-2xl sm:text-3xl text-primary">
-              محمود عبد الرحمن
+              {data?.name}
             </h2>
             <p className="text-muted-foreground flex items-center gap-2 text-lg ">
               <Signature size={20} />
-              مدير التقنية
+              {data?.department}
             </p>
-            <h3 className="text-lg">دكتوراه علوم الحاسبات في التعليم </h3>
+            <h3 className="text-lg">{data?.qualification}</h3>
             <h4
               className="
             text-muted-foreground
@@ -31,7 +31,7 @@ const ManagerBox = () => {
             text-lg
             leading-relaxed">
               <Phone size={20} />
-              01156581025
+              {data?.phone}
             </h4>
             <h5
               className="
@@ -40,7 +40,7 @@ const ManagerBox = () => {
             gap-2
             leading-relaxed   text-lg">
               <MailCheck size={20} />
-              mr3309296@gmail.com
+              {data?.email}
             </h5>
             <Link
               className="block"
@@ -56,11 +56,9 @@ const ManagerBox = () => {
             whileInView={{ opacity: 1, y: 0, transition: { duration: 0.5 } }}
             className="md:flex-1">
             <img
-              src={
-                "https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1180&q=80"
-              }
+              src={data?.image}
               className="object-fill size-[300px] mx-auto   rounded-lg aspect-square "
-              alt={"manager"}
+              alt={data?.name}
             />
           </motion.div>
         </div>

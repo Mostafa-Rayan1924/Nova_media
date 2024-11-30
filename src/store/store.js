@@ -8,6 +8,7 @@ import signUpSlice from "./AuthSlices/signupSlice";
 import LoginSlice from "./AuthSlices/loginSlice";
 import addBannerSlice from "./DashboardSlices/addBanner";
 import delBannerSlice from "./DashboardSlices/removeBanner";
+import teamSlice from "./TeamSlices/teamSlice";
 
 export let store = configureStore({
   reducer: {
@@ -20,5 +21,6 @@ export let store = configureStore({
     login: LoginSlice,
     addBanner: addBannerSlice,
     deleteBanner: delBannerSlice,
+    teamData: teamSlice,
   },
 });

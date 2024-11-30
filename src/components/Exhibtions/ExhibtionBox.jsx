@@ -20,7 +20,7 @@ const ExhibtionBox = () => {
       <img src="/banner.jpg" className="max-w-full" alt="" />
       <div className="p-3 space-y-2">
         <h2 className="text-lg">المعارض والمعلومات اسماهيلية ثان</h2>
-        <p className="line-clamp-2 mb-2 text-muted-foreground">
+        <p className="line-clamp-2 text-sm mb-2 text-muted-foreground">
           Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sit maxime
           commodi qui, quidem animi asperiores quam, eum magni aut earum, fugiat
           cum ipsum laborum quisquam possimus voluptatibus molestias porro at a
@@ -29,7 +29,10 @@ const ExhibtionBox = () => {
         </p>
         <div className="flex items-center justify-between ">
           <Link href={"/exhibitions/1"} className="flex items-center gap-1">
-            <CircleArrowLeft className="animate-pulse text-primary" size={20} />
+            <CircleArrowLeft
+              className="animate-pulse text-primary mt-1"
+              size={20}
+            />
             المزيد
           </Link>
           <h3 className="text-primary">اسم المكتبة</h3>

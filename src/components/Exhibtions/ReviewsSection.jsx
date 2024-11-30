@@ -1,4 +1,4 @@
-import AddComment from "./addComment";
+import AddComment from "./AddComment";
 import OneComment from "./OneComment";
 
 const ReviewsSection = () => {
