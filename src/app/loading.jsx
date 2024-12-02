@@ -1,7 +1,6 @@
 "use client";
 import React from "react";
 import { motion } from "framer-motion";
-
 const Loading = () => {
   return (
     <div className="fixed  flex-col  inset-0 bg-black/80 w-full z-[100] h-full flex items-center justify-center">

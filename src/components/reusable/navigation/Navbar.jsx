@@ -19,7 +19,7 @@ import { usePathname } from "next/navigation";
 import Dashboard from "@/components/Dashboard/Dashboard";
 const Navbar = () => {
   let pathname = usePathname();
-
+  let [open, setOpen] = useState(false);
   let { user } = useSelector((state) => state.login);
   let dispatch = useDispatch();
   let [openNav, setOpenNav] = useState(false);
@@ -31,6 +31,7 @@ const Navbar = () => {
       toast.success("تم تسجيل الخروج بنجاح");
     }
   };
+
   return (
     <header className="fixed inset-0 w-full h-[98px] border-b-2 border-border z-50 bg-white   dark:backdrop-blur-md dark:bg-background/60">
       <div className="container flex items-center justify-between">
@@ -61,26 +62,25 @@ const Navbar = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.2 }}>
                 <Link
-                  className={`text-muted-foreground md:text-sm lg:text-[17px] transition hover:text-foreground ${
-                    pathname === "/" && "text-black dark:text-white "
+                  className={`text-muted-foreground md:text-sm lg:text-[17px] transition hover:text-primary ${
+                    pathname === "/" && "text-primary"
                   } `}
                   href="/">
                   الرئيسية
                 </Link>
               </motion.li>
               <motion.li
+                onClick={() => setOpen(!open)}
                 initial={{ opacity: 0, y: -10 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.2, delay: 0.2 }}>
-                <Link
-                  className={`text-muted-foreground group md:text-sm lg:text-[17px] ${
-                    pathname === "/services" && "text-black dark:text-white"
-                  } relative flex items-center gap-1 transition hover:text-foreground `}
-                  href="/services">
-                  خدماتنا
-                  <CircleChevronDown size={15} className="font-bold" />
-                  <DropDown />
-                </Link>
+                id="serv"
+                transition={{ duration: 0.2, delay: 0.2 }}
+                className={`text-muted-foreground cursor-pointer relative  md:text-sm lg:text-[17px] ${
+                  pathname === "/services" && "text-black dark:text-white"
+                }  flex items-center gap-1 transition hover:text-primary `}>
+                خدماتنا
+                <CircleChevronDown size={15} className="font-bold" />
+                <DropDown open={open} />
               </motion.li>
               <motion.li
                 initial={{ opacity: 0, y: -10 }}
@@ -89,7 +89,7 @@ const Navbar = () => {
                 <Link
                   className={`text-muted-foreground md:text-sm lg:text-[17px]  ${
                     pathname === "/market" && "text-black dark:text-white"
-                  }  transition hover:text-foreground `}
+                  }  transition hover:text-primary `}
                   href="/market">
                   المتجر
                 </Link>
@@ -101,7 +101,7 @@ const Navbar = () => {
                 <Link
                   className={`text-muted-foreground md:text-sm lg:text-[17px]  ${
                     pathname === "/contactus" && "text-black dark:text-white"
-                  }  transition hover:text-foreground `}
+                  }  transition hover:text-primary `}
                   href="/contactus">
                   اتصل بنا
                 </Link>
@@ -113,7 +113,7 @@ const Navbar = () => {
                 <Link
                   className={`text-muted-foreground md:text-sm lg:text-[17px]  ${
                     pathname === "/team" && "text-black dark:text-white"
-                  }  transition hover:text-foreground `}
+                  }  transition hover:text-primary `}
                   href="/team">
                   فريق العمل
                 </Link>
@@ -125,7 +125,7 @@ const Navbar = () => {
                 <Link
                   className={`text-muted-foreground md:text-sm lg:text-[17px]  ${
                     pathname === "/exhibitions" && "text-black dark:text-white"
-                  }  transition hover:text-foreground `}
+                  }  transition hover:text-primary `}
                   href="/exhibitions">
                   المعارض
                 </Link>

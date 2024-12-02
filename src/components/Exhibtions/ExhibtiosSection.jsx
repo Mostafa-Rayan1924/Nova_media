@@ -1,12 +1,22 @@
 "use client";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import MainTitle from "../reusable/MainTitle";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { BtnsFilter } from "../constants/BtnsFilterInExh";
 import ExhibtionBox from "./ExhibtionBox";
 import ExhibtionBoxSkeleton from "./ExhibtionBoxSkeleton";
+import { useDispatch, useSelector } from "react-redux";
+import { getFilter } from "@/store/ExhibthionsSlice/FilterSlice";
 const ExhibtiosSection = () => {
   let [active, setActive] = useState("حفلات تخرج");
+  let { data, loading } = useSelector((state) => state.exhibtionsFilter);
+  let dispatch = useDispatch();
+  let handleFilter = async (item) => {
+    setActive(item.title);
+  };
+  useEffect(() => {
+    dispatch(getFilter(active));
+  }, [, active]);
   return (
     <section className="relative  ">
       <div className="text-center mb-10">
@@ -25,6 +35,7 @@ const ExhibtiosSection = () => {
             {BtnsFilter.map((item) => {
               return (
                 <TabsTrigger
+                  onClick={() => handleFilter(item)}
                   key={item.id}
                   className="sm:w-full"
                   value={item.title}>
@@ -38,12 +49,21 @@ const ExhibtiosSection = () => {
           <div className="flex flex-col col-span-3 gap-2 w-full ">
             <TabsContent value={active}>
               <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
-                <ExhibtionBox />
-                <ExhibtionBox />
-                <ExhibtionBox />
-                <ExhibtionBox />
-                <ExhibtionBox />
-                <ExhibtionBoxSkeleton />
+                {loading &&
+                  Array.from({ length: 6 }).map((item, index) => {
+                    return <ExhibtionBoxSkeleton key={index} />;
+                  })}
+              </div>
+              <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
+                {data?.length > 0 ? (
+                  data?.map((item) => (
+                    <ExhibtionBox key={item._id} item={item} />
+                  ))
+                ) : (
+                  <h2 className="text-center text-2xl font-semibold sm:mt-10 col-span-3">
+                    لا يوجد معارض حتي الان
+                  </h2>
+                )}
               </div>
             </TabsContent>
           </div>

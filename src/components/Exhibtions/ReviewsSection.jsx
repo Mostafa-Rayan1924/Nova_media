@@ -1,17 +1,17 @@
 import AddComment from "./AddComment";
 import OneComment from "./OneComment";
 // rev
-const ReviewsSection = () => {
+const ReviewsSection = ({ setNum }) => {
   return (
-    <div>
+    <div id="review">
       <h2 className="text-3xl font-bold mb-5 ">تقييمات المعرض</h2>
       {/* comments */}
-      <div className="bg-accent p-2  transition-all duration-200 rounded-lg">
+      <div className="flex flex-col  relative bg-accent rounded-lg  justify-start  text-start   p-3  ">
         {/* comment shape */}
         <OneComment />
       </div>
       {/* add comment */}
-      <AddComment />
+      <AddComment setNum={setNum} />
     </div>
   );
 };

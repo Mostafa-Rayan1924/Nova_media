@@ -7,7 +7,7 @@ import Footer from "@/components/reusable/Footer";
 import ScrollToTop from "@/components/ScrollToTop";
 import { Toaster } from "react-hot-toast";
 import DashboardLink from "@/components/DashboardLink";
-const CairoPlay = Almarai({ subsets: ["latin"], weight: ["400", "700"] });
+const font = Almarai({ subsets: ["latin"], weight: ["400", "700"] });
 export const metadata = {
   title: "نوفا ميديا",
   description:
@@ -22,7 +22,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html className=" scroll-smooth" lang="ar">
-      <body className={`${CairoPlay.className} overflow-x-hidden`}>
+      <body className={`${font.className} overflow-x-hidden`}>
         <ThemeProvider
           attribute="class"
           defaultTheme="system"

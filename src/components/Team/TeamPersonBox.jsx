@@ -10,7 +10,7 @@ const TeamPersonBox = ({ person, index }) => {
         y: 0,
         transition: { duration: 0.3, delay: index * 0.2 },
       }}
-      className="group relative block mt-10  border border-border hover:border-primary duration-200 rounded-lg   bg-black">
+      className="group relative block mt-10  border border-border hover:border-primary duration-200 rounded-lg   bg-background">
       <img
         alt={person?.name}
         src={person?.image}
@@ -29,14 +29,14 @@ const TeamPersonBox = ({ person, index }) => {
             flex
             items-center
             gap-2
-            text-white
+            text-foreground
             leading-relaxed">
           <Phone className="text-primary" size={20} />
           {person?.phone}
         </h4>
         <h5
           className="
-            text-white
+            text-muted-foreground
             flex
             items-center
             gap-2
@@ -46,7 +46,7 @@ const TeamPersonBox = ({ person, index }) => {
         </h5>
         <h6
           className="
-            text-white
+            text-foreground
             flex
             items-center
             gap-2

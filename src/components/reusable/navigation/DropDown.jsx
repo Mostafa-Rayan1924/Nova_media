@@ -2,10 +2,14 @@ import Link from "next/link";
 import React from "react";
 import { dropdownLinks } from "../../constants/dropDownLinks";
 
-const DropDown = () => {
+const DropDown = ({ open }) => {
   return (
     <div
-      className={`absolute end-0 opacity-0 z-[-10] top-[100%] transition-all duration-300 group-hover:top-[150%] group-hover:z-10 group-hover:opacity-100  mt-0.5 w-56 divide-y  divide-gray-100 bg-background rounded-md border border-border  shadow-lg`}
+      className={`absolute end-0    transition-all duration-300 ${
+        open ? "top-[150%]" : "top-[100%]"
+      } ${open ? "z-10" : "z-[-10]"} ${
+        open ? "opacity-100" : "opacity-0"
+      }  mt-0.5 w-56 divide-y  divide-gray-100 bg-background rounded-md border border-border  shadow-lg`}
       role="menu">
       <div className="p-2">
         {dropdownLinks.map((item) => {
