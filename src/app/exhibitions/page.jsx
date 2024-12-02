@@ -19,7 +19,7 @@ const Exhibitions = () => {
           "نوفا ميديا تقدم خدمات متكاملة لتنظيم المعارض والمؤتمرات، تشمل التخطيط، التصميم، والتنفيذ، لضمان تجربة مميزة تعكس هوية شركتك وتجذب جمهورك المستهدف."
         }
         BtnOfSection={"تصفح المعارض"}
-        secLink={"#"}
+        secLink={"#exhibtions"}
         BtnOfSection2={"خدماتنا"}
         secLink2={"/services"}
         IconComponent={

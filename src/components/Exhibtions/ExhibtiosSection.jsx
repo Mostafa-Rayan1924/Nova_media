@@ -18,7 +18,7 @@ const ExhibtiosSection = () => {
     dispatch(getFilter(active));
   }, [, active]);
   return (
-    <section className="relative  ">
+    <section id="exhibtions" className="relative  ">
       <div className="text-center mb-10">
         <MainTitle
           title={"المعارض"}

@@ -59,7 +59,7 @@ const InfoBox = ({ data }) => {
     <div className="flow-root sm:mt-5 rounded-lg h-fit  border border-border  sm:mb-0 py-5 shadow-sm">
       <dl className="-my-3 divide-y divide-border text-sm">
         <div className="grid grid-cols-2 gap-1 p-3 even:bg-accent/45 sm:grid-cols-3 sm:gap-4">
-          <dt className="font-medium text-foreground">الاسم</dt>
+          <dt className="font-medium text-foreground">العنوان</dt>
           <dd className="text-muted-foreground sm:col-span-2">{data?.name}</dd>
         </div>
 
