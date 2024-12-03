@@ -1,12 +1,54 @@
-import { Bookmark, Ellipsis, Heart, MessageCircle, Send } from "lucide-react";
+"use client";
+import { deleteInstaProFunc } from "@/store/DashboardSlices/deleteInstaPro";
+import { GetProjects } from "@/store/HomeSlices/LatestProjectsSlice";
+import {
+  Bookmark,
+  CircleX,
+  Ellipsis,
+  Heart,
+  Loader2,
+  MessageCircle,
+  Send,
+} from "lucide-react";
 import Image from "next/image";
-import { object } from "yup";
+import { usePathname } from "next/navigation";
+import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
 const LatestProBox = ({ project, index }) => {
+  let pathname = usePathname();
+  let dispatch = useDispatch();
+  let [id, setId] = useState(null);
+  let { isLoading } = useSelector((state) => state.delProInsta);
+
+  let handleDelFromDashboard = async (id) => {
+    let confirm = window.confirm("هل انت متاكد من حذف المشروع؟");
+    if (confirm) {
+      await setId(id);
+      let response = await dispatch(deleteInstaProFunc(id));
+      if (response.meta.requestStatus === "fulfilled") {
+        dispatch(GetProjects());
+      }
+    }
+  };
   return (
-    <div className="border-border border">
+    <div className="border-border border relative">
+      {isLoading && id == project?._id && (
+        <div className="absolute top-1/2 z-20 left-1/2 bg-black/50 rounded-lg grid place-items-center -translate-x-1/2 size-[80px] -translate-y-1/2">
+          <Loader2 className="size-8 animate-spin text-primary" />
+        </div>
+      )}
       <div className="flex items-center justify-between p-3">
-        <h2 className="text-3xl">...</h2>
+        <h2 className="text-3xl">
+          {pathname == "/dashboard/instProjects" ? (
+            <CircleX
+              onClick={() => handleDelFromDashboard(project?._id)}
+              className="text-red-500 cursor-pointer size-8 sm:size-6"
+            />
+          ) : (
+            "..."
+          )}
+        </h2>
         <div className="flex items-center gap-2">
           <div className="text-left">
             <div className="flex items-center gap-1">

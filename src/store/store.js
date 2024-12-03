@@ -14,9 +14,12 @@ import filterSliceById from "./ExhibthionsSlice/getById";
 import addCommentSlice from "./ExhibthionsSlice/addCommentSlice";
 import delCustomerSlice from "./DashboardSlices/removeCustomer";
 import addCustomerSlice from "./DashboardSlices/addCustomer";
+import deleteInstaProSlice from "./DashboardSlices/deleteInstaPro";
+import addInstaProSlice from "./DashboardSlices/addInstaPro";
 
 export let store = configureStore({
   reducer: {
+    // home reducer
     banners: bannerSlice,
     categories: catSlice,
     homeProjects: latestprojectsSlice,
@@ -24,13 +27,22 @@ export let store = configureStore({
     filterCatsById: filterCategoriesSlice,
     signUp: signUpSlice,
     login: LoginSlice,
+    // end homer reducedr
+    // home dashboard
     addBanner: addBannerSlice,
     addCustomer: addCustomerSlice,
+    addInstaPro: addInstaProSlice,
     deleteBanner: delBannerSlice,
     delCustomer: delCustomerSlice,
+    delProInsta: deleteInstaProSlice,
+    //end home dashboard
+    // team reducer
     teamData: teamSlice,
+    // end team
+    // exhibtions reducer
     exhibtionsFilter: filterSlice,
     getOneExhibtion: filterSliceById,
     addComment: addCommentSlice,
+    // end exhibtions
   },
 });

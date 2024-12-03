@@ -80,8 +80,9 @@ const Navbar = () => {
                 }  flex items-center gap-1 transition hover:text-primary `}>
                 خدماتنا
                 <CircleChevronDown size={15} className="font-bold" />
-                <DropDown open={open} />
               </motion.li>
+              <DropDown open={open} />
+
               <motion.li
                 initial={{ opacity: 0, y: -10 }}
                 animate={{ opacity: 1, y: 0 }}

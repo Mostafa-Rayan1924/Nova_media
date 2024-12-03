@@ -18,7 +18,6 @@ import CircleIcon from "../reusable/CircleIcon";
 
 const LatestProjects = () => {
   let { projects, loading, error } = useSelector((state) => state.homeProjects);
-
   let dispatch = useDispatch();
   useEffect(() => {
     dispatch(GetProjects());
