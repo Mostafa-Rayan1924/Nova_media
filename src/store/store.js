@@ -16,6 +16,12 @@ import delCustomerSlice from "./DashboardSlices/removeCustomer";
 import addCustomerSlice from "./DashboardSlices/addCustomer";
 import deleteInstaProSlice from "./DashboardSlices/deleteInstaPro";
 import addInstaProSlice from "./DashboardSlices/addInstaPro";
+import deleteServProSlice from "./DashboardSlices/deleteServ";
+import addServSlice from "./DashboardSlices/addServ";
+import delTeamSlice from "./DashboardSlices/removeTeam";
+import addTeamProSlice from "./DashboardSlices/addTeam";
+import deleteExhProSlice from "./DashboardSlices/deleteExh";
+import addExhSlice from "./DashboardSlices/addExh";
 
 export let store = configureStore({
   reducer: {
@@ -36,13 +42,21 @@ export let store = configureStore({
     delCustomer: delCustomerSlice,
     delProInsta: deleteInstaProSlice,
     //end home dashboard
+    // sercvice reducer
+    deleteServ: deleteServProSlice,
+    addServ: addServSlice,
+    // end service
     // team reducer
     teamData: teamSlice,
+    delTeam: delTeamSlice,
+    addTeam: addTeamProSlice,
     // end team
     // exhibtions reducer
     exhibtionsFilter: filterSlice,
     getOneExhibtion: filterSliceById,
     addComment: addCommentSlice,
+    deleteExh: deleteExhProSlice,
+    addExh: addExhSlice,
     // end exhibtions
   },
 });

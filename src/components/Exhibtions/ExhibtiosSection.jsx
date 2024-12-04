@@ -57,7 +57,7 @@ const ExhibtiosSection = () => {
               <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
                 {data?.length > 0 ? (
                   data?.map((item) => (
-                    <ExhibtionBox key={item._id} item={item} />
+                    <ExhibtionBox key={item._id} item={item} active={active} />
                   ))
                 ) : (
                   <h2 className="text-center text-2xl font-semibold sm:mt-10 col-span-3">

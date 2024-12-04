@@ -1,9 +1,27 @@
 "use client";
+import { deleteExhProFunc } from "@/store/DashboardSlices/deleteExh";
+import { getFilter } from "@/store/ExhibthionsSlice/FilterSlice";
 import { motion } from "framer-motion";
-import { CircleArrowLeft } from "lucide-react";
+import { CircleArrowLeft, Loader2, Trash2 } from "lucide-react";
 import Link from "next/link";
+import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
-const ExhibtionBox = ({ item }) => {
+const ExhibtionBox = ({ item, active }) => {
+  let { user } = useSelector((state) => state.login);
+  let { isLoading } = useSelector((state) => state.deleteExh);
+  let dispatch = useDispatch();
+  let [id, setId] = useState(null);
+  let handleDel = async (id) => {
+    let confirm = window.confirm("هل انت متاكد من الحذف ");
+    if (confirm) {
+      setId(id);
+      const response = await dispatch(deleteExhProFunc(id));
+      if (response.meta.requestStatus === "fulfilled") {
+        dispatch(getFilter(active));
+      }
+    }
+  };
   return (
     <motion.div
       initial={{ scale: 0.8 }}
@@ -16,12 +34,26 @@ const ExhibtionBox = ({ item }) => {
           mass: 2,
         },
       }}
-      className=" text-right bg-background  rounded-lg overflow-hidden duration-200 border border-border hover:shadow  ">
+      className=" text-right bg-background relative  rounded-lg overflow-hidden duration-200 border border-border hover:shadow  ">
       <img
         src={item?.media[0]}
         className="w-full h-[230px] object-fill"
         alt=""
       />
+      {user?.userData?.role == "ادارة" && (
+        <div
+          onClick={() => {
+            handleDel(item._id);
+          }}
+          className="absolute top-4 hover:text-red-600 duration-300 z-20 cursor-pointer font-bold right-4 text-white bg-black/60 backdrop-blur-md  rounded-3xl py-1 px-2">
+          <Trash2 className="size-4 sm:size-6" />
+        </div>
+      )}
+      {isLoading && id == item._id && (
+        <div className="absolute top-1/2 left-1/2 bg-black/50 rounded-lg grid place-items-center -translate-x-1/2 size-[80px] -translate-y-1/2">
+          <Loader2 className="size-8 animate-spin text-primary" />
+        </div>
+      )}
       <div className="p-3 space-y-2">
         <h2 className="text-lg">{item?.name}</h2>
         <p className="line-clamp-2 text-sm mb-2 text-muted-foreground">
@@ -37,7 +69,7 @@ const ExhibtionBox = ({ item }) => {
             />
             المزيد
           </Link>
-          <h3 className="text-primary">{item?.mention[0]}</h3>
+          <h3 className="text-primary">{item?.mention}</h3>
         </div>
       </div>
     </motion.div>

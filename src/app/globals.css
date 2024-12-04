@@ -151,12 +151,12 @@ html.dark body {
   width: 100% !important;
   height: 100% !important;
 }
-.swiper4 .swiper-slide img {
+.swiper4 .swiper-slide {
   border-radius: 10px;
   height: 100% !important;
   width: 100% !important;
-  object-fit: cover !important;
 }
+
 /* exhibtions swiper */
 
 .mySwiper2 {

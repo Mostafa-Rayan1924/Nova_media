@@ -66,7 +66,7 @@ const InfoBox = ({ data }) => {
         <div className="grid grid-cols-2 gap-1 p-3 even:bg-accent/45 sm:grid-cols-3 sm:gap-4">
           <dt className="font-medium text-foreground">بالتعاون مع</dt>
           <dd className="text-muted-foreground sm:col-span-2">
-            {data?.mention[0]}
+            {data?.mention}
           </dd>
         </div>
         <div className="grid grid-cols-2 gap-1 p-3 even:bg-accent/45 sm:grid-cols-3 sm:gap-4">

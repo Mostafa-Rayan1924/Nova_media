@@ -22,25 +22,22 @@ const page = () => {
     validateOnBlur: true,
     validationSchema: addProject,
     onSubmit: async (values) => {
-      let formData = new FormData();
-      formData.append("name", values.name);
-      formData.append("image", values.image);
-      formData.append("description", values.description);
-      formData.append("number", values.number);
-      await dispatch(addInstaProFunc({ formData }));
+      let data = new FormData();
+      await data.append("name", values.name);
+      await data.append("image", values.image);
+      await data.append("description", values.description);
+      await data.append("number", values.number);
+      await dispatch(addInstaProFunc(data));
       formik.resetForm();
+      setImgFile(null);
     },
   });
 
   const handleImageChange = (event) => {
     const file = event.target.files[0];
     if (file) {
-      const reader = new FileReader();
-      reader.onload = () => {
-        setImgFile(reader.result);
-        formik.setFieldValue("image", file);
-      };
-      reader.readAsDataURL(file);
+      setImgFile(URL.createObjectURL(file));
+      formik.setFieldValue("image", file);
     }
   };
 
@@ -79,7 +76,7 @@ const page = () => {
                 className="w-full h-full object-fill rounded-md"
               />
             ) : (
-              <div className="w-full h-full bg-primary rounded-md flex items-center mx-auto justify-center ">
+              <div className="w-full h-full bg-primary rounded-md flex items-center mx-auto justify-center">
                 <Upload size={40} className="text-white" />
               </div>
             )}

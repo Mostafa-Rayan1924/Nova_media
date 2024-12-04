@@ -1,7 +1,33 @@
 "use client";
-import { ChartBarStacked, MailCheck, Phone } from "lucide-react";
+import {
+  ChartBarStacked,
+  CircleX,
+  Loader2,
+  MailCheck,
+  Phone,
+} from "lucide-react";
 import { motion } from "framer-motion";
+import { usePathname } from "next/navigation";
+import { useState } from "react";
+import { delTeamFunc } from "@/store/DashboardSlices/removeTeam";
+import { useDispatch, useSelector } from "react-redux";
+import { getTeam } from "@/store/TeamSlices/teamSlice";
 const TeamPersonBox = ({ person, index }) => {
+  let pathname = usePathname();
+  let [delId, setDelId] = useState(null);
+  let { Isloading } = useSelector((state) => state.delTeam);
+
+  let dispatch = useDispatch();
+  let handleDelete = async (id) => {
+    let confirmDelete = window.confirm("هل أنت متأكد من الحذف");
+    if (confirmDelete) {
+      setDelId(id);
+      const response = await dispatch(delTeamFunc(id));
+      if (response.meta.requestStatus === "fulfilled") {
+        dispatch(getTeam());
+      }
+    }
+  };
   return (
     <motion.div
       initial={{ opacity: 0, y: -30 }}
@@ -11,10 +37,15 @@ const TeamPersonBox = ({ person, index }) => {
         transition: { duration: 0.3, delay: index * 0.2 },
       }}
       className="group relative block mt-10  border border-border hover:border-primary duration-200 rounded-lg   bg-background">
+      {Isloading && delId == person._id && (
+        <div className="absolute top-1/2 left-1/2 bg-black/50 rounded-lg grid place-items-center -translate-x-1/2 size-[80px] -translate-y-1/2">
+          <Loader2 className="size-8 animate-spin text-primary" />
+        </div>
+      )}
       <img
         alt={person?.name}
         src={person?.image}
-        className="size-20 absolute -top-10 left-4 rounded-full object-cover "
+        className="size-20 absolute -top-10 left-4 rounded-full object-fill "
       />
 
       <div className="relative space-y-2  p-4 ">
@@ -55,6 +86,12 @@ const TeamPersonBox = ({ person, index }) => {
           {person?.department}
         </h6>
       </div>
+      {pathname === "/dashboard/team" && (
+        <CircleX
+          onClick={() => handleDelete(person?._id)}
+          className="text-red-500 absolute bottom-4 left-4 cursor-pointer size-8 sm:size-6"
+        />
+      )}
     </motion.div>
   );
 };
