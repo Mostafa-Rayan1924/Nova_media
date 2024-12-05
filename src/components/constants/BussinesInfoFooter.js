@@ -4,7 +4,7 @@ export let bussinessInfo = [
   {
     id: 1,
     icon: <MapPinHouse className="size-8 text-primary" />,
-    title: "مصر, الاسماعيلية, بجوار مدرسة صفية زغلول,",
+    title: "مصر, الاسماعيلية, بجوار مدرسة صفية زغلول.",
   },
   {
     id: 2,

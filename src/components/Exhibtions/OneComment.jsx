@@ -6,7 +6,7 @@ import { CalendarFold } from "lucide-react";
 const OneComment = () => {
   let { data } = useSelector((state) => state.getOneExhibtion);
   const [showAllComments, setShowAllComments] = useState(false);
-
+  let { user } = useSelector((state) => state.login);
   // الحصول على التعليقات
   const comments = data?.doc?.comment || [];
 
@@ -21,7 +21,9 @@ const OneComment = () => {
             <div className="border-b-2 relative hover:border-primary duration-200 border-border dark:border-[#333] dark:hover:border-primary pb-2 mb-4">
               <div key={index} className=" flex items-center gap-2">
                 <Image
-                  src={"/person.png"}
+                  src={
+                    user?.userData?.type == "ذكر" ? "/person.png" : "/woman.png"
+                  }
                   width={50}
                   height={50}
                   className="rounded-full aspect-square object-cover"

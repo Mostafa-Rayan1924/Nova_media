@@ -14,7 +14,11 @@ const Services = () => {
   }, []);
   return (
     <section>
-      <MainTitle title="خدماتنا" btnTitle="عرض جميع الخدمات" href="services" />
+      <MainTitle
+        title="خدماتنا"
+        btnTitle="عرض جميع الخدمات"
+        href="services?6734eb12cf3720014ac84e62"
+      />
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-10 ">
         {loading && (

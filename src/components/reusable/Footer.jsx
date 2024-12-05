@@ -5,6 +5,7 @@ import { dropdownLinks } from "../constants/dropDownLinks";
 import { socialLinks } from "../constants/SocialLinks";
 import { bussinessInfo } from "../constants/BussinesInfoFooter";
 import Image from "next/image";
+import Link from "next/link";
 const Footer = () => {
   return (
     <footer className=" bg-background border-t border-border  py-[50px]">
@@ -44,9 +45,9 @@ const Footer = () => {
               <li
                 key={item.id}
                 className="border-b relative border-border  text-muted-foreground  hover:text-foreground  hover:pr-[10px] transition-all duration-300 w-full ">
-                <a
+                <Link
                   className=" flex items-center justify-center  md:justify-start gap-2 mb-3 "
-                  href={item.path}>
+                  href={`${item.path}?${item.id}`}>
                   <ArrowLeftCircle
                     size={20}
                     className="text-primary font-bold"
@@ -57,7 +58,7 @@ const Footer = () => {
                       قريباً
                     </h3>
                   )}
-                </a>
+                </Link>
               </li>
             );
           })}

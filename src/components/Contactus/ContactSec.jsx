@@ -51,11 +51,7 @@ const ContactSec = () => {
         x={"left-6 sm:left-0"}
         color={"primary"}
       />
-      <CircleIcon
-        y={"-bottom-20"}
-        x={"right-6 md:right-0"}
-        color={"blue-500"}
-      />
+
       {/* map */}
       <motion.iframe
         initial={{ opacity: 0, y: -100 }}

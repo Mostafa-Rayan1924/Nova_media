@@ -12,7 +12,8 @@ export let signUpSchema = yup.object().shape({
     .min(11, "ادخل رقم الواتساب كامل")
     .max(11, "ادخل رقم الواتساب كامل")
     .required("رقم الواتساب مطلوب"),
-  role: yup.string().required("ادخل نوع الحساب"),
+  role: yup.string().required("ادخل دور الحساب"),
+  role: yup.string().required("ادخل النوع "),
 });
 
 export let loginSchema = yup.object().shape({
@@ -54,4 +55,19 @@ export let addExh = yup.object().shape({
   description: yup.string().required("الوصف مطلوب"),
   media: yup.mixed().required("الصور مطلوبة"),
   department: yup.string().required("التصنيف مطلوب"),
+});
+export let formAd = yup.object().shape({
+  name: yup.string().min(3, "ادخل اسم حقيقي").required("الاسم مطلوب"),
+  cv: yup.mixed().required("الcv مطلوب"),
+  phone: yup
+    .string()
+    .min(11, "ادخل الرقم كامل")
+    .max(11, "الحد الاقصي 11 رقم")
+    .required("الرقم مطلوب"),
+  add: yup.string().required("ادخل العنوان"),
+});
+export let jobAd = yup.object().shape({
+  jobTitle: yup.string().required(" المسمي الوظيفي مطلوب"),
+  JobImg: yup.mixed().required("الصوره مطلوبة"),
+  jobDesc: yup.string().required("الوصف مطلوب"),
 });

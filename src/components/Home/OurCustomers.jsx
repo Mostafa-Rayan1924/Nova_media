@@ -23,11 +23,10 @@ const OurCustomers = () => {
         slidesPerView={6}
         spaceBetween={20}
         autoplay={{
-          delay: 2000,
+          delay: 800,
           disableOnInteraction: false,
         }}
         loop={true}
-        navigation={{ nextEl: ".left-arrow", prevEl: ".right-arrow" }}
         scrollbar={{ el: ".progress" }}
         modules={[Navigation, Autoplay, Scrollbar]}
         breakpoints={{
@@ -40,11 +39,11 @@ const OurCustomers = () => {
             spaceBetween: 5,
           },
           768: {
-            slidesPerView: 3,
+            slidesPerView: 3.3,
             spaceBetween: 15,
           },
           1024: {
-            slidesPerView: 6,
+            slidesPerView: 6.3,
             spaceBetween: 20,
           },
         }}
@@ -63,7 +62,7 @@ const OurCustomers = () => {
         {customers.map((item) => {
           return (
             <SwiperSlide
-              key={item.id}
+              key={item._id}
               className="w-full h-full flex items-center justify-center">
               <img
                 alt={item?.name}
@@ -74,16 +73,8 @@ const OurCustomers = () => {
             </SwiperSlide>
           );
         })}
-        <div className="swiperOptions w-full mt-4 flex items-center justify-between">
+        <div className="swiperOptions w-full mt-6 flex items-center justify-center">
           <div className="progress w-[70%] h-1 rounded-lg bg-gray-300"></div>
-          <div className="arrows flex items-center gap-2">
-            <div className="right-arrow cursor-pointer hover:text-primary transition-all">
-              <CircleArrowRight className="size-8" />
-            </div>
-            <div className="left-arrow cursor-pointer hover:text-primary transition-all">
-              <CircleArrowLeft className="size-8" />
-            </div>
-          </div>
         </div>
       </Swiper>
     </section>

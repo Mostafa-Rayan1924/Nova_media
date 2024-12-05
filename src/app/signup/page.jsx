@@ -19,6 +19,7 @@ const SignUp = () => {
       location: "",
       phone: "",
       role: "",
+      type: "",
       password: "",
     },
     validateOnBlur: true,
@@ -30,6 +31,7 @@ const SignUp = () => {
         location: values.location,
         phone: values.phone,
         role: values.role,
+        type: values.type,
         password: values.password,
       };
       dispatch(signupFunc(params));
@@ -165,9 +167,29 @@ const SignUp = () => {
                 placeholder="ادخل الدور  ">
                 <option className="hidden">ادخل الدور</option>
                 <option>مستخدم</option>
-                <option>دكتور</option>
+                <option>مستخدم VIP</option>
               </select>
               <Error formik={formik} nameOfField={"role"} />
+            </div>
+          </div>
+          <div>
+            <label htmlFor="location" className="sr-only">
+              النوع
+            </label>
+
+            <div className="relative">
+              <select
+                name="type"
+                onChange={formik.handleChange}
+                value={formik.values.type}
+                onBlur={formik.handleBlur}
+                className="w-full rounded-lg text-muted-foreground border-border border focus:border-green-500 transition-all duration-200 outline-none p-3 pe-12 text-sm shadow-sm"
+                placeholder="ادخل النوع  ">
+                <option className="hidden">ادخل النوع</option>
+                <option>ذكر</option>
+                <option>انثى</option>
+              </select>
+              <Error formik={formik} nameOfField={"type"} />
             </div>
           </div>
           <div className="flex items-center justify-between ga1">

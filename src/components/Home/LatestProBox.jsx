@@ -20,7 +20,6 @@ const LatestProBox = ({ project, index }) => {
   let dispatch = useDispatch();
   let [id, setId] = useState(null);
   let { isLoading } = useSelector((state) => state.delProInsta);
-
   let handleDelFromDashboard = async (id) => {
     let confirm = window.confirm("هل انت متاكد من حذف المشروع؟");
     if (confirm) {

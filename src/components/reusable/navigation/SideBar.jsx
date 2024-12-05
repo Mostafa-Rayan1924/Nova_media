@@ -1,6 +1,6 @@
 "use client";
 import { dropdownLinks } from "@/components/constants/dropDownLinks";
-import { CircleUserRound, CircleX, LayoutDashboard } from "lucide-react";
+import { CircleUserRound, CircleX } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
@@ -41,7 +41,7 @@ const SideBar = ({ setOpenNav }) => {
           type: "spring",
           stiffness: 120,
         }}
-        className="flex fixed  z-[120]  top-0 right-0 w-[80%] sm:w-1/2 h-screen md:hidden flex-col justify-between border-e bg-background">
+        className="flex fixed  z-[120]  top-0 right-0 w-[80%] overflow-y-auto sm:w-1/2 h-screen md:hidden flex-col justify-between border-e bg-background">
         {/* close button */}
         <CircleX
           onClick={() => setOpenNav(false)}
@@ -156,6 +156,45 @@ const SideBar = ({ setOpenNav }) => {
                 المعارض
               </Link>
             </li>
+            <li>
+              <details className="group [&_summary::-webkit-details-marker]:hidden ">
+                <summary
+                  className={`flex cursor-pointer relative  items-center justify-between rounded-lg px-4 py-2 text-muted-foreground hover:bg-accent hover:text-primary ${
+                    pathname.includes("ads") && "bg-accent"
+                  }`}>
+                  <span className="text-sm font-medium  ">الإعلانات</span>
+
+                  <span className="shrink-0 transition duration-300 group-open:-rotate-180">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="size-5"
+                      viewBox="0 0 20 20"
+                      fill="currentColor">
+                      <path
+                        fillRule="evenodd"
+                        d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                        clipRule="evenodd"
+                      />
+                    </svg>
+                  </span>
+                </summary>
+
+                <ul className="mt-2 space-y-1 px-4">
+                  <Link
+                    className="whitespace-nowrap flex items-center  gap-2 text-right hover:bg-accent duration-200 p-2 rounded-md  text-sm text-foreground  hover:text-primary "
+                    href={"/job-ads"}
+                    onClick={() => setOpenNav(false)}>
+                    إعلانات الوظائف
+                  </Link>
+                  <Link
+                    className="whitespace-nowrap flex items-center  gap-2 text-right   hover:bg-accent duration-200 p-2 rounded-md  text-sm text-foreground  hover:text-primary "
+                    href={"/site-ads"}
+                    onClick={() => setOpenNav(false)}>
+                    إعلانات الموقع
+                  </Link>
+                </ul>
+              </details>
+            </li>
           </ul>
           {!user.token ? (
             <Link href={"/login"}>
@@ -208,7 +247,9 @@ const SideBar = ({ setOpenNav }) => {
                 width={40}
                 height={40}
                 alt="avatar"
-                src={"/person.png"}
+                src={
+                  user?.userData?.type == "ذكر" ? "/person.png" : "/woman.png"
+                }
                 className="size-10 rounded-full object-cover"
               />
 

@@ -7,6 +7,7 @@ import Footer from "@/components/reusable/Footer";
 import ScrollToTop from "@/components/ScrollToTop";
 import { Toaster } from "react-hot-toast";
 import DashboardLink from "@/components/DashboardLink";
+import Welcome from "@/components/Welcome";
 const font = Almarai({ subsets: ["latin"], weight: ["400", "700"] });
 export const metadata = {
   title: "نوفا ميديا",
@@ -14,8 +15,8 @@ export const metadata = {
     "شركه نوفا ميديا للخدمات الدعايه والاعلان والطباعه الرقمية وتنظيم الفعاليات والمؤتمرات والمعارض ",
   icons: [
     {
-      url: "/logoSeo.jpeg",
-      href: "/logoSeo.jpeg",
+      url: "/logo.png",
+      href: "/logo.png",
     },
   ],
 };
@@ -29,6 +30,7 @@ export default function RootLayout({ children }) {
           enableSystem
           disableTransitionOnChange>
           <ReduxProvider>
+            {/* <Welcome /> */}
             <Navbar />
             <ScrollToTop />
             <DashboardLink />

@@ -26,7 +26,6 @@ const LatestProjects = () => {
     <section id="latestPro" className="relative">
       <div className="hidden md:block">
         <SquareIcon y={"top-10"} x={"left-0"} color={"primary"} />
-        <CircleIcon y={"bottom-0"} x={"right-0"} color={"muted-foreground"} />
       </div>
 
       <div className="flex flex-col gap-4 justify-center text-center items-center mb-10">

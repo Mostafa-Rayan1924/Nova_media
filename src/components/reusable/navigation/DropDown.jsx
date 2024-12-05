@@ -16,7 +16,7 @@ const DropDown = ({ open }) => {
           return (
             <Link
               key={item.id}
-              href={item.path}
+              href={`${item.path}?${item.id}`}
               className="block rounded-lg relative px-4 py-2 text-sm text-muted-foreground hover:bg-accent hover:text-primary"
               role="menuitem">
               {item.title}

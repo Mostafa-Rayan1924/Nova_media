@@ -1,9 +1,11 @@
 import {
+  BriefcaseBusiness,
   Images,
   Instagram,
   LucideBookImage,
   ServerCrash,
   ShoppingBasketIcon,
+  SquareDashedMousePointer,
   User2,
   UserCheck2Icon,
 } from "lucide-react";
@@ -46,9 +48,20 @@ export let dashboardLinks = [
     title: "المعارض",
     path: "/dashboard/exhibtions",
   },
-
   {
     id: 7,
+    icon: <BriefcaseBusiness size={20} />,
+    title: "اعلان توظيف",
+    path: "/dashboard/job-ads",
+  },
+  {
+    id: 8,
+    icon: <SquareDashedMousePointer size={20} />,
+    title: "اعلان للموقع",
+    path: "/dashboard/site-ads",
+  },
+  {
+    id: 9,
     icon: <ShoppingBasketIcon size={20} />,
     title: "المتجر",
     path: "/dashboard/market",

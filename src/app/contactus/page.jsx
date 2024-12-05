@@ -22,7 +22,7 @@ const ContactUs = () => {
           BtnOfSection={"تواصل معنا"}
           secLink={"#contactSec"}
           BtnOfSection2={"تصفح خدماتنا"}
-          secLink2={"/services"}
+          secLink2={"/services?6734eb12cf3720014ac84e62"}
           IconComponent={
             <Eye className="text-primary dark:text-white" size={20} />
           }

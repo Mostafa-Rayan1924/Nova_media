@@ -3,6 +3,7 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import { Check } from "lucide-react";
 import { useState } from "react";
+import { useSearchParams } from "next/navigation";
 const FilterBox = ({ item, index, active, setActive }) => {
   return (
     <motion.div

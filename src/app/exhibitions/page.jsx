@@ -21,7 +21,7 @@ const Exhibitions = () => {
         BtnOfSection={"تصفح المعارض"}
         secLink={"#exhibtions"}
         BtnOfSection2={"خدماتنا"}
-        secLink2={"/services"}
+        secLink2={"/services?6734eb12cf3720014ac84e62"}
         IconComponent={
           <ServerCogIcon className="text-primary dark:text-white" size={20} />
         }
