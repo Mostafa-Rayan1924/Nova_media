@@ -22,6 +22,10 @@ import delTeamSlice from "./DashboardSlices/removeTeam";
 import addTeamProSlice from "./DashboardSlices/addTeam";
 import deleteExhProSlice from "./DashboardSlices/deleteExh";
 import addExhSlice from "./DashboardSlices/addExh";
+import getJobSlice from "./AdsSlices/getJobSlice";
+import delJobSlice from "./DashboardSlices/removeJobAds";
+import addJobAdSlice from "./DashboardSlices/addJobAds";
+import applyJobSlice from "./DashboardSlices/applyToJob";
 
 export let store = configureStore({
   reducer: {
@@ -58,5 +62,11 @@ export let store = configureStore({
     deleteExh: deleteExhProSlice,
     addExh: addExhSlice,
     // end exhibtions
+    // ads
+    getJobs: getJobSlice,
+    delJobAds: delJobSlice,
+    addJobAds: addJobAdSlice,
+    applyJob: applyJobSlice,
+    // end ads
   },
 });

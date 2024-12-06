@@ -3,12 +3,20 @@ import MainTitle from "@/components/reusable/MainTitle";
 import { Button, buttonVariants } from "@/components/ui/button";
 import Error from "@/components/validations/Error";
 import { formAd, jobAd } from "@/components/validations/ValidationSchema";
+import { addJobAdFunc } from "@/store/DashboardSlices/addJobAds";
 import { useFormik } from "formik";
 import { Upload } from "lucide-react";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
-const jobAds = () => {
+const JobAds = () => {
   let [imgFile, setImgFile] = useState(null);
+  let { loading } = useSelector((state) => state.addJobAds);
+  let router = useRouter();
+  let { user } = useSelector((state) => state.login);
+  if (user?.userData?.role !== "ادارة") router.push("/");
+  let dispatch = useDispatch();
   const formik = useFormik({
     initialValues: {
       jobTitle: "",
@@ -19,13 +27,12 @@ const jobAds = () => {
     validationSchema: jobAd,
     onSubmit: async (values) => {
       let data = new FormData();
-      data.append("name", values.jobTitle);
-      data.append("phone", values.jobDesc);
-      data.append("cv", values.JobImg);
-      // await dispatch(addExhFunc(data));
-      // formik.resetForm();
-      //   setImgFile(null);
-      console.log(values);
+      data.append("title", values.jobTitle);
+      data.append("description", values.jobDesc);
+      data.append("image", values.JobImg);
+      await dispatch(addJobAdFunc(data));
+      formik.resetForm();
+      setImgFile(null);
     },
   });
   return (
@@ -97,12 +104,14 @@ const jobAds = () => {
         </div>
 
         <button
-          className={` mx-auto block bg-green-500 text-white rounded-lg w-[120px] duration-200 hover:w-[140px] hover:bg-green-600  py-2`}>
-          add
+          className={`${
+            loading ? "opacity-50 pointer-events-none" : "opacity-100"
+          } mx-auto block bg-green-500 text-white rounded-lg w-[120px] duration-200 hover:w-[140px] hover:bg-green-600  py-2`}>
+          {loading ? "جاري الاضافه" : "اضافه"}
         </button>
       </form>
     </section>
   );
 };
 
-export default jobAds;
+export default JobAds;

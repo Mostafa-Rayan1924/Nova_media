@@ -1,28 +1,33 @@
 "use client";
-import { Button, buttonVariants } from "@/components/ui/button";
 import Error from "@/components/validations/Error";
 import { formAd } from "@/components/validations/ValidationSchema";
+import { applyJobFunc } from "@/store/DashboardSlices/applyToJob";
 import { useFormik } from "formik";
+import { useDispatch, useSelector } from "react-redux";
 
 const Form = () => {
+  let dispatch = useDispatch();
+  let { loading } = useSelector((state) => state.applyJob);
   const formik = useFormik({
     initialValues: {
       name: "",
       cv: null,
       phone: "",
       add: "",
+      jobTitle: "",
     },
     validateOnBlur: true,
     validationSchema: formAd,
     onSubmit: async (values) => {
       let data = new FormData();
-      data.append("name", values.name);
+      data.append("username", values.name);
       data.append("phone", values.phone);
-      data.append("add", values.add);
-      data.append("cv", values.cv);
-      // await dispatch(addExhFunc(data));
-      // formik.resetForm();
-      console.log(values);
+      data.append("location", values.add);
+      data.append("jobTitle", values.jobTitle);
+      data.append("file", values.cv);
+      await dispatch(applyJobFunc(data));
+      formik.resetForm();
+      formik.setFieldValue("cv", null);
     },
   });
   return (
@@ -42,6 +47,21 @@ const Form = () => {
               className="border border-border outline-none mb-1 text-sm  w-full  rounded-md p-3"
             />
             <Error formik={formik} nameOfField="name" />
+          </div>
+        </div>
+        <div className="flex flex-col items-start  sm:flex-row sm:items-center gap-4 mb-4">
+          <label className="min-w-[120px]"> المسمي الوظيفي</label>
+          <div className="w-full">
+            <input
+              type="text"
+              onChange={formik.handleChange}
+              value={formik.values.jobTitle}
+              onBlur={formik.handleBlur}
+              placeholder="المسمي الوظيفي"
+              name="jobTitle"
+              className="border border-border outline-none mb-1 text-sm  w-full  rounded-md p-3"
+            />
+            <Error formik={formik} nameOfField="jobTitle" />
           </div>
         </div>
         <div className="flex flex-col items-start  sm:flex-row sm:items-center gap-4 mb-4">
@@ -90,12 +110,14 @@ const Form = () => {
           </div>
         </div>
 
-        <div className="grid place-items-center">
-          <Button className={buttonVariants({ size: "lg" })}>ارسال</Button>
-        </div>
+        <button
+          className={`${
+            loading ? "opacity-50 pointer-events-none" : "opacity-100"
+          } mx-auto block bg-primary text-white rounded-lg w-[120px] duration-200 hover:w-[140px] hover:bg-primary/90  py-2`}>
+          {loading ? "جاري الارسال" : "ارسال"}
+        </button>
       </form>
     </div>
   );
 };
-
 export default Form;

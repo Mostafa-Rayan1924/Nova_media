@@ -1,10 +1,16 @@
-import JobAdsBox from "@/components/Ads/JobAdsBox";
+import JobAdsSec from "@/components/Ads/JobAdsSec";
+export const metadata = {
+  title: "نوفا ميديا - إعلانات الوظائف",
+  description:
+    "انضم إلى فريق عمل نوفا ميديا الرائد في مجال الطباعة والتسويق الإلكتروني. اكتشف فرص العمل المتاحة لدينا، وحقق طموحاتك المهنية مع بيئة عمل مبتكرة تدعم الإبداع والتطور. تصفح أحدث الوظائف في مجالات التصميم، التسويق، الإدارة، والمزيد.",
+  keywords:
+    "نوفا ميديا, إعلانات الوظائف, فرص عمل, وظائف شاغرة, وظائف تصميم, وظائف تسويق, وظائف إدارية, فرص عمل في الطباعة, وظائف التسويق الإلكتروني, وظائف نوفا ميديا, بيئة عمل إبداعية, تطوير مهني, فريق عمل متميز",
+};
 
 const JobAd = () => {
   return (
-    <main className="my-[140px] container  space-y-4">
-      <JobAdsBox />
-      <JobAdsBox />
+    <main className="my-[140px] container  ">
+      <JobAdsSec />
     </main>
   );
 };

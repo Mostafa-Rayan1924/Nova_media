@@ -21,6 +21,21 @@ html.dark body {
   background-color: rgba(0, 0, 0, 0.8); /* لون أسود شفاف */
   background-blend-mode: overlay; /* مزج الخلفية مع اللون */
 }
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-thumb {
+  background-color: #cc1b42;
+}
+::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(255, 0, 51, 0.824);
+}
+::-webkit-scrollbar-track {
+  background-color: #f4f4f5;
+}
+html.dark ::-webkit-scrollbar-track {
+  background-color: #292524;
+}
 /* swiper banner */
 .swiper {
   width: 85%;

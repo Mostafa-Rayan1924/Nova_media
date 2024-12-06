@@ -7,7 +7,11 @@ import { useDispatch, useSelector } from "react-redux";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 import { Button, buttonVariants } from "@/components/ui/button";
+import { useRouter } from "next/navigation";
 const page = () => {
+  let router = useRouter();
+  let { user } = useSelector((state) => state.login);
+  if (user?.userData?.role !== "ادارة") router.push("/");
   let { data, loading, error } = useSelector((state) => state.teamData);
   let dispatch = useDispatch();
   useEffect(() => {

@@ -7,8 +7,12 @@ import Error from "@/components/validations/Error";
 import { Upload } from "lucide-react";
 import { useDispatch, useSelector } from "react-redux";
 import { addInstaProFunc } from "@/store/DashboardSlices/addInstaPro";
+import { useRouter } from "next/navigation";
 
 const page = () => {
+  let router = useRouter();
+  let { user } = useSelector((state) => state.login);
+  if (user?.userData?.role !== "ادارة") router.push("/");
   const [imgFile, setImgFile] = useState(null);
   let { isLoading } = useSelector((state) => state.addInstaPro);
   let dispatch = useDispatch();

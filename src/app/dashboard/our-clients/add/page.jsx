@@ -2,6 +2,7 @@
 import MainTitle from "@/components/reusable/MainTitle";
 import { addBannerFunc } from "@/store/DashboardSlices/addBanner";
 import { addCustomerFunc } from "@/store/DashboardSlices/addCustomer";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 import toast from "react-hot-toast";
 import { useDispatch, useSelector } from "react-redux";
@@ -10,7 +11,9 @@ const page = () => {
   let [name, setName] = useState("");
   let [imgFile, setImgFile] = useState(null);
   let { loading } = useSelector((state) => state.addCustomer);
+  let router = useRouter();
   let { user } = useSelector((state) => state.login);
+  if (user?.userData?.role !== "ادارة") router.push("/");
   let dispatch = useDispatch();
   let handleSubmit = async (e) => {
     e.preventDefault();

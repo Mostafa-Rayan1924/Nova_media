@@ -8,11 +8,14 @@ import { Upload } from "lucide-react";
 import { useDispatch, useSelector } from "react-redux";
 import { addInstaProFunc } from "@/store/DashboardSlices/addInstaPro";
 import { addTeamProFunc } from "@/store/DashboardSlices/addTeam";
-
+import { useRouter } from "next/navigation";
 const page = () => {
   const [imgFile, setImgFile] = useState(null);
   let { isLoading } = useSelector((state) => state.addTeam);
   let dispatch = useDispatch();
+  let router = useRouter();
+  let { user } = useSelector((state) => state.login);
+  if (user?.userData?.role !== "ادارة") router.push("/");
   const formik = useFormik({
     initialValues: {
       name: "",

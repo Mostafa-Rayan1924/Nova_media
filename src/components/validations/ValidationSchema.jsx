@@ -65,6 +65,7 @@ export let formAd = yup.object().shape({
     .max(11, "الحد الاقصي 11 رقم")
     .required("الرقم مطلوب"),
   add: yup.string().required("ادخل العنوان"),
+  jobTitle: yup.string().required("ادخل المسمي الوظيفي"),
 });
 export let jobAd = yup.object().shape({
   jobTitle: yup.string().required(" المسمي الوظيفي مطلوب"),
