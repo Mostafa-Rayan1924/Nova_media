@@ -45,7 +45,9 @@ const ExhibtiosSection = () => {
             })}
           </TabsList>
         </div>
-        <div className="grid col-span-3 md:col-span-2 ">
+        <div
+          style={{ direction: "rtl" }}
+          className="grid col-span-3 md:col-span-2   ">
           <div className="flex flex-col col-span-3 gap-2 w-full ">
             <TabsContent value={active}>
               <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">

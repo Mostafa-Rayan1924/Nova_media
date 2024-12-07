@@ -10,9 +10,26 @@ import "swiper/css/thumbs";
 
 // Import required modules
 import { FreeMode, Navigation, Thumbs } from "swiper/modules";
+import { Share2 } from "lucide-react";
 
 const BoxDetailsSwiper = ({ data }) => {
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
+  const handleShare = async () => {
+    if (navigator.share) {
+      try {
+        await navigator.share({
+          title: data?.doc?.title,
+          text: `${data?.doc?.description}\n\nشاهد المزيد هنا: ${window.location.href}`,
+          url: window.location.href,
+        });
+        console.log("Shared successfully");
+      } catch (error) {
+        console.error("Error sharing:", error);
+      }
+    } else {
+      alert("مشاركة غير مدعومة على هذا الجهاز");
+    }
+  };
   return (
     <div>
       <Swiper
@@ -24,10 +41,15 @@ const BoxDetailsSwiper = ({ data }) => {
         navigation={true}
         thumbs={{ swiper: thumbsSwiper }}
         modules={[FreeMode, Navigation, Thumbs]}
-        className="mySwiper2">
+        className="mySwiper2 relative">
         {data?.media.map((item, index) => {
           return (
             <SwiperSlide key={index}>
+              <div
+                onClick={handleShare}
+                className="absolute top-4 left-8 hover:text-primary duration-300 z-20 cursor-pointer font-bold text-white bg-black/60 backdrop-blur-md rounded-3xl py-1 px-2">
+                <Share2 className="size-4 sm:size-6" />
+              </div>
               <img src={item} />
             </SwiperSlide>
           );
