@@ -14,12 +14,11 @@ import { Share2 } from "lucide-react";
 
 const BoxDetailsSwiper = ({ data }) => {
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
+  console.log(data);
   const handleShare = async () => {
     if (navigator.share) {
       try {
         await navigator.share({
-          title: data?.doc?.title,
-          text: `${data?.doc?.description}\n\nشاهد المزيد هنا: ${window.location.href}`,
           url: window.location.href,
         });
         console.log("Shared successfully");
