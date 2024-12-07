@@ -10,6 +10,8 @@ import { logout } from "@/store/AuthSlices/loginSlice";
 import { usePathname } from "next/navigation";
 const SideBar = ({ setOpenNav }) => {
   let { user } = useSelector((state) => state.login);
+  let { data } = useSelector((state) => state.getAd);
+  let jobs = useSelector((state) => state.getJobs);
   let pathname = usePathname();
   let dispatch = useDispatch();
   let logOutFunc = (e) => {
@@ -162,6 +164,9 @@ const SideBar = ({ setOpenNav }) => {
                   className={`flex cursor-pointer relative  items-center justify-between rounded-lg px-4 py-2 text-muted-foreground hover:bg-accent hover:text-primary ${
                     pathname.includes("ads") && "bg-accent"
                   }`}>
+                  {(data.length > 0 || jobs.data.length > 0) && (
+                    <div className="absolute size-2 animate-bounce rounded-full bg-primary top-0 right-0"></div>
+                  )}
                   <span className="text-sm font-medium  ">الإعلانات</span>
 
                   <span className="shrink-0 transition duration-300 group-open:-rotate-180">
