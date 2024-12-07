@@ -72,3 +72,8 @@ export let jobAd = yup.object().shape({
   JobImg: yup.mixed().required("الصوره مطلوبة"),
   jobDesc: yup.string().required("الوصف مطلوب"),
 });
+export let siteAd = yup.object().shape({
+  title: yup.string().required(" العنوان مطلوب"),
+  description: yup.string().required("الوصف مطلوب"),
+  media: yup.mixed().required("الصوره مطلوبة"),
+});

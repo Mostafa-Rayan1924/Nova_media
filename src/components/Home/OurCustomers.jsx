@@ -31,10 +31,6 @@ const OurCustomers = () => {
         modules={[Navigation, Autoplay, Scrollbar]}
         breakpoints={{
           0: {
-            slidesPerView: 2,
-            spaceBetween: 10,
-          },
-          430: {
             slidesPerView: 2.3,
             spaceBetween: 5,
           },

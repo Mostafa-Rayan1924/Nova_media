@@ -26,6 +26,10 @@ import getJobSlice from "./AdsSlices/getJobSlice";
 import delJobSlice from "./DashboardSlices/removeJobAds";
 import addJobAdSlice from "./DashboardSlices/addJobAds";
 import applyJobSlice from "./DashboardSlices/applyToJob";
+import getAdSlice from "./AdsSlices/getAdSlice";
+import addAdSlice from "./DashboardSlices/addAd";
+import delAdSlice from "./DashboardSlices/RemoveAd";
+import getOneAdSlice from "./AdsSlices/getOneAd";
 
 export let store = configureStore({
   reducer: {
@@ -67,6 +71,10 @@ export let store = configureStore({
     delJobAds: delJobSlice,
     addJobAds: addJobAdSlice,
     applyJob: applyJobSlice,
+    getAd: getAdSlice,
+    addAd: addAdSlice,
+    removeAd: delAdSlice,
+    getOneAd: getOneAdSlice,
     // end ads
   },
 });

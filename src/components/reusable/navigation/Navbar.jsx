@@ -19,17 +19,26 @@ import {
 import { AnimatePresence, delay, motion } from "framer-motion";
 import { ModeToggle } from "./ModeToggle";
 import SideBar from "./SideBar";
-import { useState } from "react";
-import { useSelector } from "react-redux";
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { usePathname } from "next/navigation";
 import Dashboard from "@/components/Dashboard/Dashboard";
 import Profile from "./Profile";
 import { dropdownLinks } from "@/components/constants/dropDownLinks";
+import { getAd } from "@/store/AdsSlices/getAdSlice";
+import { getJob } from "@/store/AdsSlices/getJobSlice";
 const Navbar = () => {
   let pathname = usePathname();
   let { user } = useSelector((state) => state.login);
   let [openNav, setOpenNav] = useState(false);
+  let { data } = useSelector((state) => state.getAd);
+  let jobs = useSelector((state) => state.getJobs);
 
+  let dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getAd());
+    dispatch(getJob());
+  }, []);
   return (
     <header className="fixed inset-0 w-full h-[98px] border-b-2 border-border z-50 bg-white   dark:backdrop-blur-md dark:bg-background/60">
       <div className="container flex items-center justify-between">
@@ -157,7 +166,9 @@ const Navbar = () => {
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.2, delay: 1.2 }}>
                       <NavigationMenuTrigger>الإعلانات</NavigationMenuTrigger>
-                      <div className="absolute size-2 animate-bounce rounded-full bg-primary top-0 left-0"></div>
+                      {(data.length > 0 || jobs.data.length > 0) && (
+                        <div className="absolute size-2 animate-bounce rounded-full bg-primary top-0 left-0"></div>
+                      )}
                     </motion.div>
                     <NavigationMenuContent>
                       <ul className="w-fit space-y-1   p-3   ">

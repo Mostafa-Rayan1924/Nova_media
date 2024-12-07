@@ -8,7 +8,6 @@ import { delJobFunc } from "@/store/DashboardSlices/removeJobAds";
 import { getJob } from "@/store/AdsSlices/getJobSlice";
 
 const JobAdsBox = ({ item }) => {
-  console.log(item);
   let [id, setId] = useState(null);
   let { user } = useSelector((state) => state.login);
   let { isloading } = useSelector((state) => state.delJobAds);
