@@ -39,6 +39,7 @@ const SiteAdBox = ({ item }) => {
           <Trash2 className="size-4 sm:size-6" />
         </div>
       )}
+
       <Image
         src={item?.media[0]}
         width={450}

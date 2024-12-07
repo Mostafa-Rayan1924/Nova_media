@@ -14,7 +14,6 @@ import { Share2 } from "lucide-react";
 
 const BoxDetailsSwiper = ({ data }) => {
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
-  console.log(data);
   const handleShare = async () => {
     if (navigator.share) {
       try {
@@ -46,7 +45,7 @@ const BoxDetailsSwiper = ({ data }) => {
             <SwiperSlide key={index}>
               <div
                 onClick={handleShare}
-                className="absolute top-4 left-8 hover:text-primary duration-300 z-20 cursor-pointer font-bold text-white bg-black/60 backdrop-blur-md rounded-3xl py-1 px-2">
+                className="absolute top-4 grid place-items-center left-8 hover:text-primary duration-300 z-20 cursor-pointer font-bold text-white bg-black/60 backdrop-blur-md rounded-3xl py-1 px-2">
                 <Share2 className="size-4 sm:size-6" />
               </div>
               <img src={item} />

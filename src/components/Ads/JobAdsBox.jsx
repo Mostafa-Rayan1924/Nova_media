@@ -1,5 +1,5 @@
 "use client";
-import { Loader2, Trash2 } from "lucide-react";
+import { Loader2, Share2, Trash2 } from "lucide-react";
 import { socialLinks } from "../constants/SocialLinks";
 import Link from "next/link";
 import { useState } from "react";
@@ -22,7 +22,20 @@ const JobAdsBox = ({ item }) => {
       }
     }
   };
-
+  const handleShare = async () => {
+    if (navigator.share) {
+      try {
+        await navigator.share({
+          url: window.location.href,
+        });
+        console.log("Shared successfully");
+      } catch (error) {
+        console.error("Error sharing:", error);
+      }
+    } else {
+      alert("مشاركة غير مدعومة على هذا الجهاز");
+    }
+  };
   return (
     <div className="flex flex-col-reverse relative   even:md:flex-row-reverse even:flex-col eve md:h-[380px] bg-background    sm:overflow-y-auto  md:flex-row border-2 border-border rounded-lg overflow-hidden">
       {isloading && id == item._id && (
@@ -89,7 +102,11 @@ const JobAdsBox = ({ item }) => {
             <Trash2 className="size-4 sm:size-6" />
           </div>
         )}
-
+        <div
+          onClick={handleShare}
+          className="absolute top-4 right-4 grid place-items-center hover:text-primary duration-300 z-20 cursor-pointer font-bold text-white bg-black/60 backdrop-blur-md rounded-3xl py-1 px-2">
+          <Share2 className="size-4 sm:size-6" />
+        </div>
         <img
           className="w-full h-[250px] sm:h-[350px] md:size-full aspect-square object-fill"
           src={item?.image}

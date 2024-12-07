@@ -1,5 +1,6 @@
 "use client";
 import { getOneAd } from "@/store/AdsSlices/getOneAd";
+import { Share2 } from "lucide-react";
 import Image from "next/image";
 import { useParams } from "next/navigation";
 import { useEffect } from "react";
@@ -12,6 +13,20 @@ const GetOneAd = () => {
   useEffect(() => {
     dispatch(getOneAd(id));
   }, [id]);
+  const handleShare = async () => {
+    if (navigator.share) {
+      try {
+        await navigator.share({
+          url: window.location.href,
+        });
+        console.log("Shared successfully");
+      } catch (error) {
+        console.error("Error sharing:", error);
+      }
+    } else {
+      alert("مشاركة غير مدعومة على هذا الجهاز");
+    }
+  };
   return (
     <main className="my-[120px] container   space-y-10">
       {loading && (
@@ -23,7 +38,12 @@ const GetOneAd = () => {
       )}
 
       {data && !loading && (
-        <div className="max-w-2xl mx-auto space-y-4   rounded-lg p-4">
+        <div className="max-w-2xl mx-auto space-y-4 relative   rounded-lg p-4">
+          <div
+            onClick={handleShare}
+            className="absolute top-16 right-8 grid place-items-center hover:text-primary duration-300 z-20 cursor-pointer font-bold text-white bg-black/60 backdrop-blur-md rounded-3xl py-1 px-2">
+            <Share2 className=" sm:size-6" />
+          </div>
           <img
             src={data?.doc?.media[0]}
             className="w-full rounded-lg object-fill h-[250px] md:h-[350px] "
