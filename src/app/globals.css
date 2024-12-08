@@ -36,6 +36,9 @@ html.dark body {
 html.dark ::-webkit-scrollbar-track {
   background-color: #292524;
 }
+.heroBg {
+  background-image: url("../../public/bannerHero.jpg");
+}
 /* swiper banner */
 .swiper {
   width: 85%;

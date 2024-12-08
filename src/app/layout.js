@@ -15,14 +15,14 @@ export const metadata = {
     "شركه نوفا ميديا للخدمات الدعايه والاعلان والطباعه الرقمية وتنظيم الفعاليات والمؤتمرات والمعارض ",
   icons: [
     {
-      url: "/logo.png",
-      href: "/logo.png",
+      url: "/seoLogo.png",
+      href: "/seoLogo.png",
     },
   ],
 };
 export default function RootLayout({ children }) {
   return (
-    <html className=" scroll-smooth" lang="ar">
+    <html className="scroll-smooth" lang="ar">
       <body className={`${font.className} overflow-x-hidden`}>
         <ThemeProvider
           attribute="class"
@@ -30,7 +30,7 @@ export default function RootLayout({ children }) {
           enableSystem
           disableTransitionOnChange>
           <ReduxProvider>
-            <Welcome />
+            {/* <Welcome /> */}
             <Navbar />
             <ScrollToTop />
             <DashboardLink />
