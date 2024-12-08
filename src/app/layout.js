@@ -30,7 +30,7 @@ export default function RootLayout({ children }) {
           enableSystem
           disableTransitionOnChange>
           <ReduxProvider>
-            {/* <Welcome /> */}
+            <Welcome />
             <Navbar />
             <ScrollToTop />
             <DashboardLink />
