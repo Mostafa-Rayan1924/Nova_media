@@ -11,7 +11,6 @@ import { useEffect } from "react";
 import { getBanners } from "@/store/HomeSlices/bannerSlice";
 const Hero = () => {
   let { banners, error, loading } = useSelector((state) => state.banners);
-
   let dispatch = useDispatch();
   useEffect(() => {
     dispatch(getBanners());
@@ -32,13 +31,23 @@ const Hero = () => {
         )}
         {banners.map((banner, index) => (
           <SwiperSlide key={index}>
-            <Image
-              alt={banner?.name}
-              src={banner?.image}
-              layout="fill"
-              objectFit="fill"
-              priority={index === 0}
-            />
+            {banner?.image?.includes("image") ? (
+              <Image
+                alt={banner?.name}
+                src={banner?.image}
+                layout="fill"
+                objectFit="fill"
+                priority={index === 0}
+              />
+            ) : banner?.image?.includes("video") ? (
+              <video
+                src={banner?.image}
+                className="object-fill"
+                autoPlay
+                muted
+                loop
+              />
+            ) : null}
           </SwiperSlide>
         ))}
       </Swiper>

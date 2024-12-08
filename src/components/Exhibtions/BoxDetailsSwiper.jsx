@@ -14,6 +14,7 @@ import { Share2 } from "lucide-react";
 
 const BoxDetailsSwiper = ({ data }) => {
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
+
   const handleShare = async () => {
     if (navigator.share) {
       try {
@@ -28,6 +29,7 @@ const BoxDetailsSwiper = ({ data }) => {
       alert("مشاركة غير مدعومة على هذا الجهاز");
     }
   };
+
   return (
     <div>
       <Swiper
@@ -48,7 +50,21 @@ const BoxDetailsSwiper = ({ data }) => {
                 className="absolute top-4 grid place-items-center left-8 hover:text-primary duration-300 z-20 cursor-pointer font-bold text-white bg-black/60 backdrop-blur-md rounded-3xl py-1 px-2">
                 <Share2 className="size-4 sm:size-6" />
               </div>
-              <img src={item} />
+              {item?.includes("video") ? (
+                <video
+                  src={item}
+                  className="w-full h-[300px] object-cover rounded-lg"
+                  autoPlay
+                  loop
+                  muted
+                />
+              ) : (
+                <img
+                  src={item}
+                  alt={`media-${index}`}
+                  className="w-full h-[300px] object-cover rounded-lg"
+                />
+              )}
             </SwiperSlide>
           );
         })}
@@ -64,11 +80,21 @@ const BoxDetailsSwiper = ({ data }) => {
         className="mySwiperEx">
         {data?.media.map((item, index) => {
           return (
-            <>
-              <SwiperSlide key={index}>
-                <img src={item} />
-              </SwiperSlide>
-            </>
+            <SwiperSlide key={index}>
+              {item?.includes("video") ? (
+                <video
+                  src={item}
+                  className="w-full h-[100px] object-cover rounded-lg"
+                  muted
+                />
+              ) : (
+                <img
+                  src={item}
+                  alt={`media-thumb-${index}`}
+                  className="w-full h-[100px] object-cover rounded-lg"
+                />
+              )}
+            </SwiperSlide>
           );
         })}
       </Swiper>

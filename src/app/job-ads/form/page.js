@@ -106,6 +106,9 @@ const Form = () => {
               type="file"
               name="cv"
             />
+            <h2 className="text-sm  block mx-auto font-bold w-fit p-1 text-center bg-accent text-foreground">
+              يفضل ان يكون الملف pdf
+            </h2>
             <Error formik={formik} nameOfField="cv" />
           </div>
         </div>

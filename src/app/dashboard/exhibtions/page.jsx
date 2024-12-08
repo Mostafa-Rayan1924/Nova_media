@@ -5,19 +5,20 @@ import { useState } from "react";
 import { useFormik } from "formik";
 import { useDispatch, useSelector } from "react-redux";
 import Error from "@/components/validations/Error";
-import Loading from "@/app/loading";
 import { Loader2 } from "lucide-react";
 import { BtnsFilter } from "@/components/constants/BtnsFilterInExh";
 import { addExhFunc } from "@/store/DashboardSlices/addExh";
 import { addExh } from "@/components/validations/ValidationSchema";
+
 const Exhibtions = () => {
-  let router = useRouter();
-  let { user } = useSelector((state) => state.login);
-  let { loading } = useSelector((state) => state.addExh);
-  const [previewImages, setPreviewImages] = useState([]);
+  const router = useRouter();
+  const { user } = useSelector((state) => state.login);
+  const { loading } = useSelector((state) => state.addExh);
+  const [previewMedia, setPreviewMedia] = useState([]);
+  const dispatch = useDispatch();
+
   if (user?.userData?.role !== "ادارة") router.push("/");
-  let dispatch = useDispatch();
-  if (user?.userData?.role !== "ادارة") router.push("/");
+
   const formik = useFormik({
     initialValues: {
       name: "",
@@ -39,15 +40,20 @@ const Exhibtions = () => {
       }
       await dispatch(addExhFunc(data));
       formik.resetForm();
-      setPreviewImages([]);
+      setPreviewMedia([]);
     },
   });
+
   // Handle File Change
   const handleFileChange = (event) => {
     const files = [...event.target.files];
     formik.setFieldValue("media", files);
-    const previews = files.map((file) => URL.createObjectURL(file));
-    setPreviewImages(previews);
+    const mediaPreviews = files.map((file) => ({
+      url: URL.createObjectURL(file),
+      type: file.type.split("/")[0],
+    }));
+
+    setPreviewMedia(mediaPreviews);
   };
 
   return (
@@ -121,36 +127,49 @@ const Exhibtions = () => {
           />
         </div>
         <Error formik={formik} nameOfField={"description"} />
-
-        <div className="flex flex-col items-start  sm:flex-row sm:items-center gap-4 mb-4">
-          <label className="min-w-[120px]">صور الخدمة</label>
+        <div className="flex flex-col items-start sm:flex-row sm:items-center gap-4 mb-4">
+          <label className="min-w-[120px]">صور وفيديوهات المعرض</label>
           <input
-            className="border border-border outline-none text-sm  w-full  rounded-md p-2"
+            className="border border-border outline-none text-sm w-full rounded-md p-2"
             type="file"
             multiple
+            accept="image/*,video/*"
             onChange={handleFileChange}
-            placeholder="اضف صور الخدمة"
-            name="media"
           />
         </div>
         <Error formik={formik} nameOfField={"media"} />
 
-        {previewImages.length > 0 && (
-          <div className="flex gap-4 items-center justify-center flex-wrap">
-            {previewImages.map((src, index) => (
-              <img
-                key={index}
-                src={src}
-                alt={`Preview ${index}`}
-                className="size-32 border border-border object-cover rounded"
-              />
-            ))}
+        {/* Preview Section */}
+        {previewMedia.length > 0 && (
+          <div className="flex flex-wrap gap-4 items-center justify-center">
+            {previewMedia.map((media, index) => {
+              if (media.type === "image") {
+                return (
+                  <img
+                    key={index}
+                    src={media.url}
+                    alt={`Preview ${index}`}
+                    className="size-32 border border-border object-cover rounded"
+                  />
+                );
+              } else if (media.type === "video") {
+                return (
+                  <video
+                    key={index}
+                    src={media.url}
+                    controls
+                    className="size-32 border border-border rounded"
+                  />
+                );
+              }
+            })}
           </div>
         )}
+
         <button
           className={`${
-            loading ? "opacity-50  pointer-events-none" : "opacity-100"
-          } mx-auto block bg-green-500 text-white mt-10 rounded-lg w-[120px] duration-200 hover:w-[140px] hover:bg-green-600  py-2`}>
+            loading ? "opacity-50 pointer-events-none" : "opacity-100"
+          } mx-auto block bg-green-500 text-white mt-10 rounded-lg w-[120px] duration-200 hover:w-[140px] hover:bg-green-600 py-2`}>
           {loading ? "جاري الاضافه" : "اضافه"}
         </button>
       </form>

@@ -31,6 +31,7 @@ const InfoBox = ({ data }) => {
         localStorage.setItem(`like_${data?._id}`, newLikeStatus);
       }
 
+      // استدعاء API لتحديث الإعجاب في الخادم
       try {
         let headers = {
           Authorization: `Bearer ${user?.token}`,

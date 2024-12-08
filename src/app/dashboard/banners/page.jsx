@@ -48,13 +48,24 @@ const BannersDashboard = () => {
             <div
               key={index}
               className="relative border border-border rounded-lg">
-              <Image
-                src={item?.image}
-                alt={item?.name}
-                width={400}
-                height={400}
-                className="w-full h-[250px] object-fill rounded-lg"
-              />
+              {item?.image?.includes("image") ? (
+                <Image
+                  src={item?.image}
+                  alt={item?.name}
+                  width={400}
+                  height={400}
+                  className="w-full h-[250px] object-fill rounded-lg"
+                />
+              ) : item?.image?.includes("video") ? (
+                <video
+                  src={item?.image}
+                  className="w-full h-[250px] object-fill rounded-lg "
+                  autoPlay
+                  loop
+                  muted
+                />
+              ) : null}
+
               <div
                 onClick={() => handleDelete(item._id)}
                 className="absolute top-4 hover:text-red-600 duration-300 z-10 cursor-pointer font-bold left-4 text-white bg-black/60 backdrop-blur-md  rounded-3xl py-1 px-2">

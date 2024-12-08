@@ -4,7 +4,7 @@ import { getFilter } from "@/store/ExhibthionsSlice/FilterSlice";
 import { motion } from "framer-motion";
 import { CircleArrowLeft, Loader2, Trash2 } from "lucide-react";
 import Link from "next/link";
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 const ExhibtionBox = ({ item, active }) => {
@@ -12,6 +12,10 @@ const ExhibtionBox = ({ item, active }) => {
   let { isLoading } = useSelector((state) => state.deleteExh);
   let dispatch = useDispatch();
   let [id, setId] = useState(null);
+  let image = useMemo(() => {
+    return item?.media.find((mediaItem) => mediaItem.includes("image"));
+  }, [item?.media]);
+
   let handleDel = async (id) => {
     let confirm = window.confirm("هل انت متاكد من الحذف ");
     if (confirm) {
@@ -35,11 +39,7 @@ const ExhibtionBox = ({ item, active }) => {
         },
       }}
       className=" text-right bg-background relative  rounded-lg overflow-hidden duration-200 border border-border hover:shadow  ">
-      <img
-        src={item?.media[0]}
-        className="w-full h-[230px] object-fill"
-        alt=""
-      />
+      <img src={image} className="w-full h-[230px] object-fill" alt="" />
       {user?.userData?.role == "ادارة" && (
         <div
           onClick={() => {
@@ -60,6 +60,7 @@ const ExhibtionBox = ({ item, active }) => {
           {item?.description}
         </p>
         <div className="flex items-center justify-between ">
+          <h3 className="text-primary">{item?.mention}</h3>
           <Link
             href={`/exhibitions/${item?._id}`}
             className="flex items-center gap-1">
@@ -69,7 +70,6 @@ const ExhibtionBox = ({ item, active }) => {
             />
             المزيد
           </Link>
-          <h3 className="text-primary">{item?.mention}</h3>
         </div>
       </div>
     </motion.div>
