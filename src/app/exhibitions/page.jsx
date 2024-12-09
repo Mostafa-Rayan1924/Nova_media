@@ -1,6 +1,7 @@
 import ExhibtiosSection from "@/components/Exhibtions/ExhibtiosSection";
 import HeroSections from "@/components/reusable/HeroSections";
 import { ServerCogIcon } from "lucide-react";
+import Head from "next/head";
 export const metadata = {
   title: "نوفا ميديا - المعارض والمؤتمرات",
   description:
@@ -12,6 +13,19 @@ export const metadata = {
 const Exhibitions = () => {
   return (
     <main className="my-[100px]  space-y-20">
+      <Head>
+        {/* Google Site Verification */}
+        <meta
+          name="google-site-verification"
+          content="yRJxt4zBwj5HVHAibjsaEKY5jV3smdQTV7bZ6FHAyGI"
+        />
+
+        {/* Meta robots */}
+        <meta name="robots" content="index, follow" />
+
+        {/* Canonical Link */}
+        <link rel="canonical" href="https://novamedia-eg.com/exhibitions" />
+      </Head>
       <HeroSections
         title={"نوفا ميديا ترحب بكم"}
         spanTitle={"في صفحة المعارض"}

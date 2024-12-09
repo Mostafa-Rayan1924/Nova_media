@@ -23,6 +23,12 @@ export default function Home() {
           name="google-site-verification"
           content="yRJxt4zBwj5HVHAibjsaEKY5jV3smdQTV7bZ6FHAyGI"
         />
+
+        {/* Meta robots */}
+        <meta name="robots" content="index, follow" />
+
+        {/* Canonical Link */}
+        <link rel="canonical" href="https://novamedia-eg.com/" />
       </Head>
       <Hero />
       <About />

@@ -1,4 +1,5 @@
 import SiteAdSec from "@/components/Ads/SiteAdSec";
+import Head from "next/head";
 export const metadata = {
   title: "نوفا ميديا - عروض وخصومات حصرية",
   description:
@@ -10,6 +11,19 @@ export const metadata = {
 const SiteAd = () => {
   return (
     <main className="my-[140px] container  space-y-10">
+      <Head>
+        {/* Google Site Verification */}
+        <meta
+          name="google-site-verification"
+          content="yRJxt4zBwj5HVHAibjsaEKY5jV3smdQTV7bZ6FHAyGI"
+        />
+
+        {/* Meta robots */}
+        <meta name="robots" content="index, follow" />
+
+        {/* Canonical Link */}
+        <link rel="canonical" href="https://novamedia-eg.com/site-ads" />
+      </Head>
       <SiteAdSec />
     </main>
   );

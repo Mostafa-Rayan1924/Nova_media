@@ -1,6 +1,7 @@
 import HeroSections from "@/components/reusable/HeroSections";
 import TeamsSec from "@/components/Team/TeamsSec";
 import { Headset } from "lucide-react";
+import Head from "next/head";
 export const metadata = {
   title: "نوفا ميديا - فريق العمل",
   description:
@@ -12,6 +13,19 @@ export const metadata = {
 const Team = () => {
   return (
     <main className="my-[100px]  space-y-20">
+      <Head>
+        {/* Google Site Verification */}
+        <meta
+          name="google-site-verification"
+          content="yRJxt4zBwj5HVHAibjsaEKY5jV3smdQTV7bZ6FHAyGI"
+        />
+
+        {/* Meta robots */}
+        <meta name="robots" content="index, follow" />
+
+        {/* Canonical Link */}
+        <link rel="canonical" href="https://novamedia-eg.com/team" />
+      </Head>
       <HeroSections
         title={"نوفا ميديا ترحب بكم"}
         spanTitle={"في صفحة فريق العمل"}

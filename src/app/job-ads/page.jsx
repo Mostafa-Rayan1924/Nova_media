@@ -1,4 +1,5 @@
 import JobAdsSec from "@/components/Ads/JobAdsSec";
+import Head from "next/head";
 export const metadata = {
   title: "نوفا ميديا - إعلانات الوظائف",
   description:
@@ -10,6 +11,19 @@ export const metadata = {
 const JobAd = () => {
   return (
     <main className="my-[140px] container  ">
+      <Head>
+        {/* Google Site Verification */}
+        <meta
+          name="google-site-verification"
+          content="yRJxt4zBwj5HVHAibjsaEKY5jV3smdQTV7bZ6FHAyGI"
+        />
+
+        {/* Meta robots */}
+        <meta name="robots" content="index, follow" />
+
+        {/* Canonical Link */}
+        <link rel="canonical" href="https://novamedia-eg.com/job-ads" />
+      </Head>
       <JobAdsSec />
     </main>
   );
