@@ -1,15 +1,16 @@
 export async function GET() {
-  const baseUrl = "https://novamedia-eg.com"; // ضع رابط موقعك الأساسي
+  const baseUrl = "https://novamedia-eg.com"; // رابط موقعك الأساسي
 
   // الصفحات الثابتة
   const staticPages = [
-    "services", // الصفحة الرئيسية
-    "market", // صفحة "عن الشركة"
-    "exhibitions", // صفحة "المعارض"
-    "contactus", // صفحة "اتصل بنا"
-    "team", // صفحة " فريق العمل"
-    "job-ads", // "صفحة اعلان الوظائف"
-    "site-ads", // "صفحة اعلان الوظائف"
+    "", // الصفحة الرئيسية
+    "services",
+    "market",
+    "exhibitions",
+    "contactus",
+    "team",
+    "job-ads",
+    "site-ads",
   ];
 
   // إنشاء خريطة الموقع بصيغة XML
