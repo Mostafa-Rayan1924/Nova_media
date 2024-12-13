@@ -1,7 +1,6 @@
 import { baseUrl } from "@/components/constants/api";
 import axios from "axios";
 import toast from "react-hot-toast";
-
 const { createSlice, createAsyncThunk } = require("@reduxjs/toolkit");
 export let updateJobProFunc = createAsyncThunk(
   "updateJobPro/updateJobProFunc",
@@ -9,15 +8,11 @@ export let updateJobProFunc = createAsyncThunk(
     let state = getState();
     let token = state.login?.user?.token;
     try {
-      let res = await axios.patch(
-        `${baseUrl}nova/api/team/update/${id}`,
-        data,
-        {
-          headers: {
-            authorization: `Bearer ${token}`,
-          },
-        }
-      );
+      let res = await axios.patch(`${baseUrl}nova/api/job/update/${id}`, data, {
+        headers: {
+          authorization: `Bearer ${token}`,
+        },
+      });
       toast.success("تم التعديل بنجاح");
       return res.data;
     } catch (error) {

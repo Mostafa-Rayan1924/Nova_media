@@ -24,7 +24,6 @@ const JobAds = () => {
   if (user?.userData?.role !== "ادارة") router.push("/");
   let dispatch = useDispatch();
   const id = searchParams.get("id");
-
   const formik = useFormik({
     initialValues: {
       jobTitle: "",
@@ -55,11 +54,10 @@ const JobAds = () => {
           const { data } = await axios.get(
             `${baseUrl}nova/api/job/getone/${id}`
           );
-          console.log(data.data.doc);
           formik.setValues({
             jobTitle: data.data.doc.title,
             jobDesc: data.data.doc.description,
-            image: data.data.doc.image,
+            JobImg: data.data.doc.image,
           });
           setImgFile(data.data.doc.image);
           setLoadergetOne(false);

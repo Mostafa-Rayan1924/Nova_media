@@ -54,7 +54,6 @@ const SiteAd = () => {
           const { data } = await axios.get(
             `${baseUrl}nova/api/ad/getone/${id}`
           );
-          console.log(data.data.doc);
           formik.setValues({
             title: data.data.doc.title,
             description: data.data.doc.description,
