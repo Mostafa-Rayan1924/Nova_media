@@ -62,7 +62,7 @@ const LatestProBox = ({ project, index }) => {
             <h3 className="text-sm text-muted-foreground">Egypt, ismailia</h3>
           </div>
           <Image
-            src={"/whitelogo.png"}
+            src={"/logo.png"}
             width={50}
             height={50}
             className="rounded-full aspect-square object-fill"
@@ -96,10 +96,10 @@ const LatestProBox = ({ project, index }) => {
         <div className="flex items-center gap-2 flex-row-reverse">
           <Image
             src={project?.userImage ? project?.userImage : "/logo.png"}
-            className="rounded-full object-cover"
-            width={20}
+            className="rounded-full aspect-square object-fill"
+            width={25}
             alt="user-image"
-            height={20}
+            height={25}
           />
           <h2 className="capitalize text-muted-foreground text-sm">
             liked by <span className="text-foreground"> {project.name} </span>{" "}

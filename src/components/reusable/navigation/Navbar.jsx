@@ -45,14 +45,14 @@ const Navbar = () => {
         <div className="md:flex md:items-center md:gap-12">
           <Link href={"/"}>
             <Image
-              src={"/whitelogo.png"}
+              src={"/logo.png"}
               width={75}
               height={50}
               className="dark:hidden "
               alt="nova-media  logo"
             />
             <Image
-              src={"/logo.png"}
+              src={"/themeLogo.png"}
               width={75}
               height={50}
               className="hidden dark:flex"

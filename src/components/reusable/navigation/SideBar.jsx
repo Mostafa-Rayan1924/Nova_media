@@ -53,14 +53,14 @@ const SideBar = ({ setOpenNav }) => {
           {/* logo */}
           <div onClick={() => setOpenNav(false)} className="mr-10">
             <Image
-              src={"/whitelogo.png"}
+              src={"/logo.png"}
               width={75}
               height={50}
               className="dark:hidden"
               alt="nova-media  logo"
             />
             <Image
-              src={"/logo.png"}
+              src={"/themeLogo.png"}
               width={75}
               height={50}
               className="hidden dark:flex"
