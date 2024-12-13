@@ -1,20 +1,28 @@
 "use client";
+import { baseUrl } from "@/components/constants/api";
 import MainTitle from "@/components/reusable/MainTitle";
 import Error from "@/components/validations/Error";
 import { siteAd } from "@/components/validations/ValidationSchema";
 import { addAdFunc } from "@/store/DashboardSlices/addAd";
+import { updatedSiteAdProFunc } from "@/store/DashboardSlices/updatedSiteAd";
+import axios from "axios";
 import { useFormik } from "formik";
-import { Upload } from "lucide-react";
-import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { Loader2, Upload } from "lucide-react";
+import { useRouter, useSearchParams } from "next/navigation";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 const SiteAd = () => {
   let [imgFile, setImgFile] = useState(null);
   let { loading } = useSelector((state) => state.addAd);
+  let { Loading } = useSelector((state) => state.updatedAd);
   let router = useRouter();
   let { user } = useSelector((state) => state.login);
+  const searchParams = useSearchParams();
+  let [loadergetOne, setLoadergetOne] = useState(false);
   if (user?.userData?.role !== "ادارة") router.push("/");
+  const id = searchParams.get("id");
+
   let dispatch = useDispatch();
   const formik = useFormik({
     initialValues: {
@@ -29,11 +37,46 @@ const SiteAd = () => {
       data.append("title", values.title);
       data.append("description", values.description);
       data.append("media", values.media);
-      await dispatch(addAdFunc(data));
+      if (id) {
+        await dispatch(updatedSiteAdProFunc({ id, data }));
+      } else {
+        await dispatch(addAdFunc(data));
+      }
       formik.resetForm();
       setImgFile(null);
     },
   });
+  useEffect(() => {
+    if (id) {
+      const fetchData = async () => {
+        setLoadergetOne(true);
+        try {
+          const { data } = await axios.get(
+            `${baseUrl}nova/api/ad/getone/${id}`
+          );
+          console.log(data.data.doc);
+          formik.setValues({
+            title: data.data.doc.title,
+            description: data.data.doc.description,
+            media: data.data.doc.media,
+          });
+          setImgFile(data.data.doc.media);
+          setLoadergetOne(false);
+        } catch (error) {
+          console.log(error);
+          setLoadergetOne(false);
+        }
+      };
+      fetchData();
+    }
+  }, [id]);
+  if (loadergetOne) {
+    return (
+      <div className="fixed top-0 left-0 w-full h-full grid place-items-center bg-black/60 z-[100]">
+        <Loader2 size={50} className="text-primary animate-spin" />
+      </div>
+    );
+  }
   return (
     <section className="mt-[160px] mb-[50px] container">
       <MainTitle
@@ -104,9 +147,11 @@ const SiteAd = () => {
 
         <button
           className={`${
-            loading ? "opacity-50 pointer-events-none" : "opacity-100"
-          } mx-auto block bg-green-500 text-white rounded-lg w-[120px] duration-200 hover:w-[140px] hover:bg-green-600  py-2`}>
-          {loading ? "جاري الاضافه" : "اضافه"}
+            loading || Loading
+              ? "opacity-50 pointer-events-none"
+              : "opacity-100"
+          } mx-auto block bg-green-500 mt-10 text-white rounded-lg w-[120px] duration-200 hover:w-[140px] hover:bg-green-600  py-2`}>
+          {loading || Loading ? "جاري الحفظ" : id ? "تعديل" : "إضافة"}
         </button>
       </form>
     </section>

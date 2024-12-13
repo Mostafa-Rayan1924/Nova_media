@@ -4,6 +4,7 @@ import {
   CircleX,
   Loader2,
   MailCheck,
+  Pen,
   Phone,
 } from "lucide-react";
 import { motion } from "framer-motion";
@@ -12,6 +13,7 @@ import { useState } from "react";
 import { delTeamFunc } from "@/store/DashboardSlices/removeTeam";
 import { useDispatch, useSelector } from "react-redux";
 import { getTeam } from "@/store/TeamSlices/teamSlice";
+import Link from "next/link";
 const TeamPersonBox = ({ person, index }) => {
   let pathname = usePathname();
   let [delId, setDelId] = useState(null);
@@ -87,10 +89,15 @@ const TeamPersonBox = ({ person, index }) => {
         </h6>
       </div>
       {pathname === "/dashboard/team" && (
-        <CircleX
-          onClick={() => handleDelete(person?._id)}
-          className="text-red-500 absolute bottom-4 left-4 cursor-pointer size-8 sm:size-6"
-        />
+        <div className="flex items-center gap-2">
+          <CircleX
+            onClick={() => handleDelete(person?._id)}
+            className="text-red-500 absolute bottom-4 left-4 cursor-pointer size-6"
+          />
+          <Link href={`/dashboard/team/add?id=${person?._id}`}>
+            <Pen className="text-blue-500 absolute bottom-4 left-12 cursor-pointer size-6" />
+          </Link>
+        </div>
       )}
     </motion.div>
   );

@@ -1,7 +1,7 @@
 "use client";
 import { getAd } from "@/store/AdsSlices/getAdSlice";
 import { delAdFunc } from "@/store/DashboardSlices/RemoveAd";
-import { ArrowLeftCircle, Calendar, Loader2, Trash2 } from "lucide-react";
+import { ArrowLeftCircle, Calendar, Loader2, Pen, Trash2 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
@@ -31,12 +31,19 @@ const SiteAdBox = ({ item }) => {
         </div>
       )}
       {user?.userData?.role == "ادارة" && (
-        <div
-          onClick={() => {
-            handleDel(item._id);
-          }}
-          className="absolute top-4 hover:text-red-600 duration-300 z-20 cursor-pointer font-bold left-4  text-white bg-black/60 backdrop-blur-md  rounded-3xl py-1 px-2">
-          <Trash2 className="size-4 sm:size-6" />
+        <div>
+          <div
+            onClick={() => {
+              handleDel(item._id);
+            }}
+            className="absolute top-4 hover:text-red-600 duration-300 z-20 cursor-pointer font-bold left-4  text-white bg-black/60 backdrop-blur-md  rounded-3xl py-1 px-2">
+            <Trash2 className="size-4 sm:size-6" />
+          </div>
+          <Link
+            className="bg-black/50 py-1 px-2 rounded-full grid place-items-center absolute top-4 left-16"
+            href={`/dashboard/site-ads?id=${item?._id}`}>
+            <Pen className="text-white " />
+          </Link>
         </div>
       )}
 

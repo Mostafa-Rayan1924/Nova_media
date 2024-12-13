@@ -4,7 +4,6 @@ import axios from "axios";
 export let getJob = createAsyncThunk("ads/getJob", async () => {
   try {
     let { data } = await axios.get(`${baseUrl}nova/api/job/getall`);
-    console.log(data);
     return data.data;
   } catch (error) {
     throw new Error(error.message);

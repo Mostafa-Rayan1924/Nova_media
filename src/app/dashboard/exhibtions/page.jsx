@@ -1,7 +1,7 @@
 "use client";
 import MainTitle from "@/components/reusable/MainTitle";
-import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useRouter, useSearchParams } from "next/navigation";
+import { useEffect, useState } from "react";
 import { useFormik } from "formik";
 import { useDispatch, useSelector } from "react-redux";
 import Error from "@/components/validations/Error";
@@ -9,16 +9,50 @@ import { Loader2 } from "lucide-react";
 import { BtnsFilter } from "@/components/constants/BtnsFilterInExh";
 import { addExhFunc } from "@/store/DashboardSlices/addExh";
 import { addExh } from "@/components/validations/ValidationSchema";
+import { baseUrl } from "@/components/constants/api";
+import axios from "axios";
+import { editExhFunc } from "@/store/DashboardSlices/updateEx";
 
 const Exhibtions = () => {
   const router = useRouter();
+  const searchParams = useSearchParams();
+  const id = searchParams.get("id");
   const { user } = useSelector((state) => state.login);
   const { loading } = useSelector((state) => state.addExh);
+  const { Isloading } = useSelector((state) => state.editExh);
+  let [loadergetOne, setLoadergetOne] = useState(false);
   const [previewMedia, setPreviewMedia] = useState([]);
   const dispatch = useDispatch();
-
   if (user?.userData?.role !== "ادارة") router.push("/");
+  // Fetch data by ID
+  useEffect(() => {
+    const fetchData = async () => {
+      setLoadergetOne(true);
+      try {
+        const { data } = await axios.get(
+          `${baseUrl}nova/api/exhibition/getone/${id}`
+        );
 
+        formik.setValues({
+          name: data.data.doc.name,
+          mention: data.data.doc.mention,
+          description: data.data.doc.description,
+          department: data.data.doc.department,
+          media: data?.data?.doc?.media,
+        });
+        const mediaPreviews = data?.data?.doc?.media.map((file) => ({
+          url: file,
+          type: file.toString().includes("image") ? "image" : "video",
+        }));
+        setPreviewMedia(mediaPreviews);
+        setLoadergetOne(false);
+      } catch (error) {
+        setLoadergetOne(false);
+        console.log(error);
+      }
+    };
+    if (id) fetchData();
+  }, [id]);
   const formik = useFormik({
     initialValues: {
       name: "",
@@ -38,21 +72,31 @@ const Exhibtions = () => {
       for (let i = 0; i < values.media.length; i++) {
         data.append("media", values.media[i]);
       }
-      await dispatch(addExhFunc(data));
+      if (id) {
+        await dispatch(editExhFunc({ id, data }));
+      } else {
+        await dispatch(addExhFunc(data));
+      }
       formik.resetForm();
       setPreviewMedia([]);
     },
   });
-
+  if (loadergetOne) {
+    return (
+      <div className="fixed top-0 left-0 w-full h-full grid place-items-center bg-black/60 z-[100]">
+        <Loader2 size={50} className="text-primary animate-spin" />
+      </div>
+    );
+  }
   // Handle File Change
   const handleFileChange = (event) => {
     const files = [...event.target.files];
     formik.setFieldValue("media", files);
     const mediaPreviews = files.map((file) => ({
       url: URL.createObjectURL(file),
-      type: file.type.split("/")[0],
+      type: file?.type?.split("/")[0],
     }));
-
+    console.log(mediaPreviews);
     setPreviewMedia(mediaPreviews);
   };
 
@@ -143,7 +187,7 @@ const Exhibtions = () => {
         {previewMedia.length > 0 && (
           <div className="flex flex-wrap gap-4 items-center justify-center">
             {previewMedia.map((media, index) => {
-              if (media.type === "image") {
+              if (media?.type === "image") {
                 return (
                   <img
                     key={index}
@@ -152,7 +196,7 @@ const Exhibtions = () => {
                     className="size-32 border border-border object-cover rounded"
                   />
                 );
-              } else if (media.type === "video") {
+              } else if (media?.type === "video") {
                 return (
                   <video
                     key={index}
@@ -161,6 +205,8 @@ const Exhibtions = () => {
                     className="size-32 border border-border rounded"
                   />
                 );
+              } else {
+                return <p key={index}>نوع الوسائط غير مدعوم</p>;
               }
             })}
           </div>
@@ -168,9 +214,17 @@ const Exhibtions = () => {
 
         <button
           className={`${
-            loading ? "opacity-50 pointer-events-none" : "opacity-100"
+            loading || Isloading
+              ? "opacity-50 pointer-events-none"
+              : "opacity-100"
           } mx-auto block bg-green-500 text-white mt-10 rounded-lg w-[120px] duration-200 hover:w-[140px] hover:bg-green-600 py-2`}>
-          {loading ? "جاري الاضافه" : "اضافه"}
+          {loading
+            ? "جاري الاضافه"
+            : Isloading
+            ? "جاري التعديل"
+            : id
+            ? "تعديل"
+            : "اضافه"}
         </button>
       </form>
     </section>

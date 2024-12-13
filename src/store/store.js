@@ -30,6 +30,10 @@ import getAdSlice from "./AdsSlices/getAdSlice";
 import addAdSlice from "./DashboardSlices/addAd";
 import delAdSlice from "./DashboardSlices/RemoveAd";
 import getOneAdSlice from "./AdsSlices/getOneAd";
+import updateTeamProSlice from "./DashboardSlices/updateTeam";
+import editExhSlice from "./DashboardSlices/updateEx";
+import updateJobProSlice from "./DashboardSlices/updateJob";
+import updatedSiteAdProSlice from "./DashboardSlices/updatedSiteAd";
 
 export let store = configureStore({
   reducer: {
@@ -56,6 +60,7 @@ export let store = configureStore({
     // end service
     // team reducer
     teamData: teamSlice,
+    updateTeam: updateTeamProSlice,
     delTeam: delTeamSlice,
     addTeam: addTeamProSlice,
     // end team
@@ -65,6 +70,7 @@ export let store = configureStore({
     addComment: addCommentSlice,
     deleteExh: deleteExhProSlice,
     addExh: addExhSlice,
+    editExh: editExhSlice,
     // end exhibtions
     // ads
     getJobs: getJobSlice,
@@ -75,6 +81,8 @@ export let store = configureStore({
     addAd: addAdSlice,
     removeAd: delAdSlice,
     getOneAd: getOneAdSlice,
+    updateJob: updateJobProSlice,
+    updatedAd: updatedSiteAdProSlice,
     // end ads
   },
 });

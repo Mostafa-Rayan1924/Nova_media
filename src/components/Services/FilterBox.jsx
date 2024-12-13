@@ -15,7 +15,7 @@ const FilterBox = ({ item, index, active, setActive }) => {
       transition={{ duration: 0.4, delay: index * 0.2 }}
       className={` w-full md:h-full border-[3px] p-2 relative rounded-lg  ${
         active === item._id ? "border-primary" : "border-border"
-      } hover:border-primary transition-all duration-300 cursor-pointer  flex flex-col gap-2 justify-center items-center`}>
+      } hover:border-primary transition-all  duration-300 cursor-pointer  flex flex-col gap-2 justify-center items-center`}>
       <Image
         src={item?.image}
         width={100}

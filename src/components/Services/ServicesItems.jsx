@@ -18,6 +18,9 @@ const ServicesItems = () => {
       return "6734eb12cf3720014ac84e62";
     }
   });
+  useEffect(() => {
+    setActive(Array.from(id)[0]?.join(""));
+  }, [id]);
   const dispatch = useDispatch();
   const { data, loading, error } = useSelector((state) => state.filterCatsById);
   useEffect(() => {
@@ -27,7 +30,7 @@ const ServicesItems = () => {
         block: "start",
       });
     }
-  }, []);
+  }, [id]);
   useEffect(() => {
     dispatch(getCategoryById(active));
   }, [active]);

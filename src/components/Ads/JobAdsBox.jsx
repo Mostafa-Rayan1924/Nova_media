@@ -1,5 +1,5 @@
 "use client";
-import { Loader2, Share2, Trash2 } from "lucide-react";
+import { Loader2, Pen, Share2, Trash2 } from "lucide-react";
 import { socialLinks } from "../constants/SocialLinks";
 import Link from "next/link";
 import { useState } from "react";
@@ -54,13 +54,15 @@ const JobAdsBox = ({ item }) => {
               {item?.title}
             </h3>
           </div>
-          <div className="flex  flex-wrap items-start sm:items-center gap-4 justify-between">
-            <h2 className="font-semibold sm:min-w-fit  text-sm">
-              وصف الوظيفة:
-            </h2>
-            <p className="text-muted-foreground text-center font-semibold  sm:flex-1 text-sm leading-relaxed">
-              {item?.description}
-            </p>
+          <div className="flex flex-wrap items-start gap-4 justify-between">
+            <h2 className="font-semibold sm:min-w-fit text-sm">وصف الوظيفة:</h2>
+            <div className="text-muted-foreground sm:flex-1 text-sm leading-relaxed">
+              {item?.description?.split("\n").map((line, index) => (
+                <p key={index} className="mb-2">
+                  {line}
+                </p>
+              ))}
+            </div>
           </div>
           <div className="flex  flex-wrap items-center gap-4 justify-between">
             <h2 className="font-semibold sm:min-w-fit text-sm">
@@ -94,12 +96,19 @@ const JobAdsBox = ({ item }) => {
       </div>
       <div className="flex-1 h-full relative sm:sticky sm:top-0">
         {user?.userData?.role == "ادارة" && (
-          <div
-            onClick={() => {
-              handleDel(item._id);
-            }}
-            className="absolute top-4 hover:text-red-600 duration-300 z-20 cursor-pointer font-bold left-4  text-white bg-black/60 backdrop-blur-md  rounded-3xl py-1 px-2">
-            <Trash2 className="size-4 sm:size-6" />
+          <div>
+            <div
+              onClick={() => {
+                handleDel(item._id);
+              }}
+              className="absolute top-4 hover:text-red-600 duration-300 z-20 cursor-pointer font-bold left-4  text-white bg-black/60 backdrop-blur-md  rounded-3xl py-1 px-2">
+              <Trash2 className="size-4 sm:size-6" />
+            </div>
+            <Link
+              className="bg-black/50 py-1 px-2 rounded-full grid place-items-center absolute top-4 left-16"
+              href={`/dashboard/job-ads?id=${item?._id}`}>
+              <Pen className="text-white    " />
+            </Link>
           </div>
         )}
         <div

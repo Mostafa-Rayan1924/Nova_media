@@ -2,7 +2,7 @@
 import { deleteExhProFunc } from "@/store/DashboardSlices/deleteExh";
 import { getFilter } from "@/store/ExhibthionsSlice/FilterSlice";
 import { motion } from "framer-motion";
-import { CircleArrowLeft, Loader2, Trash2 } from "lucide-react";
+import { CircleArrowLeft, Loader2, Pen, Trash2 } from "lucide-react";
 import Link from "next/link";
 import { useMemo, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -41,12 +41,19 @@ const ExhibtionBox = ({ item, active }) => {
       className=" text-right bg-background relative  rounded-lg overflow-hidden duration-200 border border-border hover:shadow  ">
       <img src={image} className="w-full h-[230px] object-fill" alt="" />
       {user?.userData?.role == "ادارة" && (
-        <div
-          onClick={() => {
-            handleDel(item._id);
-          }}
-          className="absolute top-4 hover:text-red-600 duration-300 z-20 cursor-pointer font-bold right-4 text-white bg-black/60 backdrop-blur-md  rounded-3xl py-1 px-2">
-          <Trash2 className="size-4 sm:size-6" />
+        <div>
+          <div
+            onClick={() => {
+              handleDel(item._id);
+            }}
+            className="absolute top-4 hover:text-red-600 duration-300 z-20 cursor-pointer font-bold right-4 text-white bg-black/60 backdrop-blur-md  rounded-3xl py-1 px-2">
+            <Trash2 className="size-4 sm:size-6" />
+          </div>
+          <Link
+            className="bg-black/50 py-1 px-2 rounded-full grid place-items-center absolute top-4 right-16"
+            href={`/dashboard/exhibtions?id=${item?._id}`}>
+            <Pen className="text-white    " />
+          </Link>
         </div>
       )}
       {isLoading && id == item._id && (

@@ -1,21 +1,31 @@
 "use client";
 import MainTitle from "@/components/reusable/MainTitle";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useFormik } from "formik";
-import { addProject, addTeam } from "@/components/validations/ValidationSchema";
+import { addTeam } from "@/components/validations/ValidationSchema";
 import Error from "@/components/validations/Error";
-import { Upload } from "lucide-react";
+import { Loader2, Upload } from "lucide-react";
 import { useDispatch, useSelector } from "react-redux";
-import { addInstaProFunc } from "@/store/DashboardSlices/addInstaPro";
 import { addTeamProFunc } from "@/store/DashboardSlices/addTeam";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
+import { baseUrl } from "@/components/constants/api";
+import axios from "axios";
+import { updateTeamProFunc } from "@/store/DashboardSlices/updateTeam";
 const page = () => {
   const [imgFile, setImgFile] = useState(null);
-  let { isLoading } = useSelector((state) => state.addTeam);
-  let dispatch = useDispatch();
-  let router = useRouter();
-  let { user } = useSelector((state) => state.login);
-  if (user?.userData?.role !== "ادارة") router.push("/");
+  const dispatch = useDispatch();
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  const { isLoading } = useSelector((state) => state.addTeam);
+  const { Loading } = useSelector((state) => state.updateTeam);
+  let [loadergetOne, setLoadergetOne] = useState(false);
+  const { user } = useSelector((state) => state.login);
+  // إذا لم يكن المستخدم إدارياً، أعد توجيهه
+  useEffect(() => {
+    if (user?.userData?.role !== "ادارة") router.push("/");
+  }, [user, router]);
+
+  const id = searchParams.get("id");
   const formik = useFormik({
     initialValues: {
       name: "",
@@ -25,7 +35,6 @@ const page = () => {
       department: "",
       image: "",
     },
-    validateOnBlur: true,
     validationSchema: addTeam,
     onSubmit: async (values) => {
       let data = new FormData();
@@ -35,11 +44,44 @@ const page = () => {
       data.append("phone", values.phone);
       data.append("qualification", values.qualification);
       data.append("department", values.department);
-      await dispatch(addTeamProFunc(data));
+      if (id) {
+        await dispatch(updateTeamProFunc({ id, data }));
+      } else {
+        await dispatch(addTeamProFunc(data));
+      }
       formik.resetForm();
       setImgFile(null);
     },
   });
+
+  // تحميل بيانات العنصر عند التعديل
+  useEffect(() => {
+    if (id) {
+      const fetchData = async () => {
+        setLoadergetOne(true);
+        try {
+          const { data } = await axios.get(
+            `${baseUrl}nova/api/team/getone/${id}`
+          );
+          console.log(data.data.doc);
+          formik.setValues({
+            name: data.data.doc.name,
+            email: data.data.doc.email,
+            phone: data.data.doc.phone,
+            qualification: data.data.doc.qualification,
+            department: data.data.doc.department,
+            image: data.data.doc.image,
+          });
+          setImgFile(data.data.doc.image);
+          setLoadergetOne(false);
+        } catch (error) {
+          console.log(error);
+          setLoadergetOne(false);
+        }
+      };
+      fetchData();
+    }
+  }, [id]);
 
   const handleImageChange = (event) => {
     const file = event.target.files[0];
@@ -48,7 +90,13 @@ const page = () => {
       formik.setFieldValue("image", file);
     }
   };
-
+  if (loadergetOne) {
+    return (
+      <div className="fixed top-0 left-0 w-full h-full grid place-items-center bg-black/60 z-[100]">
+        <Loader2 size={50} className="text-primary animate-spin" />
+      </div>
+    );
+  }
   return (
     <section className="mt-[160px] mb-[50px] container  ">
       <MainTitle
@@ -160,9 +208,11 @@ const page = () => {
 
         <button
           className={`${
-            isLoading ? "opacity-50 pointer-events-none" : "opacity-100"
+            isLoading || Loading
+              ? "opacity-50 pointer-events-none"
+              : "opacity-100"
           } mx-auto block bg-green-500 mt-10 text-white rounded-lg w-[120px] duration-200 hover:w-[140px] hover:bg-green-600  py-2`}>
-          {isLoading ? "جاري الاضافه" : "اضافه"}
+          {isLoading || Loading ? "جاري الحفظ" : id ? "تعديل" : "إضافة"}
         </button>
       </form>
     </section>
