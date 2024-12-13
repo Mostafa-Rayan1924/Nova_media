@@ -11,7 +11,7 @@ const Market = () => {
         />
         <meta
           property="og:image"
-          content="https://novamedia-eg.com/HeadLogo.png"
+          content="https://novamedia-eg.com/share.png"
         />
         <meta property="og:url" content="https://novamedia-eg.com/" />
 
