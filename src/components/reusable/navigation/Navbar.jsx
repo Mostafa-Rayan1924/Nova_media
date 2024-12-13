@@ -215,7 +215,7 @@ const Navbar = () => {
                       damping: 5,
                       stiffness: 320,
                     }}
-                    className="md:flex items-center hidden gap-2 py-2 px-6 bg-primary text-white rounded-lg ">
+                    className="md:flex items-center hidden gap-2 py-2 px-4 lg:px-6 bg-primary text-white rounded-lg ">
                     <CircleUserRound size={20} />
                     سجل الان
                   </motion.button>{" "}

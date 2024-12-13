@@ -30,7 +30,7 @@ export default function RootLayout({ children }) {
         <meta property="og:image" content="https://novamedia-eg.com/logo.png" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
-        <link rel="preload" as="image" href="/share2.png" />
+        <link rel="preload" as="image" href="/logo.png" />
         <link rel="icon" href="./favicon.ico" sizes="any" />
       </head>
       <body className={`${font.className} overflow-x-hidden`}>
