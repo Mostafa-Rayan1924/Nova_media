@@ -15,8 +15,11 @@ export const metadata = {
     "شركه نوفا ميديا للخدمات الدعايه والاعلان والطباعه الرقمية وتنظيم الفعاليات والمؤتمرات والمعارض ",
   icons: [
     {
-      url: "/favicon.ico",
-      href: "/favicon.ico",
+      url: "/HeadLogo.png",
+      href: "/HeadLogo.png",
+      sizes: "192x192",
+      type: "image/png",
+      rel: "icon",
     },
   ],
 };
