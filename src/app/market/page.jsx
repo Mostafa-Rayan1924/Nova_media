@@ -14,10 +14,8 @@ const Market = () => {
           content="https://novamedia-eg.com/share.png"
         />
         <meta property="og:url" content="https://novamedia-eg.com/" />
-
         {/* Meta robots */}
         <meta name="robots" content="index, follow" />
-
         {/* Canonical Link */}
         <link rel="canonical" href="https://novamedia-eg.com/market" />
       </Head>

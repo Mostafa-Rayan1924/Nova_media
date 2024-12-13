@@ -26,6 +26,9 @@ export default function Home() {
           property="og:image"
           content="https://novamedia-eg.com/share.png"
         />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+
         <meta property="og:url" content="https://novamedia-eg.com/" />
         <meta property="og:type" content="website" />
         <link rel="icon" href="./favicon.ico" sizes="any" />
