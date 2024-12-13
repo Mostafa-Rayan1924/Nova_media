@@ -22,10 +22,13 @@ export default function Home() {
           name="google-site-verification"
           content="yRJxt4zBwj5HVHAibjsaEKY5jV3smdQTV7bZ6FHAyGI"
         />
-        <meta property="og:image" content="https://novamedia-eg.com/logo.png" />
+        <meta
+          property="og:image"
+          content="https://novamedia-eg.com/HeadLogo.png"
+        />
         <meta property="og:url" content="https://novamedia-eg.com/" />
         <meta property="og:type" content="website" />
-        <link rel="icon" href="/app/favicon.ico" sizes="any" />
+        <link rel="icon" href="./favicon.ico" sizes="any" />
         {/* Meta robots */}
         <meta name="robots" content="index, follow" />
 

@@ -9,6 +9,11 @@ const Market = () => {
           name="google-site-verification"
           content="yRJxt4zBwj5HVHAibjsaEKY5jV3smdQTV7bZ6FHAyGI"
         />
+        <meta
+          property="og:image"
+          content="https://novamedia-eg.com/HeadLogo.png"
+        />
+        <meta property="og:url" content="https://novamedia-eg.com/" />
 
         {/* Meta robots */}
         <meta name="robots" content="index, follow" />
