@@ -26,6 +26,9 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html className="scroll-smooth" lang="ar">
+      <head>
+        <link rel="preload" as="image" href="/share2.png" />
+      </head>
       <body className={`${font.className} overflow-x-hidden`}>
         <ThemeProvider
           attribute="class"
