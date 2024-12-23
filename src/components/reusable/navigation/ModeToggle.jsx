@@ -35,7 +35,7 @@ export function ModeToggle() {
         </DropdownMenuItem>
         <DropdownMenuItem onClick={() => setTheme("system")}>
           <Computer className="size-4" />
-          النظام
+          الوضع الافتراضي
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
