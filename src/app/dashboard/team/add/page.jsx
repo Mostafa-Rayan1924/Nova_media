@@ -63,7 +63,6 @@ const page = () => {
           const { data } = await axios.get(
             `${baseUrl}nova/api/team/getone/${id}`
           );
-          console.log(data.data.doc);
           formik.setValues({
             name: data.data.doc.name,
             email: data.data.doc.email,
