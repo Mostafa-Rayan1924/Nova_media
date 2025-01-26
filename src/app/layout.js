@@ -45,10 +45,7 @@ export default function RootLayout({ children }) {
             <ScrollToTop />
             <DashboardLink />
             {children}
-            <img
-              className="w-full h-full object-cover fixed top-0 left-0"
-              src="/err.png"
-            />
+
             <Footer />
             <Toaster position="top-center" reverseOrder={false} />
           </ReduxProvider>
