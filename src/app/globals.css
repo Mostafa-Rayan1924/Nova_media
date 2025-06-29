@@ -246,3 +246,6 @@ html.dark ::-webkit-scrollbar-track {
     @apply bg-background text-foreground;
   }
 }
+.signup {
+  min-height: calc(100vh - 400px);
+}

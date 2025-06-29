@@ -16,7 +16,7 @@ const Hero = () => {
     dispatch(getBanners());
   }, []);
   return (
-    <div className="container w-full h-full  overflow-hidden">
+    <div className="w-[95%] mx-auto sm:container sm:w-full h-full  overflow-hidden">
       <Swiper
         effect={"cards"}
         grabCursor={true}

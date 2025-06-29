@@ -39,7 +39,7 @@ const SignUp = () => {
     },
   });
   return (
-    <section className="relative flex flex-wrap mt-[120px] sm:mt-[80px] lg:mt-0 lg:h-screen lg:items-center">
+    <section className="relative signup flex flex-wrap mt-[90px] sm:mt-[80px] lg:mt-0  lg:items-center">
       <div className="w-full px-4 py-6 sm:px-6 sm:py-16 lg:w-1/2 lg:px-8 lg:py-24">
         <div className="mx-auto max-w-lg text-center">
           <h2 className="mt-5 text-2xl font-bold sm:text-3xl">
@@ -212,11 +212,11 @@ const SignUp = () => {
         </form>
       </div>
 
-      <div className="relative  h-64 w-full mt-[30px] lg:mt-[90px] sm:h-96 lg:h-[87.5vh] lg:w-1/2">
+      <div className="relative hidden sm:block  h-[400px] w-full mt-[30px] lg:mt-[90px] sm:h-96 lg:h-[87.5vh] lg:w-1/2">
         <img
           alt="signupImg"
           src="/sign.png"
-          className="absolute inset-0 h-full w-full object-cover"
+          className="absolute inset-0 h-full w-full object-fill"
         />
       </div>
     </section>
