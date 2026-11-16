@@ -1,6 +1,7 @@
 "use client";
 import { useRouter } from "next/navigation";
 import { useSelector } from "react-redux";
+import { useEffect } from "react";
 
 const MarketDashboard = () => {
   let router = useRouter();

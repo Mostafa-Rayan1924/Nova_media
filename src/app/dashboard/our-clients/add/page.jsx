@@ -3,7 +3,7 @@ import MainTitle from "@/components/reusable/MainTitle";
 import { addBannerFunc } from "@/store/DashboardSlices/addBanner";
 import { addCustomerFunc } from "@/store/DashboardSlices/addCustomer";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import toast from "react-hot-toast";
 import { useDispatch, useSelector } from "react-redux";
 const page = () => {
