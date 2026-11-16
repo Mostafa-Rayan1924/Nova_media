@@ -10,7 +10,11 @@ import { useDispatch, useSelector } from "react-redux";
 const page = () => {
   let router = useRouter();
   let { user } = useSelector((state) => state.login);
-  if (user?.userData?.role !== "ادارة") router.push("/");
+  useEffect(() => {
+    if (user?.userData?.role !== "ادارة") {
+      router.replace("/");
+    }
+  }, [user, router]);
   let { projects, loading, error } = useSelector((state) => state.homeProjects);
   let dispatch = useDispatch();
   useEffect(() => {

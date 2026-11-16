@@ -29,7 +29,9 @@ const BannersDashboard = () => {
       }
     }
   };
-  if (user?.userData?.role !== "ادارة") router.push("/");
+  useEffect(() => {
+    if (user?.userData?.role !== "ادارة") router.push("/");
+  }, [user, router]);
   return (
     <section className="mt-[120px] mb-10 container">
       <div className="grid grid-cols-1 sm:grid-cols-2  md:grid-cols-3 gap-4 my-[50px]">

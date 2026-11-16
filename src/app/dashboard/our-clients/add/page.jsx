@@ -13,7 +13,11 @@ const page = () => {
   let { loading } = useSelector((state) => state.addCustomer);
   let router = useRouter();
   let { user } = useSelector((state) => state.login);
-  if (user?.userData?.role !== "ادارة") router.push("/");
+  useEffect(() => {
+    if (user?.userData?.role !== "ادارة") {
+      router.replace("/");
+    }
+  }, [user, router]);
   let dispatch = useDispatch();
   let handleSubmit = async (e) => {
     e.preventDefault();

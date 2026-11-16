@@ -1,6 +1,6 @@
 "use client";
 import MainTitle from "@/components/reusable/MainTitle";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useFormik } from "formik";
 import { addProject } from "@/components/validations/ValidationSchema";
 import Error from "@/components/validations/Error";
@@ -12,7 +12,11 @@ import { useRouter } from "next/navigation";
 const page = () => {
   let router = useRouter();
   let { user } = useSelector((state) => state.login);
-  if (user?.userData?.role !== "ادارة") router.push("/");
+  useEffect(() => {
+    if (user?.userData?.role !== "ادارة") {
+      router.replace("/");
+    }
+  }, [user, router]);
   const [imgFile, setImgFile] = useState(null);
   let { isLoading } = useSelector((state) => state.addInstaPro);
   let dispatch = useDispatch();

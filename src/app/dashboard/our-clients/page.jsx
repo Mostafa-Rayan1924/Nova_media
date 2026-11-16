@@ -15,7 +15,11 @@ const ClientDashboard = () => {
   let { customers, loading } = useSelector((state) => state.homeCustomers);
   let dispatch = useDispatch();
   let [delId, setDelId] = useState(null);
-  if (user?.userData?.role !== "ادارة") router.push("/");
+  useEffect(() => {
+    if (user?.userData?.role !== "ادارة") {
+      router.replace("/");
+    }
+  }, [user, router]);
   useEffect(() => {
     dispatch(GetCustomers());
   }, []);

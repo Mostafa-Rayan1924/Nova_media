@@ -18,7 +18,11 @@ const DashboardServices = () => {
   const [previewImages, setPreviewImages] = useState([]);
   const [previewVideos, setPreviewVideos] = useState([]);
 
-  if (user?.userData?.role !== "ادارة") router.push("/");
+  useEffect(() => {
+    if (user?.userData?.role !== "ادارة") {
+      router.replace("/");
+    }
+  }, [user, router]);
 
   let dispatch = useDispatch();
   useEffect(() => {
