@@ -1,4 +1,3 @@
-import { baseUrl } from "@/components/constants/api";
 import axios from "axios";
 import toast from "react-hot-toast";
 
@@ -9,18 +8,22 @@ export let addInstaProFunc = createAsyncThunk(
     let state = getState();
     let token = state.login?.user?.token;
     try {
-      let res = await axios.post(`${baseUrl}nova/api/work/create`, data, {
-        headers: {
-          authorization: `Bearer ${token}`,
+      let res = await axios.post(
+        `${process.env.API_BASE_URL}nova/api/work/create`,
+        data,
+        {
+          headers: {
+            authorization: `Bearer ${token}`,
+          },
         },
-      });
+      );
       toast.success("تم الاضافة بنجاح");
       return res.data;
     } catch (error) {
       console.log(error);
       throw new Error(error.response.data.message);
     }
-  }
+  },
 );
 export let addInstaProSlice = createSlice({
   name: "addInstaPro",

@@ -1,4 +1,3 @@
-import { baseUrl } from "@/components/constants/api";
 import axios from "axios";
 import toast from "react-hot-toast";
 
@@ -8,14 +7,14 @@ export let deleteServProFunc = createAsyncThunk(
   async (id) => {
     try {
       let res = await axios.delete(
-        `${baseUrl}nova/api/subcategory/deleteone/${id}`
+        `${process.env.API_BASE_URL}nova/api/subcategory/deleteone/${id}`,
       );
       toast.success("تم الحذف بنجاح");
       return res.data;
     } catch (error) {
       throw new Error(error.response.data.message);
     }
-  }
+  },
 );
 export let deleteServProSlice = createSlice({
   name: "deleteServPro",

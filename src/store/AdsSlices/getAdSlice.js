@@ -1,9 +1,10 @@
-import { baseUrl } from "@/components/constants/api";
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 export let getAd = createAsyncThunk("ads/getAd", async () => {
   try {
-    let { data } = await axios.get(`${baseUrl}nova/api/ad/getall`);
+    let { data } = await axios.get(
+      `${process.env.API_BASE_URL}nova/api/ad/getall`,
+    );
     return data.data;
   } catch (error) {
     throw new Error(error.message);

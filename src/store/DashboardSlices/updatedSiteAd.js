@@ -1,4 +1,3 @@
-import { baseUrl } from "@/components/constants/api";
 import axios from "axios";
 import toast from "react-hot-toast";
 
@@ -9,18 +8,22 @@ export let updatedSiteAdProFunc = createAsyncThunk(
     let state = getState();
     let token = state.login?.user?.token;
     try {
-      let res = await axios.patch(`${baseUrl}nova/api/ad/update/${id}`, data, {
-        headers: {
-          authorization: `Bearer ${token}`,
+      let res = await axios.patch(
+        `${process.env.API_BASE_URL}nova/api/ad/update/${id}`,
+        data,
+        {
+          headers: {
+            authorization: `Bearer ${token}`,
+          },
         },
-      });
+      );
       toast.success("تم التعديل بنجاح");
       return res.data;
     } catch (error) {
       console.log(error);
       throw new Error(error.response.data.message);
     }
-  }
+  },
 );
 export let updatedSiteAdProSlice = createSlice({
   name: "updatedSiteAdPro",

@@ -1,4 +1,3 @@
-import { baseUrl } from "@/components/constants/api";
 import axios from "axios";
 import toast from "react-hot-toast";
 
@@ -13,13 +12,13 @@ export let addComment = createAsyncThunk(
         comment: comment,
       };
       let { data } = await axios.post(
-        `${baseUrl}nova/api/exhibition/comment/${id}`,
+        `${process.env.API_BASE_URL}nova/api/exhibition/comment/${id}`,
         params,
         {
           headers: {
             authorization: `Bearer ${token}`,
           },
-        }
+        },
       );
       console.log(data);
       toast.success("تم اضافة التقييم بنجاح");
@@ -27,7 +26,7 @@ export let addComment = createAsyncThunk(
     } catch (error) {
       throw new Error(error.message);
     }
-  }
+  },
 );
 export let addCommentSlice = createSlice({
   name: "addComment",

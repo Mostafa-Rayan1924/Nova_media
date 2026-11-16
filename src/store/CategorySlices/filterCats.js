@@ -1,4 +1,3 @@
-import { baseUrl } from "@/components/constants/api";
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 let initialState = {
@@ -10,10 +9,10 @@ export let getCategoryById = createAsyncThunk(
   "category/getCategoryById",
   async (id) => {
     let { data } = await axios.get(
-      `${baseUrl}nova/api/category/${id}/subcategory/getall`
+      `${process.env.API_BASE_URL}nova/api/category/${id}/subcategory/getall`,
     );
     return data.data;
-  }
+  },
 );
 export let filterCategoriesSlice = createSlice({
   name: "filterCats",

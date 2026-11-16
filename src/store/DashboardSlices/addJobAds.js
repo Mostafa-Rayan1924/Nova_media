@@ -1,4 +1,3 @@
-import { baseUrl } from "@/components/constants/api";
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 import toast from "react-hot-toast";
@@ -12,18 +11,22 @@ export let addJobAdFunc = createAsyncThunk(
     let state = getState();
     let token = state.login?.user?.token;
     try {
-      let res = await axios.post(`${baseUrl}nova/api/job/create`, data, {
-        headers: {
-          authorization: `Bearer ${token}`,
+      let res = await axios.post(
+        `${process.env.API_BASE_URL}nova/api/job/create`,
+        data,
+        {
+          headers: {
+            authorization: `Bearer ${token}`,
+          },
         },
-      });
+      );
       toast.success("تم الاضافة بنجاح");
       return res.data;
     } catch (error) {
       console.log(error);
       throw new Error(error.response.data.message);
     }
-  }
+  },
 );
 export let addJobAdSlice = createSlice({
   name: "addJobAd",

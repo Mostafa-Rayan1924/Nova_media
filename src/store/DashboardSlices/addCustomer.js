@@ -11,11 +11,11 @@ export let addCustomerFunc = createAsyncThunk(
   async ({ formData, headers }) => {
     try {
       let res = await axios.post(
-        `${baseUrl}nova/api/partner/create`,
+        `${process.env.API_BASE_URL}nova/api/partner/create`,
         formData,
         {
           headers: headers,
-        }
+        },
       );
       toast.success("تم الاضافة بنجاح");
       return res.data;
@@ -23,7 +23,7 @@ export let addCustomerFunc = createAsyncThunk(
       console.log(error);
       throw new Error(error.response.data.message);
     }
-  }
+  },
 );
 export let addCustomerSlice = createSlice({
   name: "addCustomer",

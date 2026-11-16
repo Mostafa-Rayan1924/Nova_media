@@ -1,4 +1,3 @@
-import { baseUrl } from "@/components/constants/api";
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 import toast from "react-hot-toast";
@@ -7,14 +6,14 @@ export let delCustomerFunc = createAsyncThunk(
   async (id) => {
     try {
       let res = await axios.delete(
-        `${baseUrl}nova/api/partner/deleteone/${id}`
+        `${process.env.API_BASE_URL}nova/api/partner/deleteone/${id}`,
       );
       toast.success("تم حذف الشريك بنجاح");
       return res.data;
     } catch (error) {
       throw new Error(error.response.data.message);
     }
-  }
+  },
 );
 export let delCustomerSlice = createSlice({
   name: "delCustomer",

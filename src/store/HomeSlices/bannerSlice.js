@@ -1,4 +1,3 @@
-import { baseUrl } from "@/components/constants/api";
 import axios from "axios";
 
 const { createSlice, createAsyncThunk } = require("@reduxjs/toolkit");
@@ -9,7 +8,9 @@ let initialState = {
 };
 export let getBanners = createAsyncThunk("banner/getBanners", async () => {
   try {
-    let { data } = await axios.get(`${baseUrl}nova/api/poster/getall`);
+    let { data } = await axios.get(
+      `${process.env.API_BASE_URL}nova/api/poster/getall`,
+    );
     return data.data;
   } catch (error) {
     throw new Error(error.message);

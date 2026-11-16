@@ -1,4 +1,3 @@
-import { baseUrl } from "@/components/constants/api";
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 import toast from "react-hot-toast";
@@ -9,13 +8,13 @@ export let editExhFunc = createAsyncThunk(
     let token = state.login?.user?.token;
     try {
       let res = await axios.patch(
-        `${baseUrl}nova/api/exhibition/update/${id} `,
+        `${process.env.API_BASE_URL}nova/api/exhibition/update/${id} `,
         data,
         {
           headers: {
             authorization: `Bearer ${token}`,
           },
-        }
+        },
       );
       toast.success("تم التعديل بنجاح");
       return res.data;
@@ -23,7 +22,7 @@ export let editExhFunc = createAsyncThunk(
       console.log(error);
       throw new Error(error.response.data.message);
     }
-  }
+  },
 );
 export let editExhSlice = createSlice({
   name: "editExh",

@@ -1,4 +1,3 @@
-import { baseUrl } from "@/components/constants/api";
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 import toast from "react-hot-toast";
@@ -20,12 +19,15 @@ export let signupFunc = createAsyncThunk(
   "signup/signupFunc",
   async (params) => {
     try {
-      let { data } = await axios.post(`${baseUrl}nova/api/auth/signup`, params);
+      let { data } = await axios.post(
+        `${process.env.API_BASE_URL}nova/api/auth/signup`,
+        params,
+      );
       return data;
     } catch (error) {
       throw new Error(error.response.data.message);
     }
-  }
+  },
 );
 export let signUpSlice = createSlice({
   name: "signup",
