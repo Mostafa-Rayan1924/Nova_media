@@ -9,7 +9,6 @@ import { Loader2 } from "lucide-react";
 import { BtnsFilter } from "@/components/constants/BtnsFilterInExh";
 import { addExhFunc } from "@/store/DashboardSlices/addExh";
 import { addExh } from "@/components/validations/ValidationSchema";
-import { baseUrl } from "@/components/constants/api";
 import axios from "axios";
 import { editExhFunc } from "@/store/DashboardSlices/updateEx";
 
@@ -30,7 +29,7 @@ const Exhibtions = () => {
       setLoadergetOne(true);
       try {
         const { data } = await axios.get(
-          `${baseUrl}nova/api/exhibition/getone/${id}`
+          `${process.env.API_BASE_URL}nova/api/exhibition/getone/${id}`,
         );
 
         formik.setValues({
@@ -221,10 +220,10 @@ const Exhibtions = () => {
           {loading
             ? "جاري الاضافه"
             : Isloading
-            ? "جاري التعديل"
-            : id
-            ? "تعديل"
-            : "اضافه"}
+              ? "جاري التعديل"
+              : id
+                ? "تعديل"
+                : "اضافه"}
         </button>
       </form>
     </section>

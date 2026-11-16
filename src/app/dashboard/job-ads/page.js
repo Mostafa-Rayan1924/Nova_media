@@ -1,5 +1,4 @@
 "use client";
-import { baseUrl } from "@/components/constants/api";
 import MainTitle from "@/components/reusable/MainTitle";
 import { Button, buttonVariants } from "@/components/ui/button";
 import Error from "@/components/validations/Error";
@@ -52,7 +51,7 @@ const JobAds = () => {
         setLoadergetOne(true);
         try {
           const { data } = await axios.get(
-            `${baseUrl}nova/api/job/getone/${id}`
+            `${process.env.API_BASE_URL}nova/api/job/getone/${id}`,
           );
           formik.setValues({
             jobTitle: data.data.doc.title,

@@ -1,5 +1,4 @@
 "use client";
-import { baseUrl } from "@/components/constants/api";
 import MainTitle from "@/components/reusable/MainTitle";
 import Error from "@/components/validations/Error";
 import { siteAd } from "@/components/validations/ValidationSchema";
@@ -52,7 +51,7 @@ const SiteAd = () => {
         setLoadergetOne(true);
         try {
           const { data } = await axios.get(
-            `${baseUrl}nova/api/ad/getone/${id}`
+            `${process.env.API_BASE_URL}nova/api/ad/getone/${id}`,
           );
           formik.setValues({
             title: data.data.doc.title,

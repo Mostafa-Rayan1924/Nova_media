@@ -8,7 +8,6 @@ import { Loader2, Upload } from "lucide-react";
 import { useDispatch, useSelector } from "react-redux";
 import { addTeamProFunc } from "@/store/DashboardSlices/addTeam";
 import { useRouter, useSearchParams } from "next/navigation";
-import { baseUrl } from "@/components/constants/api";
 import axios from "axios";
 import { updateTeamProFunc } from "@/store/DashboardSlices/updateTeam";
 const page = () => {
@@ -61,7 +60,7 @@ const page = () => {
         setLoadergetOne(true);
         try {
           const { data } = await axios.get(
-            `${baseUrl}nova/api/team/getone/${id}`
+            `${process.env.API_BASE_URL}nova/api/team/getone/${id}`,
           );
           formik.setValues({
             name: data.data.doc.name,

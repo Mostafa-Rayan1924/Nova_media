@@ -1,7 +1,6 @@
 "use client";
 import { Heart } from "lucide-react";
 import { useEffect, useState } from "react";
-import { baseUrl } from "../constants/api";
 import axios from "axios";
 import { useSelector } from "react-redux";
 import { useRouter } from "next/navigation";
@@ -37,9 +36,9 @@ const InfoBox = ({ data }) => {
           Authorization: `Bearer ${user?.token}`,
         };
         await axios.patch(
-          `${baseUrl}nova/api/exhibition/like/${data._id}`,
+          `${process.env.API_BASE_URL}nova/api/exhibition/like/${data._id}`,
           {},
-          { headers }
+          { headers },
         );
       } catch (error) {
         console.error("Error while liking:", error);
