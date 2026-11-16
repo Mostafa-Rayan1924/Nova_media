@@ -2,14 +2,18 @@
 import MainTitle from "@/components/reusable/MainTitle";
 import { addBannerFunc } from "@/store/DashboardSlices/addBanner";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import toast from "react-hot-toast";
 import { useDispatch, useSelector } from "react-redux";
 
 const AddBanner = () => {
   let router = useRouter();
   let { user } = useSelector((state) => state.login);
-  if (user?.userData?.role !== "ادارة") router.push("/");
+  useEffect(() => {
+    if (user && user?.userData?.role !== "ادارة") {
+      router.replace("/");
+    }
+  }, [user, router]);
   let [file, setFile] = useState(null); // Unified for both image and video
   let [name, setName] = useState("");
   let [fileUrl, setFileUrl] = useState(null);
