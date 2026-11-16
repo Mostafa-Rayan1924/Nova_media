@@ -11,7 +11,11 @@ import { useRouter } from "next/navigation";
 const page = () => {
   let router = useRouter();
   let { user } = useSelector((state) => state.login);
-  if (user?.userData?.role !== "ادارة") router.push("/");
+  useEffect(() => {
+    if (user?.userData?.role !== "ادارة") {
+      router.replace("/");
+    }
+  }, [user, router]);
   let { data, loading, error } = useSelector((state) => state.teamData);
   let dispatch = useDispatch();
   useEffect(() => {
