@@ -60,7 +60,7 @@ const page = () => {
         setLoadergetOne(true);
         try {
           const { data } = await axios.get(
-            `${process.env.API_BASE_URL}nova/api/team/getone/${id}`,
+            `${process.env.NEXT_PUBLIC_API_BASE_URL}nova/api/team/getone/${id}`,
           );
           formik.setValues({
             name: data.data.doc.name,

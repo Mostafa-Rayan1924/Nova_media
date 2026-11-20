@@ -12,7 +12,7 @@ export let addJobAdFunc = createAsyncThunk(
     let token = state.login?.user?.token;
     try {
       let res = await axios.post(
-        `${process.env.API_BASE_URL}nova/api/job/create`,
+        `${process.env.NEXT_PUBLIC_API_BASE_URL}nova/api/job/create`,
         data,
         {
           headers: {

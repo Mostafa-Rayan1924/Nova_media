@@ -6,7 +6,7 @@ export let delBannerFunc = createAsyncThunk(
   async (id) => {
     try {
       let res = await axios.delete(
-        `${process.env.API_BASE_URL}nova/api/poster/deleteone/${id}`,
+        `${process.env.NEXT_PUBLIC_API_BASE_URL}nova/api/poster/deleteone/${id}`,
       );
       toast.success("تم حذف البانر بنجاح");
       return res.data;

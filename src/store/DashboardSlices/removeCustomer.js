@@ -6,7 +6,7 @@ export let delCustomerFunc = createAsyncThunk(
   async (id) => {
     try {
       let res = await axios.delete(
-        `${process.env.API_BASE_URL}nova/api/partner/deleteone/${id}`,
+        `${process.env.NEXT_PUBLIC_API_BASE_URL}nova/api/partner/deleteone/${id}`,
       );
       toast.success("تم حذف الشريك بنجاح");
       return res.data;

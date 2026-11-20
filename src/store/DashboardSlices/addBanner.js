@@ -10,7 +10,7 @@ export let addBannerFunc = createAsyncThunk(
   async ({ formData, headers }) => {
     try {
       let res = await axios.post(
-        `${process.env.API_BASE_URL}nova/api/poster/create`,
+        `${process.env.NEXT_PUBLIC_API_BASE_URL}nova/api/poster/create`,
         formData,
         {
           headers: headers,

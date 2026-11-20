@@ -9,7 +9,7 @@ let initialState = {
 export let GetCustomers = createAsyncThunk("project/getCustomers", async () => {
   try {
     let { data } = await axios.get(
-      `${process.env.API_BASE_URL}nova/api/partner/getall`,
+      `${process.env.NEXT_PUBLIC_API_BASE_URL}nova/api/partner/getall`,
     );
     return data.data;
   } catch (error) {

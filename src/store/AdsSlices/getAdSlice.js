@@ -3,7 +3,7 @@ import axios from "axios";
 export let getAd = createAsyncThunk("ads/getAd", async () => {
   try {
     let { data } = await axios.get(
-      `${process.env.API_BASE_URL}nova/api/ad/getall`,
+      `${process.env.NEXT_PUBLIC_API_BASE_URL}nova/api/ad/getall`,
     );
     return data.data;
   } catch (error) {

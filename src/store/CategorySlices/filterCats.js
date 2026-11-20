@@ -9,7 +9,7 @@ export let getCategoryById = createAsyncThunk(
   "category/getCategoryById",
   async (id) => {
     let { data } = await axios.get(
-      `${process.env.API_BASE_URL}nova/api/category/${id}/subcategory/getall`,
+      `${process.env.NEXT_PUBLIC_API_BASE_URL}nova/api/category/${id}/subcategory/getall`,
     );
     return data.data;
   },

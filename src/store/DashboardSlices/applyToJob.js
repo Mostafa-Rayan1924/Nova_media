@@ -10,7 +10,7 @@ export let applyJobFunc = createAsyncThunk(
   async (data) => {
     try {
       let res = await axios.post(
-        `${process.env.API_BASE_URL}nova/api/emp/create`,
+        `${process.env.NEXT_PUBLIC_API_BASE_URL}nova/api/emp/create`,
         data,
       );
       toast.success("تم التقديم بنجاح");

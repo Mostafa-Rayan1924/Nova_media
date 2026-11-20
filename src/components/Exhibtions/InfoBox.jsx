@@ -75,30 +75,6 @@ const InfoBox = ({ data }) => {
             {data?.description}
           </dd>
         </div>
-        <div className="grid grid-cols-2 gap-1 p-3 even:bg-accent/45 sm:grid-cols-3 sm:gap-4">
-          <dt className="font-medium text-foreground mt-2">ما رايك؟</dt>
-          <dd className="text-muted-foreground sm:col-span-2">
-            <button
-              onClick={makeLike}
-              className={`border flex items-center px-6 justify-center gap-1 ${
-                like === "add like"
-                  ? "bg-primary"
-                  : "bg-background border-primary"
-              } rounded-lg  py-2`}>
-              {like === "add like" ? (
-                <span className="ml-2 text-white">اعجبني</span>
-              ) : (
-                <span className="ml-2 text-primary">قم بالاعجاب</span>
-              )}
-              <Heart
-                size={20}
-                className={`${
-                  like === "add like" ? "text-white" : "text-primary"
-                }`}
-              />
-            </button>
-          </dd>
-        </div>
 
         <div className="grid grid-cols-2 gap-1 p-3 even:bg-accent/45 sm:grid-cols-3 sm:gap-4">
           <dt className="font-medium text-foreground">
@@ -106,7 +82,7 @@ const InfoBox = ({ data }) => {
           </dt>
           <dd className="text-muted-foreground sm:col-span-2">
             <span className="bg-primary size-8 rounded-full text-white grid place-items-center text-sm">
-              {data?.like > 99 ? "99+" : data?.like}
+              125
             </span>
           </dd>
         </div>

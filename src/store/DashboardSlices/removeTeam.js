@@ -4,7 +4,7 @@ import toast from "react-hot-toast";
 export let delTeamFunc = createAsyncThunk("delTeam/delTeamFunc", async (id) => {
   try {
     let res = await axios.delete(
-      `${process.env.API_BASE_URL}nova/api/team/deleteone/${id}`,
+      `${process.env.NEXT_PUBLIC_API_BASE_URL}nova/api/team/deleteone/${id}`,
     );
     toast.success("تم الحذف بنجاح");
     return res.data;

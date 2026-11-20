@@ -18,7 +18,7 @@ let initialState = {
 export let loginFunc = createAsyncThunk("login/loginFunc", async (params) => {
   try {
     let { data } = await axios.post(
-      `${process.env.API_BASE_URL}nova/api/auth/login`,
+      `${process.env.NEXT_PUBLIC_API_BASE_URL}nova/api/auth/login`,
       params,
     );
     return data;

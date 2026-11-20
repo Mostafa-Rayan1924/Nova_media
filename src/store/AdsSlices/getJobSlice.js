@@ -3,7 +3,7 @@ import axios from "axios";
 export let getJob = createAsyncThunk("ads/getJob", async () => {
   try {
     let { data } = await axios.get(
-      `${process.env.API_BASE_URL}nova/api/job/getall`,
+      `${process.env.NEXT_PUBLIC_API_BASE_URL}nova/api/job/getall`,
     );
     return data.data;
   } catch (error) {

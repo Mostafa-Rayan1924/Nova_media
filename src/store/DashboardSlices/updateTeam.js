@@ -9,7 +9,7 @@ export let updateTeamProFunc = createAsyncThunk(
     let token = state.login?.user?.token;
     try {
       let res = await axios.patch(
-        `${process.env.API_BASE_URL}nova/api/team/update/${id}`,
+        `${process.env.NEXT_PUBLIC_API_BASE_URL}nova/api/team/update/${id}`,
         data,
         {
           headers: {

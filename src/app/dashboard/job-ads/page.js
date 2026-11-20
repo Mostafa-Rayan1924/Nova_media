@@ -51,7 +51,7 @@ const JobAds = () => {
         setLoadergetOne(true);
         try {
           const { data } = await axios.get(
-            `${process.env.API_BASE_URL}nova/api/job/getone/${id}`,
+            `${process.env.NEXT_PUBLIC_API_BASE_URL}nova/api/job/getone/${id}`,
           );
           formik.setValues({
             jobTitle: data.data.doc.title,

@@ -12,7 +12,7 @@ export let addComment = createAsyncThunk(
         comment: comment,
       };
       let { data } = await axios.post(
-        `${process.env.API_BASE_URL}nova/api/exhibition/comment/${id}`,
+        `${process.env.NEXT_PUBLIC_API_BASE_URL}nova/api/exhibition/comment/${id}`,
         params,
         {
           headers: {

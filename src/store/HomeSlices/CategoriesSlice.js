@@ -8,7 +8,7 @@ let initialState = {
 export let GetCats = createAsyncThunk("category/getCats", async () => {
   try {
     let { data } = await axios.get(
-      `${process.env.API_BASE_URL}nova/api/category/getall`,
+      `${process.env.NEXT_PUBLIC_API_BASE_URL}nova/api/category/getall`,
     );
     return data.data;
   } catch (error) {

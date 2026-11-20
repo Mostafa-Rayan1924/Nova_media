@@ -8,7 +8,7 @@ let initialState = {
 export let getTeam = createAsyncThunk("team/getTeam", async () => {
   try {
     let { data } = await axios.get(
-      `${process.env.API_BASE_URL}nova/api/team/getall`,
+      `${process.env.NEXT_PUBLIC_API_BASE_URL}nova/api/team/getall`,
     );
     return data.data;
   } catch (error) {

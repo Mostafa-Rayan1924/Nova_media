@@ -10,7 +10,7 @@ export let getFilter = createAsyncThunk(
   async (department = "حفلات تخرج") => {
     try {
       let { data } = await axios.get(
-        `${process.env.API_BASE_URL}nova/api/exhibition/getall?department=${department}`,
+        `${process.env.NEXT_PUBLIC_API_BASE_URL}nova/api/exhibition/getall?department=${department}`,
       );
       return data.data;
     } catch (error) {

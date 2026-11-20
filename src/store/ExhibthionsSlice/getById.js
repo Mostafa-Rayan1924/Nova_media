@@ -8,7 +8,7 @@ let initialState = {
 export let getByIdFunc = createAsyncThunk("filter/getById", async (id) => {
   try {
     let { data } = await axios.get(
-      `${process.env.API_BASE_URL}nova/api/exhibition/getone/${id}`,
+      `${process.env.NEXT_PUBLIC_API_BASE_URL}nova/api/exhibition/getone/${id}`,
     );
     return data.data;
   } catch (error) {

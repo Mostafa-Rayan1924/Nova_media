@@ -4,7 +4,7 @@ import toast from "react-hot-toast";
 export let delJobFunc = createAsyncThunk("delJob/delJobFunc", async (id) => {
   try {
     let res = await axios.delete(
-      `${process.env.API_BASE_URL}nova/api/job/deleteone/${id}`,
+      `${process.env.NEXT_PUBLIC_API_BASE_URL}nova/api/job/deleteone/${id}`,
     );
     toast.success("تم الحذق  بنجاح");
     return res.data;

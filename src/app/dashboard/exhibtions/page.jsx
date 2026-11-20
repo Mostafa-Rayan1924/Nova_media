@@ -29,7 +29,7 @@ const Exhibtions = () => {
       setLoadergetOne(true);
       try {
         const { data } = await axios.get(
-          `${process.env.API_BASE_URL}nova/api/exhibition/getone/${id}`,
+          `${process.env.NEXT_PUBLIC_API_BASE_URL}nova/api/exhibition/getone/${id}`,
         );
 
         formik.setValues({

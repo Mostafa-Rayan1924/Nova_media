@@ -9,7 +9,7 @@ let initialState = {
 export let getBanners = createAsyncThunk("banner/getBanners", async () => {
   try {
     let { data } = await axios.get(
-      `${process.env.API_BASE_URL}nova/api/poster/getall`,
+      `${process.env.NEXT_PUBLIC_API_BASE_URL}nova/api/poster/getall`,
     );
     return data.data;
   } catch (error) {

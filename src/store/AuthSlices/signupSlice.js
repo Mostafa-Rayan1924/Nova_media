@@ -20,7 +20,7 @@ export let signupFunc = createAsyncThunk(
   async (params) => {
     try {
       let { data } = await axios.post(
-        `${process.env.API_BASE_URL}nova/api/auth/signup`,
+        `${process.env.NEXT_PUBLIC_API_BASE_URL}nova/api/auth/signup`,
         params,
       );
       return data;

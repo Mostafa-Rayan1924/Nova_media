@@ -79,7 +79,7 @@ const Profile = () => {
             <button
               onClick={logOutFunc}
               type="submit"
-              className="flex w-full items-center gap-2 rounded-lg px-4 py-2 text-sm text-red-700 hover:bg-red-700 hover:text-white transition-all duration-300"
+              className="flex w-full items-center gap-2 rounded-lg px-4 py-2 text-[11px] text-red-700 hover:bg-red-700 hover:text-white transition-all duration-300"
               role="menuitem">
               تسجيل الخروج
               <svg
